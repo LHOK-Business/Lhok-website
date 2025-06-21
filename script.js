@@ -1,3 +1,3 @@
 function showMessage() {
-    alert("Hello, welcome to my website!");
+    alert("Thank you for joining LHOK!");
 }
