@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LHOK Canada</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Welcome to LHOK</h1>
-    <button onclick="showMessage()">Click Me</button>
-    <script src="script.js"></script>
-</body>
-</html>
+/* style.css */
+/* Styling for the body of the page */
+body {
+    font-family: Arial, sans-serif; /* Sets the font family for the entire page */
+}
+/* Styling for the main header (h1) */
+h1 {
+    color: #333; /* Sets the text color of the h1 element to a dark grey */
+    font-size: 2em; /* Sets the font size of the h1 element */
+}
+/* Styling for the subheader (h2) */
+h2 {
+    color: #666; /* Sets the text color of the h2 element to a lighter grey */
+    font-size: 1.5em; /* Sets the font size of the h2 element */
