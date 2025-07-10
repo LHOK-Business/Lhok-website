@@ -2,13 +2,34 @@
 /* Styling for the body of the page */
 body {
     font-family: Arial, sans-serif; /* Sets the font family for the entire page */
+    margin: 0; 
+    padding: 0;
 }
 /* Styling for the main header (h1) */
 h1 {
     color: #333; /* Sets the text color of the h1 element to a dark grey */
     font-size: 2em; /* Sets the font size of the h1 element */
+    text-align: center;
 }
 /* Styling for the subheader (h2) */
 h2 {
     color: #666; /* Sets the text color of the h2 element to a lighter grey */
     font-size: 1.5em; /* Sets the font size of the h2 element */
+    text-align: center;
+button {
+    display: block;
+    margin: 20px auto;
+}
+
+/* Container for centering the image */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Adjust space above the image */
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
