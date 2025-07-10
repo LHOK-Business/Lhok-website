@@ -4,6 +4,12 @@ body {
     font-family: Arial, sans-serif; /* Sets the font family for the entire page */
     margin: 0; 
     padding: 0;
+    min-height: 100vh; /* Ensures the body takes at least the full height of the viewport */
+    display: flex; /* Enables flexbox layout */
+    flex-direction: column; /* Arranges children in a column */
+    justify-content: center; /* Centers children vertically */
+    align-items: center; /* Centers children horizontally */
+    text-align: center; /* Centers text within the body */
 }
 /* Styling for the main header (h1) */
 h1 {
@@ -16,6 +22,8 @@ h2 {
     color: #666; /* Sets the text color of the h2 element to a lighter grey */
     font-size: 1.5em; /* Sets the font size of the h2 element */
     text-align: center;
+}
+/* Styling for buttons */
 button {
     display: block;
     margin: 20px auto;
@@ -33,4 +41,4 @@ button {
 .image-container img {
     max-width: 100%;
     height: auto;
-}}
+}
