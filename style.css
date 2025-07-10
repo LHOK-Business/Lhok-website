@@ -19,6 +19,7 @@ h2 {
 button {
     display: block;
     margin: 20px auto;
+    align-items: center;
 }
 
 /* Container for centering the image */
@@ -32,4 +33,4 @@ button {
 .image-container img {
     max-width: 100%;
     height: auto;
-}
+}}
