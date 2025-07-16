@@ -1,44 +1,62 @@
-/* style.css */
-/* Styling for the body of the page */
+/* General styling for the body element */
 body {
-    font-family: Arial, sans-serif; /* Sets the font family for the entire page */
-    margin: 0; 
-    padding: 0;
-    min-height: 100vh; /* Ensures the body takes at least the full height of the viewport */
-    display: flex; /* Enables flexbox layout */
-    flex-direction: column; /* Arranges children in a column */
-    justify-content: center; /* Centers children vertically */
-    align-items: center; /* Centers children horizontally */
-    text-align: center; /* Centers text within the body */
+    font-family: Arial, sans-serif; /* Sets the default font for the entire page */
+    margin: 0; /* Removes default browser margin */
+    padding: 0; /* Removes default browser padding */
+    min-height: 100vh; /* Makes sure body fills at least the full screen height */
+    display: flex; /* Enables Flexbox layout */
+    flex-direction: column; /* Arranges child elements in a column */
+    justify-content: center; /* Vertically centers child elements */
+    align-items: center; /* Horizontally centers child elements */
+    text-align: center; /* Centers text */
 }
-/* Styling for the main header (h1) */
+
+/* Header section styling */
+header {
+    background-color: #FF5733; /* Sets background color of header (replace with your own hex code) */
+    color: white; /* Sets text color to white for contrast */
+    padding: 20px 0; /* Adds top and bottom padding to the header */
+    width: 100%; /* Makes the header span full page width */
+    text-align: center; /* Centers the text inside the header */
+}
+
+/* Header title styling */
+header h1 {
+    margin: 0; /* Removes default margin */
+    font-size: 2em; /* Sets the font size for the header title */
+}
+
+/* Main h1 heading styling */
 h1 {
-    color: #333; /* Sets the text color of the h1 element to a dark grey */
-    font-size: 2em; /* Sets the font size of the h1 element */
-    text-align: center;
+    color: #333; /* Sets the text color to a dark gray */
+    font-size: 2em; /* Sets the font size for the h1 heading */
+    text-align: center; /* Centers the text */
 }
-/* Styling for the subheader (h2) */
+
+/* Subheading (h2) styling */
 h2 {
-    color: #666; /* Sets the text color of the h2 element to a lighter grey */
-    font-size: 1.5em; /* Sets the font size of the h2 element */
-    text-align: center;
+    color: #666; /* Sets text color to a lighter gray */
+    font-size: 1.5em; /* Sets the font size for h2 */
+    text-align: center; /* Centers the text */
 }
-/* Styling for buttons */
+
+/* Button styling */
 button {
-    display: block;
-    margin: 20px auto;
-    align-items: center;
+    display: block; /* Makes the button a block element */
+    margin: 20px auto; /* Centers the button with top/bottom margin */
+    align-items: center; /* Aligns content vertically (though this has no effect on buttons) */
 }
 
-/* Container for centering the image */
+/* Styling for the image container */
 .image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px; /* Adjust space above the image */
+    display: flex; /* Enables Flexbox for image container */
+    justify-content: center; /* Horizontally centers the image */
+    align-items: center; /* Vertically centers the image (if height is defined) */
+    margin-top: 20px; /* Adds space above the image */
 }
 
+/* Styling for the image inside the container */
 .image-container img {
-    max-width: 100%;
-    height: auto;
+    max-width: 100%; /* Ensures the image doesn't overflow its container */
+    height: auto; /* Maintains the image's aspect ratio */
 }

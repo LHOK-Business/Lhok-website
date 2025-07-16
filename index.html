@@ -1,22 +1,31 @@
-<!DOCTYPE html> <!-- Declares the document type and version of HTML (HTML5) -->
-<html lang="en"> <!-- The start of the HTML document, and "en" specifies that the language is English -->
-<head> <!-- The head section contains metadata for the document -->
-    <meta charset="UTF-8"> <!-- Specifies the character encoding for the document, UTF-8 is a standard for most languages -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the page is responsive on different screen sizes -->
-    <title>My First Website</title> <!-- Sets the title of the webpage that appears in the browser tab -->
-    <link rel="stylesheet" href="style.css"> <!-- Links to an external CSS file for styling the webpage -->
+<!DOCTYPE html> <!-- Declares the document as an HTML5 document -->
+<html lang="en"> <!-- Opens the HTML tag and sets the page language to English -->
+
+<head> <!-- The head section contains metadata and external links -->
+    <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the site responsive on all screen sizes -->
+    <title>My First Website</title> <!-- Sets the title of the webpage shown in the browser tab -->
+    <link rel="stylesheet" href="style.css"> <!-- Links to the external CSS file for styling -->
 </head>
 
+<body> <!-- Begins the body of the HTML document (everything inside is visible on the page) -->
 
-<body> <!-- The body of the page, which contains the visible content -->
-    <h1>Welcome to LHOK</h1> <!-- A main header that displays the message "Welcome to LHOK" -->
-    <h2>LHOK beauty for fish</h2> <!-- A subheading with a tagline below the main header -->
-    <button onclick="showMessage()">Click Me</button> <!-- A button that triggers the showMessage() function when clicked -->
+    <!-- Header section starts -->
+    <header> <!-- A semantic HTML5 element used to define a header section -->
+        <h1>LHOK</h1> <!-- Displays the site or brand name inside the header -->
+    </header>
+    <!-- Header section ends -->
+
+    <h1>Welcome to LHOK</h1> <!-- Main heading shown on the page -->
+    <h2>LHOK beauty for fish</h2> <!-- Subheading with a short description -->
     
-    <div class="image-container">
-    <img src="Media/lhoklogo.png" alt="My Photo" width="200" height=auto>
+    <button onclick="showMessage()">Click Me</button> <!-- A button that will show an alert when clicked -->
+
+    <div class="image-container"> <!-- A container to hold and center the image -->
+        <img src="Media/lhoklogo.png" alt="My Photo" width="200" height="auto"> <!-- The logo/image to be shown -->
     </div>
 
-    <script src="script.js"></script> <!-- Links to an external JavaScript file (script.js) that contains behavior -->
-</body>
-</html>
+    <script src="script.js"></script> <!-- Loads the external JavaScript file -->
+</body> <!-- Ends the body section -->
+
+</html> <!-- Closes the HTML document -->
