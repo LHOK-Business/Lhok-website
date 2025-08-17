@@ -14,8 +14,8 @@ body {
 /* Header section styling */
 header {
     background-color:#b54dbc;
-    /*linear-gradient(to bottom, #b54dbc 50%, #ffffff 80%); /* Sets background color of header (replace with your own hex code) */
-    color: #b54dbc; /* Sets text color to white for contrast */
+    /* /* Sets background color of header (replace with your own hex code) */
+    color: linear-gradient(to bottom, #b54dbc 50%, #ffffff 80%); /* Sets text color to white for contrast */
     padding: 20px 0; /* Adds top and bottom padding to the header */
     width: 100%; /* Makes the header span full page width */
     text-align: center; /* Centers the text inside the header */
