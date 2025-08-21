@@ -5,6 +5,7 @@ body {
     padding: 0; /* Removes default browser padding */
     min-height: 100vh; /* Makes sure body fills at least the full screen height */
     text-align: center; /* Centers text */
+    padding-top: 100px; /* Add space at top for the fixed header */
 }
 
 /* Header section styling */
@@ -14,9 +15,13 @@ header {
     padding: 20px 0; /* Adds top and bottom padding to the header */
     width: 100%; /* Makes the header span full page width */
     text-align: center; /* Centers the text inside the header */
-    position: absolute; /* Position the header absolutely */
-    top: 0; /* Place it at the very top */
+    position: fixed; /* Fixed position to stick to viewport */
+    top: 0 !important; /* Force it to the very top */
     left: 0; /* Align it to the left edge */
+    right: 0; /* Stretch to right edge */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    box-sizing: border-box; /* Include padding in width calculation */
+    margin: 0; /* Remove any margin */
 }
 
 /* Header title styling */
