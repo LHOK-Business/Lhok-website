@@ -69,15 +69,17 @@ button {
 /* Footer section styling */
 footer {
     background: linear-gradient(to top, #b54dbc 50%, #ffffff 80%); /* Creates a gradient from white to purple (opposite of header) */
-    color: #333; /* Sets text color to dark gray for good contrast */
+    color: #333 !important; /* Sets text color to dark gray for good contrast */
     padding: 20px 0; /* Adds top and bottom padding to the footer */
-    width: 100%; /* Makes the footer span full page width */
+    width: 100vw; /* Makes the footer span full viewport width */
     text-align: center; /* Centers the text inside the footer */
-    position: fixed; /* Fixed position to stick to viewport */
+    position: fixed !important; /* Fixed position to stick to viewport */
     bottom: 0 !important; /* Force it to the very bottom */
-    left: 0; /* Align it to the left edge */
+    left: 0 !important; /* Align it to the left edge */
     right: 0; /* Stretch to right edge */
     z-index: 1000; /* Ensure it stays on top of other elements */
     box-sizing: border-box; /* Include padding in width calculation */
     margin: 0; /* Remove any margin */
+    height: 80px; /* Set a fixed height */
+    display: block !important; /* Ensure it displays */
 }
