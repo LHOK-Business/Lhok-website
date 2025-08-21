@@ -6,6 +6,7 @@ body {
     min-height: 100vh; /* Makes sure body fills at least the full screen height */
     text-align: center; /* Centers text */
     padding-top: 100px; /* Add space at top for the fixed header */
+    padding-bottom: 80px; /* Add space at bottom for the fixed footer */
 }
 
 /* Header section styling */
@@ -63,4 +64,20 @@ button {
 .image-container img {
     max-width: 100%; /* Ensures the image doesn't overflow its container */
     height: auto; /* Maintains the image's aspect ratio */
+}
+
+/* Footer section styling */
+footer {
+    background: linear-gradient(to top, #b54dbc 50%, #ffffff 80%); /* Creates a gradient from white to purple (opposite of header) */
+    color: #333; /* Sets text color to dark gray for good contrast */
+    padding: 20px 0; /* Adds top and bottom padding to the footer */
+    width: 100%; /* Makes the footer span full page width */
+    text-align: center; /* Centers the text inside the footer */
+    position: fixed; /* Fixed position to stick to viewport */
+    bottom: 0 !important; /* Force it to the very bottom */
+    left: 0; /* Align it to the left edge */
+    right: 0; /* Stretch to right edge */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    box-sizing: border-box; /* Include padding in width calculation */
+    margin: 0; /* Remove any margin */
 }
