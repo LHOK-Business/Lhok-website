@@ -4,9 +4,6 @@ body {
     margin: 0; /* Removes default browser margin */
     padding: 0; /* Removes default browser padding */
     min-height: 100vh; /* Makes sure body fills at least the full screen height */
-    display: flex; /* Enables Flexbox layout */
-    flex-direction: column; /* Arranges child elements in a column */
-    align-items: center; /* Horizontally centers child elements */
     text-align: center; /* Centers text */
 }
 
