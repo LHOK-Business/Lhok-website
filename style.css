@@ -17,7 +17,7 @@ body {
     padding: 0; /* Removes default browser padding */
     min-height: 100vh; /* Makes sure body fills at least the full screen height */
     text-align: center; /* Centers text */
-    padding-top: 25px; /* Reduced from 100px to 25px for smaller header */
+    padding-top: 60px; /* Matches the exact header height */
     padding-bottom: 80px; /* Add space at bottom for the fixed footer */
 }
 
@@ -27,7 +27,7 @@ header {
     background: -moz-linear-gradient(to bottom, #b54dbc 50%, #ffffff 80%); /* Firefox */
     background: linear-gradient(to bottom, #b54dbc 50%, #ffffff 80%); /* Standard */
     color: #333; /* Sets text color to dark gray for good contrast */
-    padding: 5px 0; /* Reduced padding from 20px to 5px */
+    height: 60px; /* Fixed height - header will always be exactly 60px tall */
     width: 100%; /* Makes the header span full page width */
     text-align: center; /* Centers the text inside the header */
     position: fixed; /* Fixed position to stick to viewport */
@@ -37,6 +37,7 @@ header {
     z-index: 1000; /* Ensure it stays on top of other elements */
     box-sizing: border-box; /* Include padding in width calculation */
     margin: 0; /* Remove any margin */
+    overflow: hidden; /* Hide any content that might exceed the header height */
 }
 
 /* Header title styling */
