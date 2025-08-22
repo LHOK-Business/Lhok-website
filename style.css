@@ -1,3 +1,15 @@
+/* CSS Reset - Add this at the very top */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
 /* General styling for the body element */
 body {
     font-family: Arial, sans-serif; /* Sets the default font for the entire page */
@@ -11,7 +23,9 @@ body {
 
 /* Header section styling */
 header {
-    background: linear-gradient(to bottom, #b54dbc 50%, #ffffff 80%); /* Creates a gradient from purple to white */
+    background: -webkit-linear-gradient(to bottom, #b54dbc 50%, #ffffff 80%); /* Safari/Chrome */
+    background: -moz-linear-gradient(to bottom, #b54dbc 50%, #ffffff 80%); /* Firefox */
+    background: linear-gradient(to bottom, #b54dbc 50%, #ffffff 80%); /* Standard */
     color: #333; /* Sets text color to dark gray for good contrast */
     padding: 20px 0; /* Adds top and bottom padding to the header */
     width: 100%; /* Makes the header span full page width */
@@ -68,7 +82,9 @@ button {
 
 /* Footer section styling */
 footer {
-    background: linear-gradient(to top, #b54dbc 50%, #ffffff 80%); /* Creates a gradient from white to purple (opposite of header) */
+    background: -webkit-linear-gradient(to top, #b54dbc 50%, #ffffff 80%); /* Safari/Chrome */
+    background: -moz-linear-gradient(to top, #b54dbc 50%, #ffffff 80%); /* Firefox */
+    background: linear-gradient(to top, #b54dbc 50%, #ffffff 80%); /* Standard */
     color: #333 !important; /* Sets text color to dark gray for good contrast */
     padding: 20px 0; /* Adds top and bottom padding to the footer */
     width: 100vw; /* Makes the footer span full viewport width */
