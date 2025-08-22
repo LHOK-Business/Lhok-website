@@ -28,8 +28,9 @@ header {
 /* Header content container - holds logo and navigation */
 .header-content {
     display: flex; /* Use flexbox to arrange logo and nav horizontally */
-    justify-content: space-between; /* Put logo on left, nav on right */
+    justify-content: center; /* Center all content in the header */
     align-items: center; /* Vertically center logo and nav */
+    gap: 50px; /* Add space between logo and navigation links */
     max-width: 1200px; /* Limit maximum width for larger screens */
     margin: 0 auto; /* Center the header content */
     padding: 0 20px; /* Add some padding on the sides */
