@@ -25,10 +25,47 @@ header {
     margin: 0; /* Remove any margin */
 }
 
-/* Header title styling */
-header h1 {
-    margin: 0; /* Removes default margin */
-    font-size: 2em; /* Sets the font size for the header title */
+/* Header content container - holds logo and navigation */
+.header-content {
+    display: flex; /* Use flexbox to arrange logo and nav horizontally */
+    justify-content: space-between; /* Put logo on left, nav on right */
+    align-items: center; /* Vertically center logo and nav */
+    max-width: 1200px; /* Limit maximum width for larger screens */
+    margin: 0 auto; /* Center the header content */
+    padding: 0 20px; /* Add some padding on the sides */
+}
+
+/* Logo styling (LHOK text) */
+.logo {
+    margin: 0; /* Remove default margin */
+    font-size: 2em; /* Sets the font size for the logo */
+    color: #333; /* Dark gray color for the logo text */
+    font-weight: bold; /* Make the logo text bold */
+}
+
+/* Navigation container styling */
+.header-nav {
+    display: flex; /* Use flexbox to arrange nav links horizontally */
+    gap: 30px; /* Add space between the navigation links */
+    align-items: center; /* Vertically center the navigation links */
+}
+
+/* Individual navigation link styling */
+.nav-link {
+    color: #333; /* Dark gray color for link text */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 1.1em; /* Slightly larger font for navigation */
+    font-weight: 500; /* Medium font weight */
+    padding: 8px 16px; /* Add padding around each link for better click area */
+    border-radius: 5px; /* Rounded corners for the link background */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Navigation link hover effect */
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Light white background on hover */
+    color: #b54dbc; /* Change text color to purple on hover */
+    transform: translateY(-2px); /* Slight upward movement on hover */
 }
 
 /* Main h1 heading styling */
