@@ -63,12 +63,12 @@ header {
     justify-content: center; /* Center horizontally */
 }
 
-/* Logo image styling - 5 times smaller */
+/* Logo image styling - 3 times bigger */
 .logo img {
-    height: 8px; /* Very small - 5 times smaller than the 40px we had before */
+    height: 24px; /* 3 times bigger than 8px */
     width: auto; /* Maintain aspect ratio */
-    max-height: 10px; /* Maximum height constraint */
-    max-width: 40px; /* Maximum width constraint (also 5 times smaller) */
+    max-height: 30px; /* Maximum height constraint (3 times bigger than 10px) */
+    max-width: 120px; /* Maximum width constraint (3 times bigger than 40px) */
     display: block; /* Make it a block element */
     object-fit: contain; /* Ensures the entire image fits within the constraints */
 }
