@@ -43,6 +43,63 @@ header {
     overflow: hidden; /* Hide any content that might exceed the header height */
 }
 
+/* Header content container - holds logo and navigation */
+.header-content {
+    display: flex; /* Use flexbox to arrange logo and nav horizontally */
+    justify-content: center; /* Center everything */
+    align-items: center; /* Vertically center logo and nav */
+    height: 100%; /* Fill the full header height */
+    max-width: 1200px; /* Limit maximum width for larger screens */
+    margin: 0 auto; /* Center the header content */
+    padding: 0 20px; /* Add some padding on the sides */
+    gap: 30px; /* Add space between logo and navigation */
+}
+
+/* Logo styling (PNG image) */
+.logo {
+    margin: 0; /* Remove default margin */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+/* Logo image styling - 5 times smaller */
+.logo img {
+    height: 8px; /* Very small - 5 times smaller than the 40px we had before */
+    width: auto; /* Maintain aspect ratio */
+    max-height: 10px; /* Maximum height constraint */
+    max-width: 40px; /* Maximum width constraint (also 5 times smaller) */
+    display: block; /* Make it a block element */
+    object-fit: contain; /* Ensures the entire image fits within the constraints */
+}
+
+/* Navigation container styling */
+.header-nav {
+    display: flex; /* Use flexbox to arrange nav links horizontally */
+    gap: 20px; /* Add space between the navigation links */
+    align-items: center; /* Vertically center the navigation links */
+}
+
+/* Individual navigation link styling */
+.nav-link {
+    color: #333; /* Dark gray color for link text */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 0.8em; /* Reduced font size for smaller header */
+    font-weight: 500; /* Medium font weight */
+    padding: 4px 8px; /* Reduced padding for smaller header */
+    border-radius: 5px; /* Rounded corners for the link background */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Navigation link hover effect */
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Light white background on hover */
+    color: #b54dbc; /* Change text color to purple on hover */
+    -webkit-transform: translateY(-2px); /* Safari/Chrome */
+    -moz-transform: translateY(-2px); /* Firefox */
+    transform: translateY(-2px); /* Standard */
+}
+
 /* Header title styling */
 header h1 {
     margin: 0; /* Removes default margin */
@@ -67,7 +124,7 @@ h2 {
 button {
     display: block; /* Makes the button a block element */
     margin: 20px auto; /* Centers the button with top/bottom margin */
-    align-items: center;   /* Aligns content vertically (though this has no effect on buttons) */
+    align-items: center; /* Aligns content vertically (though this has no effect on buttons) */
 }
 
 /* Styling for the image container */
