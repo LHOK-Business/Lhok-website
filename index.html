@@ -10,19 +10,23 @@
 
 <body> <!-- Begins the body of the HTML document (everything inside is visible on the page) -->
     
-    <!-- Header section starts -->
-    <header> <!-- A semantic HTML5 element used to define a header section -->
-        <div class="header-content"> <!-- Container to hold and organize header elements -->
-            <div class="logo">
-    <img src="Media/lhoklogo.png" alt="LHOK Logo">
-</div>
-            <nav class="header-nav"> <!-- Navigation container for the links -->
-                <a href="#about" class="nav-link">About Us</a> <!-- About Us navigation link -->
-                <a href="#contact" class="nav-link">Contact Us</a> <!-- Contact Us navigation link -->
-            </nav>
+<!-- Header section starts -->
+<header> <!-- A semantic HTML5 element used to define a header section -->
+    <div class="header-content"> <!-- Container to hold and organize header elements -->
+        <nav class="header-nav-left"> <!-- Left navigation container for the first link -->
+            <a href="#about" class="nav-link">About Us</a> <!-- About Us navigation link -->
+        </nav>
+        
+        <div class="logo">
+            <img src="Media/lhoklogo.png" alt="LHOK Logo">
         </div>
-    </header>
-    <!-- Header section ends -->
+        
+        <nav class="header-nav-right"> <!-- Right navigation container for the second link -->
+            <a href="#contact" class="nav-link">Contact Us</a> <!-- Contact Us navigation link -->
+        </nav>
+    </div>
+</header>
+<!-- Header section ends -->
 
     <h1>Welcome to LHOK</h1> <!-- Main heading shown on the page -->
     <h2>LHOK beauty for fish</h2> <!-- Subheading with a short description -->
