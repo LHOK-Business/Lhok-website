@@ -54,6 +54,7 @@ header {
     margin: 0 auto; /* Center the header content */
     padding: 0 20px; /* Add some padding on the sides */
     position: relative; /* Enable positioning for logo centering */
+    width: 100%; /* ADDED: Ensure full width usage */
 }
 
 /* CHANGED: Left navigation container - positioned on the left side */
@@ -63,6 +64,7 @@ header {
     align-items: center; /* Vertically center the navigation links */
     justify-content: flex-start; /* Align links to the left */
     flex: 1; /* Take up available space on the left */
+    min-width: 0; /* ADDED: Allow flex item to shrink below content size */
 }
 
 /* Logo styling - CHANGED: positioned in the center as focal point */
@@ -71,9 +73,7 @@ header {
     display: flex; /* Use flexbox */
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
-    position: absolute; /* CHANGED: Absolute positioning to center regardless of nav length */
-    left: 50%; /* Move to horizontal center */
-    transform: translateX(-50%); /* CHANGED: Offset by half width to perfectly center */
+    flex-shrink: 0; /* ADDED: Prevent logo from shrinking */
     z-index: 10; /* Ensure logo stays above nav elements */
 }
 
@@ -94,6 +94,7 @@ header {
     align-items: center; /* Vertically center the navigation links */
     justify-content: flex-end; /* Align links to the right */
     flex: 1; /* Take up available space on the right */
+    min-width: 0; /* ADDED: Allow flex item to shrink below content size */
 }
 
 /* CHANGED: Combined navigation link styling for both left and right nav */
