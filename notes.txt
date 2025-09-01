@@ -1,1 +1,4 @@
 Colour Change #b54dbc
+
+
+Can we create a varible to control footer logo size to be consistent between media and desktop?
