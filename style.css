@@ -180,12 +180,31 @@ button {
     height: 80px; /* Set a fixed height */
     display: block !important; /* Ensure it displays */
 }
+/* Footer Logo Styling */
+.footer-logo {
+    text-align: center;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+
+.footer-logo img {
+    height: 40px; /* Adjust this size as needed */
+    width: auto;
+    filter: brightness(0.8); /* Slightly dims the logo for better contrast */
+    transition: filter 0.3s ease;
+}
+
+.footer-logo img:hover {
+    filter: brightness(1); /* Full brightness on hover */
+}
+
+/* Update footer content to accommodate logo */
 .footer-content {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 40px;
-    height: 80px;
+    margin-bottom: 10px; /* Reduced margin since logo is above */
     overflow: hidden;
 }
 
@@ -204,6 +223,11 @@ button {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5px 0; /* Reduced padding to fit everything in 80px height */
 }
 
 /* ADDED: Responsive design - for smaller screens, stack navigation vertically */
