@@ -164,9 +164,9 @@ button {
 /* Footer section styling */
 /* Footer section styling */
 .footer {
-    background: -webkit-linear-gradient(to top, #b54dbc 50%, #ffffff 80%);
-    background: -moz-linear-gradient(to top, #b54dbc 50%, #ffffff 80%);
-    background: linear-gradient(to top, #b54dbc 50%, #ffffff 80%);
+    background: -webkit-linear-gradient(to top, #b54dbc 1%, #ffffff 100%);
+    background: -moz-linear-gradient(to top, #b54dbc 1%, #ffffff 100%);
+    background: linear-gradient(to top, #b54dbc 1%, #ffffff 100%);
     color: #333 !important;
     width: 100vw;
     position: fixed !important;
