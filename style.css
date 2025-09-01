@@ -253,6 +253,9 @@ button {
 .footer-bottom {
     font-size: 12px; /* Very small copyright text */
     color: #555;
+    justify-content: right;
+    justify-content: right;
+    
 }
 
 .footer-bottom-links {
