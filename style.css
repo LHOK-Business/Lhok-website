@@ -228,8 +228,8 @@ button {
 }
 
 .footer-logo img {
-    height: 135px;
-    width: 180px;
+    height: 60px;
+    width: auto;
     filter: brightness(0.8);
     transition: filter 0.3s ease;
 }
@@ -268,8 +268,8 @@ button {
     }
     
     .footer-logo img {
-        height: 135px;
-        width: 180px;
+        height: 60px;
+        width: auto;
     }
     
     .footer-bottom {
