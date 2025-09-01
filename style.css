@@ -242,7 +242,11 @@ button {
 }
 
 .footer-links a:hover {
-    color: #1ab114;
+    background-color: rgba(255, 255, 255, 0.3); /* Light white background on hover */
+    color: #b54dbc; /* Change text color to purple on hover */
+    -webkit-transform: translateY(-2px); /* Safari/Chrome */
+    -moz-transform: translateY(-2px); /* Firefox */
+    transform: translateY(-2px); /* Standard */
 }
 
 /* Footer bottom - simplified */
