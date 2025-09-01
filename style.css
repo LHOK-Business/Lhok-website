@@ -162,44 +162,73 @@ button {
 }
 
 /* Footer section styling */
+/* Footer section styling */
 .footer {
-    background: -webkit-linear-gradient(to top, #b54dbc 50%, #ffffff 80%); /* Safari/Chrome */
-    background: -moz-linear-gradient(to top, #b54dbc 50%, #ffffff 80%); /* Firefox */
-    background: linear-gradient(to top, #b54dbc 50%, #ffffff 80%); /* Standard */
-    color: #333 !important; /* Sets text color to dark gray for good contrast */
-    padding: 10px 0; /* Reduced padding to fit content */
-    width: 100vw; /* Makes the footer span full viewport width */
-    text-align: center; /* Centers the text inside the footer */
-    position: fixed !important; /* Fixed position to stick to viewport */
-    bottom: 0 !important; /* Force it to the very bottom */
-    left: 0 !important; /* Align it to the left edge */
-    right: 0; /* Stretch to right edge */
-    z-index: 1000; /* Ensure it stays on top of other elements */
-    box-sizing: border-box; /* Include padding in width calculation */
-    margin: 0; /* Remove any margin */
-    height: 80px; /* Set a fixed height */
-    display: block !important; /* Ensure it displays */
+    background: -webkit-linear-gradient(to top, #b54dbc 50%, #ffffff 80%);
+    background: -moz-linear-gradient(to top, #b54dbc 50%, #ffffff 80%);
+    background: linear-gradient(to top, #b54dbc 50%, #ffffff 80%);
+    color: #333 !important;
+    width: 100vw;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    margin: 0;
+    height: 80px;
+    display: block !important;
 }
 
-/* Footer container */
 .footer-container {
-    height: 80px;
+    height: 100%;
     display: flex;
-    flex-direction: row; /* Horizontal layout */
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 20px 5px 20px;
+    position: relative;
+}
+
+/* Top part with centered links and logo */
+.footer-content {
+    display: flex;
     justify-content: center;
     align-items: center;
+    gap: 30px;
+    flex-grow: 1;
+}
+
+.footer-links-left,
+.footer-links-right {
+    display: flex;
     gap: 20px;
-    padding: 0 20px;
+    align-items: center;
 }
 
-/* Footer Logo Styling */
-.footer-logo img {
-    height: 30px;
-    width: auto;
+.footer-nav-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.footer-nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #b54dbc;
+    transform: translateY(-1px);
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer-logo img {
-    height: 24px; /* Smaller logo to fit in 80px footer */
+    height: 28px;
     width: auto;
     filter: brightness(0.8);
     transition: filter 0.3s ease;
@@ -209,61 +238,42 @@ button {
     filter: brightness(1);
 }
 
-/* Footer content - simplified layout */
-.footer-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer-section {
-    display: flex;
-    justify-content: center;
-}
-
-.footer-links {
-    display: flex;
-    gap: 15px; /* Reduced gap between links */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-}
-
-.footer-links li {
-    margin: 0;
-}
-
-.footer-links a {
-    color: #333;
-    text-decoration: none;
-    font-size: 12px; /* Smaller font size to fit */
-    transition: all 0.3s ease;
-}
-
-.footer-links a:hover {
-    background-color: rgba(255, 255, 255, 0.3); /* Light white background on hover */
-    color: #b54dbc; /* Change text color to purple on hover */
-    -webkit-transform: translateY(-2px); /* Safari/Chrome */
-    -moz-transform: translateY(-2px); /* Firefox */
-    transform: translateY(-2px); /* Standard */
-}
-
-/* Footer bottom - simplified */
+/* Bottom part with copyright on the left */
 .footer-bottom {
-    font-size: 12px; /* Very small copyright text */
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    font-size: 10px;
     color: #555;
-    justify-content: right;
-    justify-content: right;
-    
-}
-
-.footer-bottom-links {
-    display: none; /* Hide extra links to save space */
+    text-align: left;
 }
 
 .footer-bottom p {
     margin: 0;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .footer-content {
+        gap: 15px;
+    }
+    
+    .footer-links-left,
+    .footer-links-right {
+        gap: 10px;
+    }
+    
+    .footer-nav-link {
+        font-size: 11px;
+    }
+    
+    .footer-logo img {
+        height: 24px;
+    }
+    
+    .footer-bottom {
+        font-size: 9px;
+    }
 }
 /* ADDED: Responsive design - for smaller screens, stack navigation vertically */
 @media (max-width: 768px) {
