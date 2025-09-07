@@ -26,15 +26,15 @@ header {
     background: -webkit-linear-gradient(to bottom, #b54dbc 1%, #ffffff 100%); /* Safari/Chrome */
     background: -moz-linear-gradient(to bottom, #b54dbc 1%, #ffffff 100%); /* Firefox */
     background: linear-gradient(to bottom, #b54dbc 1%, #ffffff  100%); /* Standard */
-    color: #333; /* Sets text color to dark gray for good contrast */
+    color: #333 !important; /* ADDED !important like footer */ /* Sets text color to dark gray for good contrast */
     height: 80px !important; /* Fixed height to accommodate horizontal layout */
     min-height: 80px !important; /* Minimum height */
     max-height: 80px !important; /* Maximum height */
     width: 100%; /* Makes the header span full page width */
     text-align: center; /* Centers the text inside the header */
-    position: fixed; /* Fixed position to stick to viewport */
+    position: fixed !important ; /* ADDED !important like footer */ /* Fixed position to stick to viewport */
     top: 0 !important; /* Force it to the very top */
-    left: 0; /* Align it to the left edge */
+    left: 0 !important;  /* ADDED !important like footer *//* Align it to the left edge */
     right: 0; /* Stretch to right edge */
     z-index: 1000; /* Ensure it stays on top of other elements */
     box-sizing: border-box; /* Include padding in width calculation */
@@ -81,7 +81,7 @@ header {
 .logo img {
     height: 75px; /* CHANGED: Increased from 24px to make it more prominent as focal point */
     width: auto; /* Maintain aspect ratio */
-    max-height: none; /* CHANGED: Increased maximum height constraint */
+    max-height: none; /* CHAhttps://claude.ai/NGED: Increased maximum height constraint */
     max-width: 1080px; /* CHANGED: Increased maximum width constraint */
     display: block; /* Make it a block element */
     object-fit: contain; /* Ensures the entire image fits within the constraints */
