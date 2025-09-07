@@ -73,7 +73,7 @@ header {
     display: flex; /* Use flexbox */
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
-    flex-shrink: 0; /* ADDED: Prevent logo from shrinking */
+    flex-shrink: 0 !important; /* ADDED: Prevent logo from shrinking */
     z-index: 10; /* Ensure logo stays above nav elements */
 }
 
