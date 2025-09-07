@@ -82,7 +82,7 @@ header {
     height: 75px; /* CHANGED: Increased from 24px to make it more prominent as focal point */
     width: auto; /* Maintain aspect ratio */
     max-height: none; /* CHANGED: Increased maximum height constraint */
-    max-width: 160px; /* CHANGED: Increased maximum width constraint */
+    max-width: 1080px; /* CHANGED: Increased maximum width constraint */
     display: block; /* Make it a block element */
     object-fit: contain; /* Ensures the entire image fits within the constraints */
 }
