@@ -1,0 +1,83 @@
+/* Header section styling */
+header {
+    background: -webkit-linear-gradient(to bottom, #b54dbc 1%, #ffffff 100%); /* Safari/Chrome */
+    background: -moz-linear-gradient(to bottom, #b54dbc 1%, #ffffff 100%); /* Firefox */
+    background: linear-gradient(to bottom, #b54dbc 1%, #ffffff  100%); /* Standard */
+    color: #333 !important; /* ADDED !important like footer */ /* Sets text color to dark gray for good contrast */
+    height: 80px !important; /* Fixed height to accommodate horizontal layout */
+    min-height: 80px !important; /* Minimum height */
+    max-height: 80px !important; /* Maximum height */
+    width: 100%; /* Makes the header span full page width */
+    text-align: center; /* Centers the text inside the header */
+    position: fixed !important ; /* ADDED !important like footer */ /* Fixed position to stick to viewport */
+    top: 0 !important; /* Force it to the very top */
+    left: 0 !important;  /* ADDED !important like footer *//* Align it to the left edge */
+    right: 0; /* Stretch to right edge */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    box-sizing: border-box; /* Include padding in width calculation */
+    margin: 0; /* Remove any margin */
+    padding: 5px 0; /* Small padding for spacing */
+    overflow: hidden; /* Hide any content that might exceed the header height */
+}
+
+/* Header content container - CHANGED: now arranges logo and nav horizontally */
+.header-content {
+    display: flex; /* Use flexbox */
+    flex-direction: row; /* CHANGED: Arrange logo and nav horizontally instead of vertically */
+    justify-content: space-between; /* CHANGED: Space items evenly - nav left, logo center, nav right */
+    align-items: center; /* Center vertically */
+    height: 100%; /* Fill the full header height */
+    max-width: 1200px; /* Limit maximum width for larger screens */
+    margin: 0 auto; /* Center the header content */
+    padding: 0 20px; /* Add some padding on the sides */
+    position: relative; /* Enable positioning for logo centering */
+    width: 100%; /* ADDED: Ensure full width usage */
+}
+
+/* CHANGED: Left navigation container - positioned on the left side */
+.header-nav-left {
+    display: flex; /* Use flexbox to arrange nav links horizontally */
+    gap: 15px; /* Add space between the navigation links */
+    align-items: center; /* Vertically center the navigation links */
+    justify-content: flex-start; /* Align links to the left */
+    flex: 1; /* Take up available space on the left */
+    min-width: 0; /* ADDED: Allow flex item to shrink below content size */
+}
+
+/* CHANGED: Right navigation container - positioned on the right side */
+.header-nav-right {
+    display: flex; /* Use flexbox to arrange nav links horizontally */
+    gap: 15px; /* Add space between the navigation links */
+    align-items: center; /* Vertically center the navigation links */
+    justify-content: flex-end; /* Align links to the right */
+    flex: 1; /* Take up available space on the right */
+    min-width: 0; /* ADDED: Allow flex item to shrink below content size */
+}
+/* ADDED: Responsive design - for smaller screens, stack navigation vertically */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column; /* Stack elements vertically on small screens */
+        justify-content: center; /* Center all elements */
+        gap: 5px; /* Small gap between elements */
+    }
+    
+    .logo {
+        position: static; /* Remove absolute positioning on mobile */
+        transform: none; /* Remove transform */
+        order: 1; /* Logo appears first */
+    }
+    
+    .header-nav-left,
+    .header-nav-right {
+        flex: none; /* Remove flex growth */
+        order: 2; /* Navigation appears after logo */
+    }
+    
+    .header-nav-left {
+        justify-content: center; /* Center navigation links */
+    }
+    
+    .header-nav-right {
+        justify-content: center; /* Center navigation links */
+    }
+}

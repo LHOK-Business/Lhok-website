@@ -1,0 +1,6 @@
+/* Button styling */
+button {
+    display: block; /* Makes the button a block element */
+    margin: 20px auto; /* Centers the button with top/bottom margin */
+    align-items: center; /* Aligns content vertically (though this has no effect on buttons) */
+}

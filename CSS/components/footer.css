@@ -1,0 +1,113 @@
+/* Footer section styling */
+.footer {
+    background: -webkit-linear-gradient(to top, #b54dbc 1%, #ffffff 100%);
+    background: -moz-linear-gradient(to top, #b54dbc 1%, #ffffff 100%);
+    background: linear-gradient(to top, #b54dbc 1%, #ffffff 100%);
+    color: #333 !important;
+    width: 100vw;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    margin: 0;
+    height: 80px;
+    display: block !important;
+}
+
+.footer-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 20px 5px 20px;
+    position: relative;
+}
+
+/* Top part with centered links and logo */
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-grow: 1;
+}
+
+.footer-links-left,
+.footer-links-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.footer-nav-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.footer-nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #b54dbc;
+    transform: translateY(-1px);
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo img {
+    height: 60px;
+    width: auto;
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+.footer-logo img:hover {
+    filter: brightness(1);
+}
+
+/* Bottom part with copyright on the left */
+.footer-bottom {
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    font-size: 10px;
+    color: #555;
+    text-align: left;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .footer-content {
+        gap: 15px;
+    }
+    
+    .footer-links-left,
+    .footer-links-right {
+        gap: 10px;
+    }
+    
+    .footer-nav-link {
+        font-size: 11px;
+    }
+    
+    .footer-logo img {
+        height: 60px;
+    }
+    
+    .footer-bottom {
+        font-size: 9px;
+    }
+}

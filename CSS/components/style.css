@@ -1,0 +1,108 @@
+/* CSS Reset - Add this at the very top */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* General styling for the body element */
+body {
+    font-family: Arial, sans-serif; /* Sets the default font for the entire page */
+    margin: 0; /* Removes default browser margin */
+    padding: 0; /* Removes default browser padding */
+    min-height: 100vh; /* Makes sure body fills at least the full screen height */
+    text-align: center; /* Centers text */
+    padding-top: 80px; /* Matches the new header height */
+    padding-bottom: 80px; /* Add space at bottom for the fixed footer */
+}
+
+
+
+/* Logo styling - CHANGED: positioned in the center as focal point */
+.logo {
+    margin: 0; /* Remove default margin */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    flex-shrink: 0 !important; /* ADDED: Prevent logo from shrinking */
+    z-index: 10; /* Ensure logo stays above nav elements */
+}
+
+/* Logo image styling - made slightly larger as focal point */
+.logo img {
+    height: 75px; /* CHANGED: Increased from 24px to make it more prominent as focal point */
+    width: auto; /* Maintain aspect ratio */
+    max-height: none; /* CHAhttps://claude.ai/NGED: Increased maximum height constraint */
+    max-width: 1080px; /* CHANGED: Increased maximum width constraint */
+    display: block; /* Make it a block element */
+    object-fit: contain; /* Ensures the entire image fits within the constraints */
+}
+
+
+
+/* CHANGED: Combined navigation link styling for both left and right nav */
+.nav-link {
+    color: #333; /* Dark gray color for link text */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 0.8em; /* CHANGED: Slightly increased font size for better balance with larger logo */
+    font-weight: 500; /* Medium font weight */
+    padding: 4px 8px; /* CHANGED: Increased padding for better click targets */
+    border-radius: 3px; /* Rounded corners for the link background */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Navigation link hover effect */
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Light white background on hover */
+    color: #b54dbc; /* Change text color to purple on hover */
+    -webkit-transform: translateY(-2px); /* Safari/Chrome */
+    -moz-transform: translateY(-2px); /* Firefox */
+    transform: translateY(-2px); /* Standard */
+}
+
+/* REMOVED: .header-nav class as it's replaced by left and right nav containers */
+
+/* Header title styling */
+header h1 {
+    margin: 0; /* Removes default margin */
+    font-size: 2em; /* Sets the font size for the header title */
+}
+
+/* Main h1 heading styling */
+h1 {
+    color: #333; /* Sets the text color to a dark gray */
+    font-size: 2em; /* Sets the font size for the h1 heading */
+    text-align: center; /* Centers the text */
+}
+
+/* Subheading (h2) styling */
+h2 {
+    color: #666; /* Sets text color to a lighter gray */
+    font-size: 1.5em; /* Sets the font size for h2 */
+    text-align: center; /* Centers the text */
+}
+
+
+
+/* Styling for the image container */
+.image-container {
+    display: flex; /* Enables Flexbox for image container */
+    justify-content: center; /* Horizontally centers the image */
+    align-items: center; /* Vertically centers the image (if height is defined) */
+    margin-top: 20px; /* Adds space above the image */
+}
+
+/* Styling for the image inside the container */
+.image-container img {
+    max-width: 100%; /* Ensures the image doesn't overflow its container */
+    height: auto; /* Maintains the image's aspect ratio */
+}
+
+/* Footer section styling */
+
