@@ -19,7 +19,11 @@ header {
     padding: 5px 0; /* Small padding for spacing */
     overflow: hidden; /* Hide any content that might exceed the header height */
 }
-
+/* Header title styling */
+header h1 {
+    margin: 0; /* Removes default margin */
+    font-size: 2em; /* Sets the font size for the header title */
+}
 /* Header content container - CHANGED: now arranges logo and nav horizontally */
 .header-content {
     display: flex; /* Use flexbox */
@@ -53,6 +57,29 @@ header {
     flex: 1; /* Take up available space on the right */
     min-width: 0; /* ADDED: Allow flex item to shrink below content size */
 }
+
+/* CHANGED: Combined navigation link styling for both left and right nav */
+.nav-link {
+    color: #333; /* Dark gray color for link text */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 0.8em; /* CHANGED: Slightly increased font size for better balance with larger logo */
+    font-weight: 500; /* Medium font weight */
+    padding: 4px 8px; /* CHANGED: Increased padding for better click targets */
+    border-radius: 3px; /* Rounded corners for the link background */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Navigation link hover effect */
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Light white background on hover */
+    color: #b54dbc; /* Change text color to purple on hover */
+    -webkit-transform: translateY(-2px); /* Safari/Chrome */
+    -moz-transform: translateY(-2px); /* Firefox */
+    transform: translateY(-2px); /* Standard */
+}
+
+
 /* ADDED: Responsive design - for smaller screens, stack navigation vertically */
 @media (max-width: 768px) {
     .header-content {

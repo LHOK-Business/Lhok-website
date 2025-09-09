@@ -45,34 +45,11 @@ body {
 
 
 
-/* CHANGED: Combined navigation link styling for both left and right nav */
-.nav-link {
-    color: #333; /* Dark gray color for link text */
-    text-decoration: none; /* Remove underline from links */
-    font-size: 0.8em; /* CHANGED: Slightly increased font size for better balance with larger logo */
-    font-weight: 500; /* Medium font weight */
-    padding: 4px 8px; /* CHANGED: Increased padding for better click targets */
-    border-radius: 3px; /* Rounded corners for the link background */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-    white-space: nowrap; /* Prevent text wrapping */
-}
 
-/* Navigation link hover effect */
-.nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.3); /* Light white background on hover */
-    color: #b54dbc; /* Change text color to purple on hover */
-    -webkit-transform: translateY(-2px); /* Safari/Chrome */
-    -moz-transform: translateY(-2px); /* Firefox */
-    transform: translateY(-2px); /* Standard */
-}
 
 /* REMOVED: .header-nav class as it's replaced by left and right nav containers */
 
-/* Header title styling */
-header h1 {
-    margin: 0; /* Removes default margin */
-    font-size: 2em; /* Sets the font size for the header title */
-}
+
 
 /* Main h1 heading styling */
 h1 {
