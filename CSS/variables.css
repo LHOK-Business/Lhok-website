@@ -2,5 +2,5 @@ h1 {
     color: #333; /* Sets the text color to a dark gray */
     font-size: 4em; /* Sets the font size for the h1 heading */
     text-align: center; /* Centers the text */
-    font-style: montserrat;
+    font-style: italic;
 }
