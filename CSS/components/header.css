@@ -78,7 +78,15 @@ header h1 {
     -moz-transform: translateY(-2px); /* Firefox */
     transform: translateY(-2px); /* Standard */
 }
-
+/* Logo styling - CHANGED: positioned in the center as focal point */
+.logo {
+    margin: 0; /* Remove default margin */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    flex-shrink: 0 !important; /* ADDED: Prevent logo from shrinking */
+    z-index: 10; /* Ensure logo stays above nav elements */
+}
 
 /* ADDED: Responsive design - for smaller screens, stack navigation vertically */
 @media (max-width: 768px) {

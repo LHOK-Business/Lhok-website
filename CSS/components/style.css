@@ -23,15 +23,7 @@ body {
 
 
 
-/* Logo styling - CHANGED: positioned in the center as focal point */
-.logo {
-    margin: 0; /* Remove default margin */
-    display: flex; /* Use flexbox */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    flex-shrink: 0 !important; /* ADDED: Prevent logo from shrinking */
-    z-index: 10; /* Ensure logo stays above nav elements */
-}
+
 
 /* Logo image styling - made slightly larger as focal point */
 .logo img {
@@ -64,7 +56,6 @@ h2 {
     font-size: 1.5em; /* Sets the font size for h2 */
     text-align: center; /* Centers the text */
 }
-
 
 
 /* Styling for the image container */
