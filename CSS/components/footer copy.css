@@ -1,8 +1,8 @@
 /* header section styling */
 .header {
-    /* background: -webkit-linear-gradient(to top, #ffffff 100%, #b54dbc 1%);
+    background: -webkit-linear-gradient(to top, #ffffff 100%, #b54dbc 1%);
     background: -moz-linear-gradient(to top, #ffffff 100%, #b54dbc 1%);
-    background: linear-gradient(to top, #ffffff 100%, #b54dbc 1%); Fixed: Added missing closing parenthesis */
+    background: linear-gradient(to top, #ffffff 100%, #b54dbc 1%);
     color: #333 !important;
     width: 100vw;
     position: fixed !important;
@@ -14,6 +14,8 @@
     margin: 0;
     height: 80px;
     display: block !important;
+
+    
 }
 
 .header-container {
@@ -110,21 +112,4 @@
     .header-bottom {
         font-size: 9px;
     }
-}
-
-/* Alternative gradient suggestions if the current one is too subtle */
-
-/* Option 1: More visible gradient */
-.header-alt-1 {
-    background: linear-gradient(to top, #b54dbc 0%, #ffffff 100%);
-}
-
-/* Option 2: Subtle gradient with more purple */
-.header-alt-2 {
-    background: linear-gradient(to top, #b54dbc 0%, #ffffff 100%);
-}
-
-/* Option 3: Reverse direction for different effect */
-.header-alt-3 {
-    background: linear-gradient(to bottom, #b54dbc 0%, #ffffff 100%);
 }
