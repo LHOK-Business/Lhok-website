@@ -1,8 +1,8 @@
 /* header section styling */
 .header {
-    background: -webkit-linear-gradient(to top, #b54dbc 100%, #ffffff 1%);
-    background: -moz-linear-gradient(to top, #b54dbc 100%, #ffffff 1%);
-    background: linear-gradient(to top, #b54dbc 100%, #ffffff 1%);
+    background: -webkit-linear-gradient(to top, #ffffff 100%, #b54dbc 1%);
+    background: -moz-linear-gradient(to top, #ffffff 100%, #b54dbc 1%);
+    background: linear-gradient(to top, #ffffff 100%, #b54dbc 1%;
     color: #333 !important;
     width: 100vw;
     position: fixed !important;
