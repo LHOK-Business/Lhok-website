@@ -44,7 +44,9 @@ body {
 
 
 /* Main h1 heading styling */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 h1 {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: #333; /* Sets the text color to a dark gray */
     font-size: 4em; /* Sets the font size for the h1 heading */
     text-align: center; /* Centers the text */
