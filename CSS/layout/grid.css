@@ -15,10 +15,10 @@
 .gap-8 { gap: 2rem; }
 
 /* Centering utilities - for your text centering goal */
-.place-items-center {
-  place-items: center;
+.place-items-left {
+  place-items: left;
 }
 
-.place-content-center {
-  place-content: center;
+.place-content-left {
+  place-content: left;
 }
