@@ -13,7 +13,6 @@
   align-items: center;
 }
 
-
 .image-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -22,7 +21,7 @@
 
 .image-grid img {
   width: 100%;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
   border-radius: 12px;
 }
@@ -32,10 +31,4 @@
   .content-wrapper {
     grid-template-columns: 1fr;
   }
-}
-.image-grid img {
-  width: 100%;
-  height: 250px; /* Adjust this height as needed */
-  object-fit: cover;
-  border-radius: 12px;
 }
