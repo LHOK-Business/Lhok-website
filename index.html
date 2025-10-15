@@ -1,65 +1,72 @@
-<!DOCTYPE html> <!-- Declares the document as an HTML5 document -->
-<html lang="en"> <!-- Opens the HTML tag and sets the page language to English -->
+<!DOCTYPE html>
+<html lang="en">
 
-<head> <!-- The head section contains metadata and external links -->
-    <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the site responsive on all screen sizes -->
-    <title>My First Website</title> <!-- Sets the title of the webpage shown in the browser tab -->
-    <link rel="stylesheet" href="CSS/main.css"> <!-- Links to the external CSS file for styling -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Website</title>
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="grid.css"> <!-- MOVED HERE -->
 </head>
 
-<body> <!-- Begins the body of the HTML document (everything inside is visible on the page) -->
+<body>
     
 <!-- Header section starts -->
-<header> <!-- A semantic HTML5 element used to define a header section -->
-    <div class="header-content"> <!-- Container to hold and organize header elements -->
-        <nav class="header-nav-left"> <!-- Left navigation container for the first link -->
-            <a href="#about" class="nav-link">About Us</a> <!-- About Us navigation link -->
+<header>
+    <div class="header-content">
+        <nav class="header-nav-left">
+            <a href="#about" class="nav-link">About Us</a>
         </nav>
         
         <div class="logo">
             <img src="Media/lhoklogo.png" alt="LHOK Logo">
         </div>
         
-        <nav class="header-nav-right"> <!-- Right navigation container for the second link -->
-            <a href="#contact" class="nav-link">Contact Us</a> <!-- Contact Us navigation link -->
+        <nav class="header-nav-right">
+            <a href="#contact" class="nav-link">Contact Us</a>
         </nav>
     </div>
 </header>
 <!-- Header section ends -->
 
-    <h1>Welcome to LHOK</h1> <!-- Main heading shown on the page -->
-    <h2>LHOK beauty for Dragon Eggs</h2> <!-- Subheading with a short description -->
-        
-    <button onclick="showMessage()">Click Me</button> <!-- A button that will show an alert when clicked -->
-
-    <div class="image-container"> <!-- A container to hold and center the image -->
-        <img src="Media/lhoklogo.png" alt="My Photo" width="200" height="auto"> <!-- The logo/image to be shown -->
+<!-- Main content with grid layout -->
+<div class="page-container">
+  <div class="content-wrapper">
+    <div class="text-section">
+      <h1>Join Lhok Today</h1>
+      <p>Welcome to Lhok! We aim to link beauty industry professionals with nearby clients seeking their services. Our mission is all about fostering connections to empower both professionals and clients alike.</p>
+      <p>We'd like to welcome you to sign up for the waitlist! We have exciting features coming like simplified booking, intuitive mapping and reliable reviews. We're lhoking forward to our journey together, and lhok forward to building our Canadian community!</p>
+      <button>Join Lhok</button>
     </div>
+    
+    <div class="image-grid">
+      <img src="image1.jpg" alt="Beauty service 1">
+      <img src="image2.jpg" alt="Beauty service 2">
+      <img src="image3.jpg" alt="Beauty service 3">
+      <img src="image4.jpg" alt="Beauty service 4">
+    </div>
+  </div>
+</div>
 
 <!-- Footer section starts -->
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-content">
-            <!-- Left Links -->
             <div class="footer-links-left">
                 <a href="#Home" class="footer-nav-link">Home</a>
                 <a href="#About Us" class="footer-nav-link">About Us</a>
             </div>
             
-            <!-- Center Logo -->
             <div class="footer-logo">
                 <img src="Media/lhoklogo.png" alt="LHOK Logo">
             </div>
             
-            <!-- Right Links -->
             <div class="footer-links-right">
                 <a href="#Lhok for a Professional" class="footer-nav-link">Start Lhoking</a>
                 <a href="#contact" class="footer-nav-link">Contact Us</a>
             </div>
         </div>
         
-        <!-- Copyright at bottom left -->
         <div class="footer-bottom">
             <p>&copy; 2025 LHOK. All rights reserved.</p>
         </div>
@@ -67,26 +74,7 @@
 </footer>
 <!-- Footer section ends -->
 
-    <script src="script.js"></script> <!-- Loads the external JavaScript file -->
-</body> <!-- Ends the body section -->
+    <script src="script.js"></script>
+</body>
 
-<link rel="stylesheet" href="grid.css">
-<div class="page-container">
-  <div class="content-wrapper">
-    <div class="text-section">
-      <h1>Join Lhok Today</h1>
-      <p>Welcome to Lhok! We aim to link beauty industry professionals...</p>
-      <p>We'd like to welcome you to sign up for the waitlist...</p>
-      <button>Join Lhok</button>
-    </div>
-    
-    <div class="image-grid">
-      <img src="image1.jpg" alt="">
-      <img src="image2.jpg" alt="">
-      <img src="image3.jpg" alt="">
-      <img src="image4.jpg" alt="">
-    </div>
-  </div>
-</div>
-
-</html> <!-- Closes the HTML document -->
+</html>
