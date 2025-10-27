@@ -11,7 +11,7 @@
     width: 100vw; /* Spans entire viewport width (100vw accounts for scrollbar) */
     
     /* Fixed positioning - footer stays at bottom when scrolling */
-    position: fixed !important;
+    position: relative !important;
     bottom: 0 !important; /* Anchored to bottom of viewport */
     left: 0 !important; /* Anchored to left edge */
     right: 0; /* Stretches to right edge */
