@@ -102,7 +102,7 @@ header h1 {
     border-radius: 3px; /* Subtle rounded corners on hover background */
     
     /* Animation */
-    transition: all 0.33s ease; /* Smooth animation for hover effects (color, background, position) */
+    transition: all var(--navButtonHoverTransitionTime) ease; /* Smooth animation for hover effects (color, background, position) */
 }
 
 /* Interactive hover state for navigation links */

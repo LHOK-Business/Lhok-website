@@ -1,113 +1,163 @@
-/* Footer section styling */
+/* ============================================
+   FOOTER SECTION
+   ============================================ */
+/* Fixed footer with gradient background that stays at bottom of viewport */
 .footer {
-    background: -webkit-linear-gradient(to top, #b54dbc 1%, #ffffff 100%);
-    background: -moz-linear-gradient(to top, #b54dbc 1%, #ffffff 100%);
+    /* Gradient background - white to purple from top to bottom (reverse of header) */
     background: linear-gradient(to top, #b54dbc 1%, #ffffff 100%);
-    color: #333 !important;
-    width: 100vw;
+    color: #333 !important; /* Dark gray text for readability - !important overrides conflicting styles */
+    
+    /* Full width positioning */
+    width: 100vw; /* Spans entire viewport width (100vw accounts for scrollbar) */
+    
+    /* Fixed positioning - footer stays at bottom when scrolling */
     position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0;
-    z-index: 1000;
-    box-sizing: border-box;
-    margin: 0;
-    height: 80px;
-    display: block !important;
+    bottom: 0 !important; /* Anchored to bottom of viewport */
+    left: 0 !important; /* Anchored to left edge */
+    right: 0; /* Stretches to right edge */
+    z-index: 1000; /* Layers above other content */
+    
+    /* Box model and dimensions */
+    box-sizing: border-box; /* Includes padding in total width calculation */
+    margin: 0; /* Removes default margin */
+    height: 80px; /* Fixed height matching header */
+    
+    /* Display */
+    display: block !important; /* Ensures footer displays as block element */
 }
 
+/* ============================================
+   FOOTER LAYOUT CONTAINER
+   ============================================ */
+/* Main container that manages vertical spacing within footer */
 .footer-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 8px 20px 5px 20px;
-    position: relative;
+    height: 100%; /* Fills full footer height (80px) */
+    display: flex; /* Enables flexible box layout */
+    flex-direction: column; /* Vertical stacking of content and copyright */
+    justify-content: space-between; /* Pushes content to top, copyright to bottom */
+    padding: 8px 20px 5px 20px; /* Top: 8px, Sides: 20px, Bottom: 5px for tight fit */
+    position: relative; /* Establishes positioning context for absolute copyright */
 }
 
-/* Top part with centered links and logo */
+/* ============================================
+   FOOTER CONTENT - TOP SECTION
+   ============================================ */
+/* Horizontal layout for left links | logo | right links */
 .footer-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    flex-grow: 1;
+    display: flex; /* Arranges links and logo horizontally */
+    justify-content: center; /* Centers the three-column layout */
+    align-items: center; /* Vertically centers all elements */
+    gap: 30px; /* Spacing between left links, logo, and right links */
+    flex-grow: 1; /* Takes up available vertical space above copyright */
 }
 
+/* ============================================
+   FOOTER NAVIGATION LINK CONTAINERS
+   ============================================ */
+/* Left side navigation links container */
 .footer-links-left,
+/* Right side navigation links container */
 .footer-links-right {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+    display: flex; /* Arranges links horizontally */
+    gap: 20px; /* Spacing between individual links */
+    align-items: center; /* Vertically centers links */
 }
 
+/* ============================================
+   FOOTER NAVIGATION LINKS
+   ============================================ */
+/* Universal styling for all footer navigation links */
 .footer-nav-link {
-    color: #333;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    padding: 2px 6px;
-    border-radius: 3px;
+    /* Text styling */
+    color: #333; /* Dark gray for contrast against gradient */
+    text-decoration: none; /* Removes default underline */
+    font-size: 13px; /* Slightly larger than copyright text */
+    font-weight: 500; /* Medium weight for emphasis */
+    
+    /* Visual styling */
+    padding: 2px 6px; /* Creates clickable area larger than text */
+    border-radius: 3px; /* Subtle rounded corners on hover background */
+    
+    /* Animation */
+    transition: all var(--navButtonHoverTransitionTime) ease; /* Smooth animation for hover effects */
 }
 
+/* Interactive hover state for footer links */
 .footer-nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    color: #b54dbc;
-    transform: translateY(-1px);
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white background */
+    color: #b54dbc; /* Changes to purple - matches footer gradient color */
+    transform: translateY(-1px); /* Subtle upward movement for interactive feel */
 }
 
+/* ============================================
+   FOOTER LOGO
+   ============================================ */
+/* Logo container - centered between link groups */
 .footer-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; /* Enables flexbox for centering */
+    align-items: center; /* Vertically centers logo */
+    justify-content: center; /* Horizontally centers logo */
 }
 
+/* Logo image styling with brightness effect */
 .footer-logo img {
-    height: 60px;
-    width: auto;
-    filter: brightness(0.8);
-    transition: filter 0.3s ease;
+    height: 60px; /* Slightly smaller than header logo (75px) for hierarchy */
+    width: auto; /* Maintains aspect ratio */
+    filter: brightness(0.8); /* Slightly dimmed by default for subtle appearance */
+    transition: filter var(--navButtonHoverTransitionTime) ease; /* Smooth brightness change on hover */
 }
 
+/* Logo hover effect - brightens on interaction */
 .footer-logo img:hover {
-    filter: brightness(1);
+    filter: brightness(1); /* Returns to full brightness */
 }
 
-/* Bottom part with copyright on the left */
+/* ============================================
+   FOOTER COPYRIGHT - BOTTOM SECTION
+   ============================================ */
+/* Copyright text positioned at bottom-left */
 .footer-bottom {
-    position: absolute;
-    bottom: 5px;
-    left: 20px;
-    font-size: 10px;
-    color: #555;
-    text-align: left;
+    position: absolute; /* Positioned independently within footer-container */
+    bottom: 5px; /* 5px from bottom edge */
+    left: 20px; /* 20px from left edge - aligns with container padding */
+    font-size: 10px; /* Small, unobtrusive text */
+    color: #555; /* Medium gray - less prominent than main links */
+    text-align: left; /* Left-aligned text */
 }
 
+/* Removes default paragraph margin for tight spacing */
 .footer-bottom p {
-    margin: 0;
+    margin: 0; /* Removes default browser margin */
 }
 
-/* Responsive design for smaller screens */
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE
+   ============================================ */
+/* Tablet and mobile adjustments when width < 768px */
 @media (max-width: 768px) {
+    /* Reduces spacing in main content area */
     .footer-content {
-        gap: 15px;
+        gap: 15px; /* Tighter gap between links and logo */
     }
     
+    /* Reduces spacing between individual links */
     .footer-links-left,
     .footer-links-right {
-        gap: 10px;
+        gap: 10px; /* Tighter gap between links */
     }
     
+    /* Smaller link text for mobile */
     .footer-nav-link {
-        font-size: 11px;
+        font-size: 11px; /* Reduced from 13px */
     }
     
+    /* Maintains logo size on mobile */
     .footer-logo img {
-        height: 60px;
+        height: 60px; /* Same as desktop - logo remains prominent */
     }
     
+    /* Smaller copyright text on mobile */
     .footer-bottom {
-        font-size: 9px;
+        font-size: 9px; /* Reduced from 10px */
     }
 }
