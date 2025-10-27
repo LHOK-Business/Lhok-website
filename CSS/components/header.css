@@ -1,118 +1,154 @@
-/* Header section styling */
+/* ============================================
+   HEADER SECTION
+   ============================================ */
+/* Fixed header with gradient background that stays at top of viewport */
 header {
-    background: -webkit-linear-gradient(to bottom, #b54dbc 1%, #ffffff 100%); /* Safari/Chrome */
-    background: -moz-linear-gradient(to bottom, #b54dbc 1%, #ffffff 100%); /* Firefox */
-    background: linear-gradient(to bottom, #b54dbc 1%, #ffffff  100%); /* Standard */
-    color: #333 !important; /* ADDED !important like footer */ /* Sets text color to dark gray for good contrast */
-    height: 80px !important; /* Fixed height to accommodate horizontal layout */
-    min-height: 80px !important; /* Minimum height */
-    max-height: 80px !important; /* Maximum height */
-    width: 100%; /* Makes the header span full page width */
-    text-align: center; /* Centers the text inside the header */
-    position: fixed !important ; /* ADDED !important like footer */ /* Fixed position to stick to viewport */
-    top: 0 !important; /* Force it to the very top */
-    left: 0 !important;  /* ADDED !important like footer *//* Align it to the left edge */
-    right: 0; /* Stretch to right edge */
-    z-index: 1000; /* Ensure it stays on top of other elements */
-    box-sizing: border-box; /* Include padding in width calculation */
-    margin: 0; /* Remove any margin */
-    padding: 5px 0; /* Small padding for spacing */
-    overflow: hidden; /* Hide any content that might exceed the header height */
-}
-/* Header title styling */
-header h1 {
+    /* Gradient background - purple to white from top to bottom */
+    background: linear-gradient(to bottom, #b54dbc 1%, #ffffff 100%);
+    color: #333 !important; /* Dark gray text for readability - !important overrides any conflicting styles */
+    
+    /* Fixed height constraints - ensures consistent header size */
+    height: 80px !important;
+    min-height: 80px !important;
+    max-height: 80px !important;
+    
+    /* Full width positioning */
+    width: 100%; /* Spans entire viewport width */
+    
+    /* Fixed positioning - header stays at top when scrolling */
+    position: fixed !important;
+    top: 0 !important; /* Anchored to top of viewport */
+    left: 0 !important; /* Anchored to left edge */
+    right: 0; /* Stretches to right edge */
+    z-index: 1000; /* Layers above other content */
+    
+    /* Box model and spacing */
+    box-sizing: border-box; /* Includes padding in total width calculation */
     margin: 0; /* Removes default margin */
-    font-size: 2em; /* Sets the font size for the header title */
+    padding: 5px 0; /* Vertical padding for internal spacing */
+    
+    /* Content control */
+    text-align: center; /* Centers inline/text content */
+    overflow: hidden; /* Hides any content exceeding header height */
 }
-/* Header content container - CHANGED: now arranges logo and nav horizontally */
+
+/* ============================================
+   HEADER TITLE (if used)
+   ============================================ */
+/* Styling for h1 elements within header */
+header h1 {
+    margin: 0; /* Removes default browser margin */
+    font-size: 2em; /* Large title text - 2x base font size */
+}
+
+/* ============================================
+   HEADER LAYOUT CONTAINER
+   ============================================ */
+/* Flexbox container that arranges logo and navigation horizontally */
 .header-content {
-    display: flex; /* Use flexbox */
-    flex-direction: row; /* CHANGED: Arrange logo and nav horizontally instead of vertically */
-    justify-content: space-between; /* CHANGED: Space items evenly - nav left, logo center, nav right */
-    align-items: center; /* Center vertically */
-    height: 100%; /* Fill the full header height */
-    max-width: 1200px; /* Limit maximum width for larger screens */
-    margin: 0 auto; /* Center the header content */
-    padding: 0 20px; /* Add some padding on the sides */
-    position: relative; /* Enable positioning for logo centering */
-    width: 100%; /* ADDED: Ensure full width usage */
+    display: flex; /* Enables flexible box layout */
+    flex-direction: row; /* Horizontal arrangement: left nav | logo | right nav */
+    justify-content: space-between; /* Distributes space evenly between nav and logo */
+    align-items: center; /* Vertically centers all child elements */
+    
+    /* Dimensions */
+    height: 100%; /* Fills full header height (80px) */
+    width: 100%; /* Uses full available width */
+    max-width: 1200px; /* Constrains width on large screens for readability */
+    
+    /* Positioning and spacing */
+    position: relative; /* Establishes positioning context for absolute children */
+    margin: 0 auto; /* Centers container horizontally */
+    padding: 0 20px; /* Horizontal padding prevents edge-touching on small screens */
 }
 
-/* CHANGED: Left navigation container - positioned on the left side */
+/* ============================================
+   NAVIGATION CONTAINERS
+   ============================================ */
+/* Left navigation - positioned on left side of header */
 .header-nav-left {
-    display: flex; /* Use flexbox to arrange nav links horizontally */
-    gap: 15px; /* Add space between the navigation links */
-    align-items: center; /* Vertically center the navigation links */
-    justify-content: flex-start; /* Align links to the left */
-    flex: 1; /* Take up available space on the left */
-    min-width: 0; /* ADDED: Allow flex item to shrink below content size */
+    display: flex; /* Arranges nav links horizontally */
+    gap: 15px; /* Spacing between individual navigation links */
+    align-items: center; /* Vertically centers links */
+    justify-content: flex-start; /* Aligns links to the left */
+    flex: 1; /* Takes up available space on left side */
+    min-width: 0; /* Allows container to shrink below content size if needed */
 }
 
-/* CHANGED: Right navigation container - positioned on the right side */
+/* Right navigation - positioned on right side of header */
 .header-nav-right {
-    display: flex; /* Use flexbox to arrange nav links horizontally */
-    gap: 15px; /* Add space between the navigation links */
-    align-items: center; /* Vertically center the navigation links */
-    justify-content: flex-end; /* Align links to the right */
-    flex: 1; /* Take up available space on the right */
-    min-width: 0; /* ADDED: Allow flex item to shrink below content size */
+    display: flex; /* Arranges nav links horizontally */
+    gap: 15px; /* Spacing between individual navigation links */
+    align-items: center; /* Vertically centers links */
+    justify-content: flex-end; /* Aligns links to the right */
+    flex: 1; /* Takes up available space on right side */
+    min-width: 0; /* Allows container to shrink below content size if needed */
 }
 
-/* CHANGED: Combined navigation link styling for both left and right nav */
+/* ============================================
+   NAVIGATION LINKS
+   ============================================ */
+/* Universal styling for all navigation links (left and right) */
 .nav-link {
-    color: #333; /* Dark gray color for link text */
-    text-decoration: none; /* Remove underline from links */
-    font-size: 0.8em; /* CHANGED: Slightly increased font size for better balance with larger logo */
-    font-weight: 500; /* Medium font weight */
-    padding: 4px 8px; /* CHANGED: Increased padding for better click targets */
-    border-radius: 3px; /* Rounded corners for the link background */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-    white-space: nowrap; /* Prevent text wrapping */
+    /* Text styling */
+    color: #333; /* Dark gray for good contrast against gradient background */
+    text-decoration: none; /* Removes default underline */
+    font-size: 0.8em; /* Slightly smaller than base text - balanced with logo size */
+    font-weight: 500; /* Medium weight for emphasis without being bold */
+    white-space: nowrap; /* Prevents link text from wrapping to multiple lines */
+    
+    /* Visual styling */
+    padding: 4px 8px; /* Creates clickable area larger than text for better UX */
+    border-radius: 3px; /* Subtle rounded corners on hover background */
+    
+    /* Animation */
+    transition: all 0.33s ease; /* Smooth animation for hover effects (color, background, position) */
 }
 
-/* Navigation link hover effect */
+/* Interactive hover state for navigation links */
 .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.3); /* Light white background on hover */
-    color: #b54dbc; /* Change text color to purple on hover */
-    -webkit-transform: translateY(-2px); /* Safari/Chrome */
-    -moz-transform: translateY(-2px); /* Firefox */
-    transform: translateY(-2px); /* Standard */
-}
-/* Logo styling - CHANGED: positioned in the center as focal point */
-.logo {
-    margin: 0; /* Remove default margin */
-    display: flex; /* Use flexbox */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    flex-shrink: 0 !important; /* ADDED: Prevent logo from shrinking */
-    z-index: 10; /* Ensure logo stays above nav elements */
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white background */
+    color: #b54dbc; /* Changes to purple - matches header gradient color */
+    transform: translateY(-2px); /* Subtle upward movement for interactive feel */
 }
 
-/* ADDED: Responsive design - for smaller screens, stack navigation vertically */
+/* ============================================
+   LOGO
+   ============================================ */
+/* Logo container - serves as focal point centered between nav elements */
+.logo {
+    display: flex; /* Enables flexbox for centering logo image */
+    align-items: center; /* Vertically centers logo */
+    justify-content: center; /* Horizontally centers logo */
+    margin: 0; /* Removes default margin */
+    flex-shrink: 0 !important; /* Prevents logo from compressing when space is limited */
+    z-index: 10; /* Ensures logo appears above navigation elements */
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE
+   ============================================ */
+/* Tablet and mobile layout - stacks elements vertically when width < 768px */
 @media (max-width: 768px) {
+    /* Changes header to vertical stack layout */
     .header-content {
-        flex-direction: column; /* Stack elements vertically on small screens */
-        justify-content: center; /* Center all elements */
-        gap: 5px; /* Small gap between elements */
+        flex-direction: column; /* Stacks logo and navigation vertically */
+        justify-content: center; /* Centers all elements */
+        gap: 5px; /* Minimal spacing between stacked elements */
     }
     
+    /* Logo positioning adjustments for mobile */
     .logo {
-        position: static; /* Remove absolute positioning on mobile */
-        transform: none; /* Remove transform */
-        order: 1; /* Logo appears first */
+        position: static; /* Removes any absolute positioning */
+        transform: none; /* Removes any transforms */
+        order: 1; /* Logo displays first at top */
     }
     
+    /* Navigation adjustments for mobile */
     .header-nav-left,
     .header-nav-right {
-        flex: none; /* Remove flex growth */
-        order: 2; /* Navigation appears after logo */
-    }
-    
-    .header-nav-left {
-        justify-content: center; /* Center navigation links */
-    }
-    
-    .header-nav-right {
-        justify-content: center; /* Center navigation links */
+        flex: none; /* Removes flex growth - uses natural content size */
+        order: 2; /* Both nav containers appear after logo */
+        justify-content: center; /* Centers nav links horizontally */
     }
 }
