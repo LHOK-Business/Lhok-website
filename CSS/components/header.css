@@ -35,11 +35,6 @@ header {
 /* ============================================
    HEADER TITLE (if used)
    ============================================ */
-/* Styling for h1 elements within header */
-header h1 {
-    margin: 0; /* Removes default browser margin */
-    font-size: 2em; /* Large title text - 2x base font size */
-}
 
 /* ============================================
    HEADER LAYOUT CONTAINER

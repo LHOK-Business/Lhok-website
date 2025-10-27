@@ -2,3 +2,18 @@ Colour Change #b54dbc
 
 
 Can we create a varible to control footer logo size to be consistent between media and desktop?
+
+Terminology
+
+header -> the header div box
+
+footer -> this is the footer
+
+
+title
+
+subtitle
+
+normal
+
+hyperlink

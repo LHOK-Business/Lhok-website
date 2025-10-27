@@ -24,13 +24,14 @@
     /* ============================================
        Animations
        ============================================ */
-        --navButtonHoverTransitionTime: 1.33s;
+        --navButtonHoverTransitionTime: 0.33s;
 }
 
 
 
 
 /* hunain 10.27.25. i dont think this belongs here 
+/* previous fonts 
 
 /* Main h1 heading styling */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
