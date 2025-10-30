@@ -21,10 +21,6 @@ body {
     padding-bottom: 80px; /* Add space at bottom for the fixed footer */
 }
 
-
-
-
-
 /* Logo image styling - made slightly larger as focal point */
 .logo img {
     height: 75px; /* CHANGED: Increased from 24px to make it more prominent as focal point */
@@ -35,17 +31,7 @@ body {
     object-fit: contain; /* Ensures the entire image fits within the constraints */
 }
 
-
-
-
-
 /* REMOVED: .header-nav class as it's replaced by left and right nav containers */
-
-
-
-
-
-
 
 /* Styling for the image container */
 .image-container {

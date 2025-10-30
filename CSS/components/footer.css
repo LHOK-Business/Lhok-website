@@ -4,7 +4,7 @@
 /* Fixed footer with gradient background that stays at bottom of viewport */
 .footer {
     /* Gradient background - white to purple from top to bottom (reverse of header) */
-    background: linear-gradient(to top, #b54dbc 1%, #ffffff 100%);
+    background: linear-gradient(to top, var(--color-primary) 1%, #ffffff 100%);
     color: #333 !important; /* Dark gray text for readability - !important overrides conflicting styles */
     
     /* Full width positioning */
@@ -79,7 +79,7 @@
     border-radius: 3px; /* Subtle rounded corners on hover background */
     
     /* Animation */
-    transition: all var(--navButtonHoverTransitionTime) ease; /* Smooth animation for hover effects */
+    transition: all var(--transition-time-hover) ease; /* Smooth animation for hover effects */
 }
 
 /* Interactive hover state for footer links */
