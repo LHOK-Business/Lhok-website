@@ -17,3 +17,13 @@ subtitle
 normal
 
 hyperlink
+
+Uses
+<a> = used for navigation links in header and footer 
+h1 = Header/title
+p = paragraph
+
+
+h1 -> 
+
+<a> -> <hlink> 
