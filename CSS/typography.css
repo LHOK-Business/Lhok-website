@@ -19,12 +19,10 @@
 }
 
 .normal-text {
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    color: #444; /* Medium dark gray for normal text */
-    font-size: 1em; /* Standard font size for paragraphs */
-    line-height: 1.6; /* Improves readability with increased line height */
-    text-align: left; /* Left-aligns normal text */
-    margin: 10px 0; /* Adds vertical spacing between paragraphs */
+    font-family: Arial, sans-serif; /* Sets the default font for the entire page */
+    margin: 0; /* Removes default browser margin */
+    padding: 0; /* Removes default browser padding */
+    text-align: center; /* Centers text */
 }
 
 

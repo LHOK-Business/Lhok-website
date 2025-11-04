@@ -11,9 +11,9 @@
     width: 100vw; /* Spans entire viewport width (100vw accounts for scrollbar) */
     
     /* Fixed positioning - footer stays at bottom when scrolling */
-    position: relative !important;
-    bottom: 0 !important; /* Anchored to bottom of viewport */
-    left: 0 !important; /* Anchored to left edge */
+    position: relative;
+    bottom: 0 ; /* Anchored to bottom of viewport */
+    left: 0 ; /* Anchored to left edge */
     right: 0; /* Stretches to right edge */
     z-index: 1000; /* Layers above other content */
     
@@ -23,7 +23,7 @@
     height: 80px; /* Fixed height matching header */
     
     /* Display */
-    display: block !important; /* Ensures footer displays as block element */
+    display: block; /* Ensures footer displays as block element */
 }
 
 /* ============================================
@@ -67,7 +67,7 @@
    FOOTER NAVIGATION LINKS
    ============================================ */
 
-   
+
 /* Universal styling for all footer navigation links */
 .footer-nav-link {
     /* Text styling */
