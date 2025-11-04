@@ -1,14 +1,19 @@
 :root {
 /* what-where-used
     /* ============================================
-       COLORS
+       Color
        ============================================ */
        --color-primary:#b54dbc;
+       --font-color-primary: ;
+       --font-color-secondary: ;
 
     /* ============================================
        Dimensions
        ============================================ */
-       --height:;
+       --height-logo-header:;
+       --width-logo-header:;
+       --height-logo-footer:;
+       --width-logo-footer:;
        
 
        /* ============================================
@@ -16,13 +21,11 @@
        ============================================ */
         --fontPrimary:;
 
-        /* [] hunain to tie this to html bracket names
+        /* [] hunain to tie this to html bracket names*/
         --font-size-title: ;
         --font-size-subheading: ;
-        --font-size-normal: ; /* all normal text
+        --font-size-normal: ; /* all normal text*/
         --font-size-hyperlinks: ; /* for nav links and footer links */
-
-
 
     /* ============================================
        Animations
