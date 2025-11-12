@@ -42,14 +42,14 @@
 /* Universal styling for all body navigation links */
 .body-nav-link {
     /* Text styling */
-    color: #d814df; /* Dark gray for contrast against gradient */
+    color: #b54dbc; /* Dark gray for contrast against gradient */
     text-decoration: none; /* Removes default underline */
-    font-size: 13px; /* Slightly larger than copyright text */
+    font-size: 15px; /* Slightly larger than copyright text */
     font-weight: 500; /* Medium weight for emphasis */
     
     /* Visual styling */
-    padding: 2px 6px; /* Creates clickable area larger than text */
-    border-radius: 3px; /* Subtle rounded corners on hover background */
+    padding: 3px 10px; /* Creates clickable area larger than text */
+    border-radius: 5px; /* Subtle rounded corners on hover background */
     
     /* Animation */
     transition: all var(--transition-time-hover) ease; /* Smooth animation for hover effects */
@@ -58,5 +58,5 @@
 /* Add the hover effect right here */
 .body-nav-link:hover {
     color: #ffffff; /* Example: changes text color on hover */
-    background-color: #d814df; /* Example: adds background on hover */
+    background-color: #b54dbc; /* Example: adds background on hover */
 }
