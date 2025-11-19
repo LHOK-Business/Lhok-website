@@ -1,5 +1,10 @@
 File Structure
 
+Naming Conventions (from industry standards)
+- anything in the file structure starts with lower case
+- name-files-like-this
+
+
 project-root/
 │
 ├── index.html                 # Main landing page (stays in root)
