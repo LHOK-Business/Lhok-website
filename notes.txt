@@ -1,0 +1,23 @@
+File Structure
+
+project-root/
+│
+├── index.html                 # Main landing page (stays in root)
+│
+├── pages/                     # All other pages
+│   ├── contact-us.html
+│   ├── about.html
+│   └── components/            # Reusable components
+│       ├── header.html
+│       └── footer.html
+│
+├── css/                       # All stylesheets
+│   ├── variables.css
+│   ├── main.css
+│   └── components.css         # Optional: styles for components
+│
+├── js/                        # All JavaScript files
+│   ├── main.js               # Main functionality
+│   └── components.js         # Component loading logic
+│
+├── media/                     # All images and media (lowercase convention)
