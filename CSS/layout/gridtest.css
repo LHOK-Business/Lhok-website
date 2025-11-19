@@ -1,0 +1,11 @@
+.grid {
+/* This is our CSS grid parent container */
+  display: grid;
+
+/* 5 cols (each 100px in width) */
+  grid-template-columns: 100px 100px 100px 100px 100px;
+
+/* 4 rows (each 100px in height) */
+  grid-template-rows:    100px 100px 100px 100px;
+}
+
