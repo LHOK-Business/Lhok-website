@@ -1,0 +1,37 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBDQEO-UwIbqE4Hgf_8FLvy3crHxFAlBFk",
+  authDomain: "lhok-business-canada.firebaseapp.com",
+  projectId: "lhok-business-canada",
+  storageBucket: "lhok-business-canada.firebasestorage.app",
+  messagingSenderId: "790079291918",
+  appId: "1:790079291918:web:c30705b3cd49e77970725f",
+  measurementId: "G-DJRPBVKXLK"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+
+
+
+
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBDQEO-UwIbqE4Hgf_8FLvy3crHxFAlBFk",
+  authDomain: "lhok-business-canada.firebaseapp.com",
+  projectId: "lhok-business-canada",
+  storageBucket: "lhok-business-canada.firebasestorage.app",
+  messagingSenderId: "790079291918",
+  appId: "1:790079291918:web:c30705b3cd49e77970725f",
+  measurementId: "G-DJRPBVKXLK"
+};
