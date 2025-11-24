@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - LHOK</title>
+    <link rel="stylesheet" href="../CSS/variables.css">
+    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="gridtest.css">
+    <style>
+        /* Adding the grid-item styles so you can see the grid cells */
+        .grid-item {
+            background-color: lightblue;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 100px;
+        }
+        
+        /* Make the first row items shorter since that row is only 25px */
+        .grid-item:nth-child(-n+5) {
+            line-height: 25px;
+            font-size: 12px;
+        }
+
+        /* Column spanning examples */
+        .span-2 {
+            grid-column: span 2;
+            background-color: lightcoral;
+        }
+
+        .span-3 {
+            grid-column: span 3;
+            background-color: lightgreen;
+        }
+
+        .span-wide {
+            grid-column: 1 / -1; /* Spans all columns */
+            background-color: lightyellow;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    
+<!-- Header section starts -->
+<div id="header-placeholder"></div>
+<!-- Header section ends -->
+
+<!-- Main content -->
+<div class="grid">
+    <!-- Row 1 (25px height) - Header spanning full width -->
+    <div class="grid-item span-wide">Full Width Header (All 5 Columns)</div>
+    
+    <!-- Row 2 (100px height) - showing column spans that add up to 5 -->
+    <div class="grid-item span-2">Spans Cols 1-2</div>
+    <div class="grid-item span-2">Spans Cols 3-4</div>
+    <div class="grid-item">Col 5</div>
+    
+    <!-- Row 3 (100px height) - Different spanning pattern -->
+    <div class="grid-item">Col 1</div>
+    <div class="grid-item">Col 2</div>
+    <div class="grid-item span-3">Spans Cols 3-4-5 (includes the 200px column)</div>
+    
+    <!-- Row 4 (100px height) - All individual columns to show each width -->
+    <div class="grid-item">Col 1<br>100px</div>
+    <div class="grid-item">Col 2<br>100px</div>
+    <div class="grid-item">Col 3<br>100px</div>
+    <div class="grid-item">Col 4<br>200px</div>
+    <div class="grid-item">Col 5<br>100px</div>
+</div>
+
+<!-- Footer section starts -->
+<div id="footer-placeholder"></div>
+<!-- Footer section ends -->
+
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>

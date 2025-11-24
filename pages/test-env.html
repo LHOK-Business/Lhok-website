@@ -7,10 +7,25 @@
     <title>Contact Us - LHOK</title>
     <link rel="stylesheet" href="../CSS/variables.css">
     <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="gridtest.css">
+    <style>
+        /* Adding the grid-item styles so you can see the grid cells */
+        .grid-item {
+            background-color: lightblue;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 100px;
+        }
+        
+        /* Make the first row items shorter since that row is only 25px */
+        .grid-item:nth-child(-n+5) {
+            line-height: 25px;
+            font-size: 12px;
+        }
+    </style>
 </head>
 
 <body>
-
 
 
 
@@ -20,7 +35,35 @@
 <!-- Header section ends -->
 
 <!-- Main content -->
-
+<div class="grid">
+    <!-- Row 1 (25px height) - 5 columns -->
+    <div class="grid-item">1</div>
+    <div class="grid-item">2</div>
+    <div class="grid-item">3</div>
+    <div class="grid-item">4</div>
+    <div class="grid-item">5</div>
+    
+    <!-- Row 2 (100px height) - 5 columns -->
+    <div class="grid-item">6</div>
+    <div class="grid-item">7</div>
+    <div class="grid-item">8</div>
+    <div class="grid-item">9</div>
+    <div class="grid-item">10</div>
+    
+    <!-- Row 3 (100px height) - 5 columns -->
+    <div class="grid-item">11</div>
+    <div class="grid-item">12</div>
+    <div class="grid-item">13</div>
+    <div class="grid-item">14</div>
+    <div class="grid-item">15</div>
+    
+    <!-- Row 4 (100px height) - 5 columns -->
+    <div class="grid-item">16</div>
+    <div class="grid-item">17</div>
+    <div class="grid-item">18</div>
+    <div class="grid-item">19</div>
+    <div class="grid-item">20</div>
+</div>
 
 <!-- Footer section starts -->
 <div id="footer-placeholder"></div>
