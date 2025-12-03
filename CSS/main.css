@@ -13,5 +13,6 @@
 @import url('layout/containers.css');
 @import url('layout/responsive.css');
 
-
+/* Link to Page Specific CSS*/
 @import url('pages/contact-us.css');
+@import url('pages/term-and-conditions.css');

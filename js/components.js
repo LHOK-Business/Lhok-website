@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Load components
     await loadComponent('header-placeholder', basePath + 'header.html');
     await loadComponent('footer-placeholder', basePath + 'footer.html');
+    await loadComponent('submit-button-placeholder', basePath + 'submit-button.html');
+
     
     // Fix links after components are loaded
     fixComponentLinks();
