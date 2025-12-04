@@ -5,7 +5,7 @@
 .footer {
     /* Gradient background - white to purple from top to bottom (reverse of header) */
     background: linear-gradient(to top, var(--color-primary) 1%, #ffffff 100%);
-    color: #333 !important; /* Dark gray text for readability - !important overrides conflicting styles */
+    color: #333; /* Dark gray text for readability - !important overrides conflicting styles */
     
     /* Full width positioning */
     width: 100vw; /* Spans entire viewport width (100vw accounts for scrollbar) */
