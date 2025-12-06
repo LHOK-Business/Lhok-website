@@ -1,165 +1,125 @@
 /* ============================================
-   FOOTER SECTION
+   FOOTER
    ============================================ */
-/* Fixed footer with gradient background that stays at bottom of viewport */
+
 .footer {
-    /* Gradient background - white to purple from top to bottom (reverse of header) */
-    background: linear-gradient(to top, var(--color-primary) 1%, #ffffff 100%);
-    color: #333; /* Dark gray text for readability - !important overrides conflicting styles */
-    
-    /* Full width positioning */
-    width: 100vw; /* Spans entire viewport width (100vw accounts for scrollbar) */
-    
-    /* Fixed positioning - footer stays at bottom when scrolling */
+    /* Positioning */
     position: relative;
-    bottom: 0 ; /* Anchored to bottom of viewport */
-    left: 0 ; /* Anchored to left edge */
-    right: 0; /* Stretches to right edge */
-    z-index: 1000; /* Layers above other content */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-index-fixed);
     
-    /* Box model and dimensions */
-    box-sizing: border-box; /* Includes padding in total width calculation */
-    margin: 0; /* Removes default margin */
-    height: 80px; /* Fixed height matching header */
+    /* Dimensions */
+    height: var(--footer-height);
+    width: 100%;
     
-    /* Display */
-    display: block; /* Ensures footer displays as block element */
+    /* Styling */
+    background: linear-gradient(
+        to top,
+        var(--color-primary) 1%,
+        var(--color-white) 100%
+    );
+    
+    /* Box model */
+    margin: 0;
+    box-sizing: border-box;
 }
 
 /* ============================================
-   FOOTER LAYOUT CONTAINER
+   FOOTER LAYOUT
    ============================================ */
-/* Main container that manages vertical spacing within footer */
+
 .footer-container {
-    height: 100%; /* Fills full footer height (80px) */
-    display: flex; /* Enables flexible box layout */
-    flex-direction: column; /* Vertical stacking of content and copyright */
-    justify-content: space-between; /* Pushes content to top, copyright to bottom */
-    padding: 8px 20px 5px 20px; /* Top: 8px, Sides: 20px, Bottom: 5px for tight fit */
-    position: relative; /* Establishes positioning context for absolute copyright */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-xs) var(--spacing-lg);
+    position: relative;
 }
 
 /* ============================================
-   FOOTER CONTENT - TOP SECTION
+   FOOTER CONTENT
    ============================================ */
-/* Horizontal layout for left links | logo | right links */
+
 .footer-content {
-    display: flex; /* Arranges links and logo horizontally */
-    justify-content: center; /* Centers the three-column layout */
-    align-items: center; /* Vertically centers all elements */
-    gap: 30px; /* Spacing between left links, logo, and right links */
-    flex-grow: 1; /* Takes up available vertical space above copyright */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xl);
+    flex-grow: 1;
 }
 
 /* ============================================
-   FOOTER NAVIGATION LINK CONTAINERS
+   FOOTER NAVIGATION
    ============================================ */
-/* Left side navigation links container */
+
 .footer-links-left,
-/* Right side navigation links container */
 .footer-links-right {
-    display: flex; /* Arranges links horizontally */
-    gap: 20px; /* Spacing between individual links */
-    align-items: center; /* Vertically centers links */
-}
-
-/* ============================================
-   FOOTER NAVIGATION LINKS
-   ============================================ */
-
-
-/* Universal styling for all footer navigation links */
-.footer-nav-link {
-    /* Text styling */
-    color: #333; /* Dark gray for contrast against gradient */
-    text-decoration: none; /* Removes default underline */
-    font-size: 13px; /* Slightly larger than copyright text */
-    font-weight: 500; /* Medium weight for emphasis */
-    
-    /* Visual styling */
-    padding: 2px 6px; /* Creates clickable area larger than text */
-    border-radius: 3px; /* Subtle rounded corners on hover background */
-    
-    /* Animation */
-    transition: all var(--transition-time-hover) ease; /* Smooth animation for hover effects */
-}
-
-/* Interactive hover state for footer links */
-.footer-nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white background */
-    color: #b54dbc; /* Changes to purple - matches footer gradient color */
-    transform: translateY(-1px); /* Subtle upward movement for interactive feel */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
 }
 
 /* ============================================
    FOOTER LOGO
    ============================================ */
-/* Logo container - centered between link groups */
+
 .footer-logo {
-    display: flex; /* Enables flexbox for centering */
-    align-items: center; /* Vertically centers logo */
-    justify-content: center; /* Horizontally centers logo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Logo image styling with brightness effect */
 .footer-logo img {
-    height: 60px; /* Slightly smaller than header logo (75px) for hierarchy */
-    width: auto; /* Maintains aspect ratio */
-    filter: brightness(0.8); /* Slightly dimmed by default for subtle appearance */
-    transition: filter var(--navButtonHoverTransitionTime) ease; /* Smooth brightness change on hover */
+    height: var(--logo-height-footer);
+    width: auto;
+    filter: brightness(0.8);
+    transition: filter var(--transition-speed-normal) var(--transition-easing);
 }
 
-/* Logo hover effect - brightens on interaction */
 .footer-logo img:hover {
-    filter: brightness(1); /* Returns to full brightness */
+    filter: brightness(1);
 }
 
 /* ============================================
-   FOOTER COPYRIGHT - BOTTOM SECTION
+   FOOTER COPYRIGHT
    ============================================ */
-/* Copyright text positioned at bottom-left */
+
 .footer-bottom {
-    position: absolute; /* Positioned independently within footer-container */
-    bottom: 5px; /* 5px from bottom edge */
-    left: 20px; /* 20px from left edge - aligns with container padding */
-    font-size: 10px; /* Small, unobtrusive text */
-    color: #555; /* Medium gray - less prominent than main links */
-    text-align: left; /* Left-aligned text */
+    position: absolute;
+    bottom: var(--spacing-xs);
+    left: var(--spacing-lg);
+    
+    font-size: var(--font-size-tiny);
+    color: var(--color-text-secondary);
+    text-align: left;
 }
 
-/* Removes default paragraph margin for tight spacing */
 .footer-bottom p {
-    margin: 0; /* Removes default browser margin */
+    margin: 0;
 }
 
 /* ============================================
-   RESPONSIVE DESIGN - MOBILE
+   RESPONSIVE - MOBILE
    ============================================ */
-/* Tablet and mobile adjustments when width < 768px */
+
 @media (max-width: 768px) {
-    /* Reduces spacing in main content area */
     .footer-content {
-        gap: 15px; /* Tighter gap between links and logo */
+        gap: var(--spacing-md);
     }
     
-    /* Reduces spacing between individual links */
     .footer-links-left,
     .footer-links-right {
-        gap: 10px; /* Tighter gap between links */
+        gap: var(--spacing-sm);
     }
     
-    /* Smaller link text for mobile */
-    .footer-nav-link {
-        font-size: 11px; /* Reduced from 13px */
-    }
-    
-    /* Maintains logo size on mobile */
     .footer-logo img {
-        height: 60px; /* Same as desktop - logo remains prominent */
+        height: var(--logo-height-footer);
     }
     
-    /* Smaller copyright text on mobile */
     .footer-bottom {
-        font-size: 9px; /* Reduced from 10px */
+        font-size: 0.625rem; /* 10px - increased from 9px for readability */
     }
 }

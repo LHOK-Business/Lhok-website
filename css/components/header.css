@@ -1,149 +1,122 @@
 /* ============================================
-   HEADER SECTION
+   HEADER
    ============================================ */
-/* Fixed header with gradient background that stays at top of viewport */
+
 header {
-    /* Gradient background - purple to white from top to bottom */
-    background: linear-gradient(to bottom, var(--color-primary) 1%, #ffffff 100%);
-    color: #333 !important; /* Dark gray text for readability - !important overrides any conflicting styles */
-    
-    /* Fixed height constraints - ensures consistent header size */
-    height: 80px !important;
-    min-height: 80px !important;
-    max-height: 80px !important;
-    
-    /* Full width positioning */
-    width: 100%; /* Spans entire viewport width */
-    
-    /* Fixed positioning - header stays at top when scrolling */
-    position: fixed !important;
-    top: 0 !important; /* Anchored to top of viewport */
-    left: 0 !important; /* Anchored to left edge */
-    right: 0; /* Stretches to right edge */
-    z-index: 1000; /* Layers above other content */
-    
-    /* Box model and spacing */
-    box-sizing: border-box; /* Includes padding in total width calculation */
-    margin: 0; /* Removes default margin */
-    padding: 5px 0; /* Vertical padding for internal spacing */
-    
-    /* Content control */
-    text-align: center; /* Centers inline/text content */
-    overflow: hidden; /* Hides any content exceeding header height */
-}
-
-/* ============================================
-   HEADER TITLE (if used)
-   ============================================ */
-
-/* ============================================
-   HEADER LAYOUT CONTAINER
-   ============================================ */
-/* Flexbox container that arranges logo and navigation horizontally */
-.header-content {
-    display: flex; /* Enables flexible box layout */
-    flex-direction: row; /* Horizontal arrangement: left nav | logo | right nav */
-    justify-content: space-between; /* Distributes space evenly between nav and logo */
-    align-items: center; /* Vertically centers all child elements */
+    /* Positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-index-fixed);
     
     /* Dimensions */
-    height: 100%; /* Fills full header height (80px) */
-    width: 100%; /* Uses full available width */
-    max-width: 1200px; /* Constrains width on large screens for readability */
+    height: var(--header-height);
+    width: 100%;
     
-    /* Positioning and spacing */
-    position: relative; /* Establishes positioning context for absolute children */
-    margin: 0 auto; /* Centers container horizontally */
-    padding: 0 20px; /* Horizontal padding prevents edge-touching on small screens */
+    /* Styling */
+    background: linear-gradient(
+        to bottom,
+        var(--color-primary) 1%,
+        var(--color-white) 100%
+    );
+    
+    /* Box model */
+    margin: 0;
+    padding: var(--spacing-sm) 0;
+    box-sizing: border-box;
+    
+    /* Content control */
+    overflow: visible; /* Changed from hidden to prevent clipping */
 }
 
 /* ============================================
-   NAVIGATION CONTAINERS
+   HEADER LAYOUT
    ============================================ */
-/* Left navigation - positioned on left side of header */
-.header-nav-left {
-    display: flex; /* Arranges nav links horizontally */
-    gap: 15px; /* Spacing between individual navigation links */
-    align-items: center; /* Vertically centers links */
-    justify-content: flex-start; /* Aligns links to the left */
-    flex: 1; /* Takes up available space on left side */
-    min-width: 0; /* Allows container to shrink below content size if needed */
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    /* Dimensions */
+    height: 100%;
+    width: 100%;
+    max-width: var(--max-content-width);
+    
+    /* Spacing */
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    
+    /* Positioning */
+    position: relative;
 }
 
-/* Right navigation - positioned on right side of header */
+/* ============================================
+   HEADER NAVIGATION CONTAINERS
+   ============================================ */
+
+.header-nav-left,
 .header-nav-right {
-    display: flex; /* Arranges nav links horizontally */
-    gap: 15px; /* Spacing between individual navigation links */
-    align-items: center; /* Vertically centers links */
-    justify-content: flex-end; /* Aligns links to the right */
-    flex: 1; /* Takes up available space on right side */
-    min-width: 0; /* Allows container to shrink below content size if needed */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex: 1;
+    min-width: 0; /* Allows shrinking */
+}
+
+.header-nav-left {
+    justify-content: flex-start;
+}
+
+.header-nav-right {
+    justify-content: flex-end;
 }
 
 /* ============================================
-   NAVIGATION LINKS
+   HEADER LOGO
    ============================================ */
-/* Universal styling for all navigation links (left and right) */
-.nav-link {
-    /* Text styling */
-    color: #333; /* Dark gray for good contrast against gradient background */
-    text-decoration: none; /* Removes default underline */
-    font-size: 0.8em; /* Slightly smaller than base text - balanced with logo size */
-    font-weight: 500; /* Medium weight for emphasis without being bold */
-    white-space: nowrap; /* Prevents link text from wrapping to multiple lines */
-    
-    /* Visual styling */
-    padding: 4px 8px; /* Creates clickable area larger than text for better UX */
-    border-radius: 3px; /* Subtle rounded corners on hover background */
-    
-    /* Animation */
-    transition: all var(--transition-time-hover) ease; /* Smooth animation for hover effects (color, background, position) */
-}
 
-/* Interactive hover state for navigation links */
-.nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white background */
-    color: #b54dbc; /* Changes to purple - matches header gradient color */
-    transform: translateY(-2px); /* Subtle upward movement for interactive feel */
-}
-
-/* ============================================
-   LOGO
-   ============================================ */
-/* Logo container - serves as focal point centered between nav elements */
 .logo {
-    display: flex; /* Enables flexbox for centering logo image */
-    align-items: center; /* Vertically centers logo */
-    justify-content: center; /* Horizontally centers logo */
-    margin: 0; /* Removes default margin */
-    flex-shrink: 0 !important; /* Prevents logo from compressing when space is limited */
-    z-index: 10; /* Ensures logo appears above navigation elements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: var(--z-index-dropdown);
+    margin: 0;
+}
+
+.logo img {
+    height: var(--logo-height-header);
+    width: auto;
+    transition: filter var(--transition-speed-normal) var(--transition-easing);
+}
+
+.logo img:hover {
+    filter: brightness(1.1);
 }
 
 /* ============================================
-   RESPONSIVE DESIGN - MOBILE
+   RESPONSIVE - MOBILE
    ============================================ */
-/* Tablet and mobile layout - stacks elements vertically when width < 768px */
+
 @media (max-width: 768px) {
-    /* Changes header to vertical stack layout */
     .header-content {
-        flex-direction: column; /* Stacks logo and navigation vertically */
-        justify-content: center; /* Centers all elements */
-        gap: 5px; /* Minimal spacing between stacked elements */
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        padding: 0 var(--spacing-md);
     }
     
-    /* Logo positioning adjustments for mobile */
     .logo {
-        position: static; /* Removes any absolute positioning */
-        transform: none; /* Removes any transforms */
-        order: 1; /* Logo displays first at top */
+        order: 1;
     }
     
-    /* Navigation adjustments for mobile */
     .header-nav-left,
     .header-nav-right {
-        flex: none; /* Removes flex growth - uses natural content size */
-        order: 2; /* Both nav containers appear after logo */
-        justify-content: center; /* Centers nav links horizontally */
+        flex: none;
+        order: 2;
+        justify-content: center;
+        gap: var(--spacing-sm);
     }
 }

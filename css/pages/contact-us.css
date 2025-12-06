@@ -1,63 +1,84 @@
-/* STEP 3: CSS STYLING */
-/* CSS/contact.css */
+/* ============================================
+   CONTACT FORM CONTAINER
+   ============================================ */
 
-/* Form Container */
 .contact-form {
     max-width: 600px;
-    margin: 3rem auto;
-    padding: 2.5rem;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: var(--spacing-xl) auto;
+    padding: var(--spacing-xl);
+    
+    background: var(--color-background);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
 }
 
-/* Form Groups - Each input section */
+/* ============================================
+   FORM GROUPS
+   ============================================ */
+
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--spacing-lg);
     position: relative;
 }
 
-/* Labels */
 .form-group label {
     display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #333;
-    font-size: 0.95rem;
+    margin-bottom: var(--spacing-sm);
+    
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
 }
 
-/* All Input Fields */
+/* ============================================
+   FORM INPUTS
+   ============================================ */
+
 .form-group input,
 .form-group textarea,
 .form-group select {
     width: 100%;
     padding: 0.75rem 1rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: inherit;
-    transition: all 0.3s ease;
+    
+    font-size: var(--font-size-body);
+    font-family: var(--font-family-primary);
+    
     background: #f9f9f9;
+    border: var(--border-width) solid var(--color-gray-light);
+    border-radius: var(--border-radius-md);
+    
+    transition: all var(--transition-speed-normal) var(--transition-easing);
 }
 
-/* Input Focus State */
+/* Focus state */
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #4CAF50;
-    background: #ffffff;
+    background: var(--color-background);
+    border-color: #4CAF50; /* Consider adding to variables */
     box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
 }
 
-/* Textarea Specific */
+/* Invalid state */
+.form-group input.invalid,
+.form-group textarea.invalid {
+    border-color: #dc3545; /* Consider adding to variables */
+}
+
+/* ============================================
+   TEXTAREA
+   ============================================ */
+
 .form-group textarea {
     min-height: 150px;
     resize: vertical;
-    font-family: inherit;
 }
 
-/* Select Dropdown */
+/* ============================================
+   SELECT DROPDOWN
+   ============================================ */
+
 .form-group select {
     cursor: pointer;
     appearance: none;
@@ -67,42 +88,47 @@
     padding-right: 2.5rem;
 }
 
-/* Character Counter */
+/* ============================================
+   HELPER TEXT & VALIDATION
+   ============================================ */
+
 .char-count {
     display: block;
     text-align: right;
-    font-size: 0.85rem;
-    color: #666;
-    margin-top: 0.25rem;
+    margin-top: var(--spacing-xs);
+    
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
 }
 
-/* Error Messages */
 .error-message {
     display: block;
-    color: #dc3545;
-    font-size: 0.85rem;
-    margin-top: 0.25rem;
+    margin-top: var(--spacing-xs);
     min-height: 1.2rem;
+    
+    font-size: var(--font-size-small);
+    color: #dc3545;
 }
 
-/* Invalid Input State */
-.form-group input.invalid,
-.form-group textarea.invalid {
-    border-color: #dc3545;
-}
+/* ============================================
+   SUBMIT BUTTON
+   ============================================ */
 
-/* Submit Button */
 .submit-btn {
     width: 100%;
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-    color: white;
-    border: none;
-    border-radius: 8px;
+    padding: var(--spacing-md) var(--spacing-xl);
+    
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    border: none;
+    border-radius: var(--border-radius-md);
+    
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed-normal) var(--transition-easing);
+    
     position: relative;
     overflow: hidden;
 }
@@ -117,14 +143,13 @@
     transform: translateY(0);
 }
 
-/* Button Disabled State */
 .submit-btn:disabled {
     background: #cccccc;
     cursor: not-allowed;
     transform: none;
 }
 
-/* Loading Animation */
+/* Loading animation */
 .btn-loader {
     display: inline-block;
     animation: pulse 1.5s ease-in-out infinite;
@@ -135,14 +160,17 @@
     50% { opacity: 0.5; }
 }
 
-/* Success/Error Message Box */
+/* ============================================
+   MESSAGE ALERTS
+   ============================================ */
+
 .message {
-    padding: 1rem 1.25rem;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    font-weight: 500;
+    padding: var(--spacing-md) 1.25rem;
+    margin-bottom: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    font-weight: var(--font-weight-medium);
     display: none;
-    animation: slideDown 0.3s ease-out;
+    animation: slideDown var(--transition-speed-normal) ease-out;
 }
 
 @keyframes slideDown {
@@ -156,44 +184,48 @@
     }
 }
 
-/* Success Message */
+/* Success message */
 .message.success {
+    display: block;
     background: #d4edda;
     color: #155724;
-    border: 2px solid #c3e6cb;
-    display: block;
+    border: var(--border-width) solid #c3e6cb;
 }
 
 .message.success::before {
     content: "✓ ";
-    font-weight: bold;
-    margin-right: 0.5rem;
+    font-weight: var(--font-weight-bold);
+    margin-right: var(--spacing-sm);
 }
 
-/* Error Message */
+/* Error message */
 .message.error {
+    display: block;
     background: #f8d7da;
     color: #721c24;
-    border: 2px solid #f5c6cb;
-    display: block;
+    border: var(--border-width) solid #f5c6cb;
 }
 
 .message.error::before {
     content: "✕ ";
-    font-weight: bold;
-    margin-right: 0.5rem;
+    font-weight: var(--font-weight-bold);
+    margin-right: var(--spacing-sm);
 }
 
-/* Responsive Design */
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
 @media (max-width: 768px) {
     .contact-form {
-        padding: 1.5rem;
-        margin: 2rem 1rem;
+        padding: var(--spacing-lg);
+        margin: var(--spacing-xl) var(--spacing-md);
     }
     
+    /* Prevent iOS zoom on focus */
     .form-group input,
     .form-group textarea,
     .form-group select {
-        font-size: 16px; /* Prevents zoom on iOS */
+        font-size: 16px;
     }
 }

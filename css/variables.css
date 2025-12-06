@@ -1,62 +1,97 @@
 :root {
     /* ============================================
-       Color
+       COLORS
        ============================================ */
-       --color-primary: #b54dbc;
-       --font-color-primary: #333333;
-       --font-color-secondary: #666666;
-
-    /* ============================================
-       Dimensions
-       ============================================ */
-       --height-logo-header: 50px;
-       --width-logo-header: 150px;
-       --height-logo-footer: 40px;
-       --width-logo-footer: 120px;
-       
-
-       /* ============================================
-       Fonts
-       ============================================ */
-        --fontPrimary: Arial, sans-serif;
-
-        /* [] hunain to tie this to html bracket names*/
-        --font-size-title: 32px;
-        --font-size-subheading: 24px;
-        --font-size-normal: 16px; /* all normal text*/
-        --font-size-hyperlinks: 14px; /* for nav links and footer links */
-
-    /* ============================================
-       Animations
-       ============================================ */
-        --navButtonHoverTransitionTime: 0.33s;
-        --transition-time-hover: 0.33s;
-}
-
-/* ============================================
-   BODY NAVIGATION LINKS
-   ============================================ */
-
-
-/* Universal styling for all body navigation links */
-/* Universal styling for all body navigation links */
-.body-nav-link {
-    /* Text styling */
-    color: #b54dbc; /* Dark gray for contrast against gradient */
-    text-decoration: none; /* Removes default underline */
-    font-size: 15px; /* Slightly larger than copyright text */
-    font-weight: 500; /* Medium weight for emphasis */
+    --color-primary: #b54dbc;
+    --color-primary-dark: #9a3ea3;
+    --color-white: #ffffff;
+    --color-gray-dark: #333333;
+    --color-gray-medium: #666666;
+    --color-gray-light: #e0e0e0;
     
-    /* Visual styling */
-    padding: 3px 10px; /* Creates clickable area larger than text */
-    border-radius: 5px; /* Subtle rounded corners on hover background */
+    /* Semantic color names */
+    --color-text-primary: var(--color-gray-dark);
+    --color-text-secondary: var(--color-gray-medium);
+    --color-background: var(--color-white);
+    --color-link: var(--color-primary);
+    --color-link-hover: var(--color-white);
     
-    /* Animation */
-    transition: all var(--transition-time-hover) ease; /* Smooth animation for hover effects */
-}
-
-/* Add the hover effect right here */
-.body-nav-link:hover {
-    color: #ffffff; /* Example: changes text color on hover */
-    background-color: #b54dbc; /* Example: adds background on hover */
+    /* ============================================
+       TYPOGRAPHY
+       ============================================ */
+    --font-family-primary: Arial, sans-serif;
+    
+    /* Font sizes - using rem for accessibility */
+    --font-size-title: 2rem;        /* 32px */
+    --font-size-subheading: 1.5rem; /* 24px */
+    --font-size-body: 1rem;         /* 16px */
+    --font-size-small: 0.875rem;    /* 14px */
+    --font-size-tiny: 0.75rem;      /* 12px */
+    
+    /* Font weights */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 600;
+    
+    /* ============================================
+       SPACING
+       ============================================ */
+    --spacing-xs: 0.25rem;   /* 4px */
+    --spacing-sm: 0.5rem;    /* 8px */
+    --spacing-md: 1rem;      /* 16px */
+    --spacing-lg: 1.5rem;    /* 24px */
+    --spacing-xl: 2rem;      /* 32px */
+    
+    /* ============================================
+       LAYOUT
+       ============================================ */
+    --header-height: 80px;
+    --footer-height: 80px;
+    --max-content-width: 1200px;
+    
+    /* Logo dimensions */
+    --logo-height-header: 75px;
+    --logo-height-footer: 60px;
+    
+    /* ============================================
+       BORDERS & RADIUS
+       ============================================ */
+    --border-radius-sm: 3px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    
+    --border-width: 2px;
+    
+    /* ============================================
+       TRANSITIONS & ANIMATIONS
+       ============================================ */
+    --transition-speed-fast: 0.15s;
+    --transition-speed-normal: 0.3s;
+    --transition-speed-slow: 0.5s;
+    --transition-easing: ease;
+    
+    /* ============================================
+       SHADOWS
+       ============================================ */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+    
+    /* ============================================
+       Z-INDEX SCALE
+       ============================================ */
+    --z-index-base: 1;
+    --z-index-dropdown: 100;
+    --z-index-sticky: 500;
+    --z-index-fixed: 1000;
+    --z-index-modal: 2000;
+    --z-index-tooltip: 3000;
+    
+    /* ============================================
+       BREAKPOINTS (for reference in media queries)
+       ============================================ */
+    /* --breakpoint-sm: 576px; */
+    /* --breakpoint-md: 768px; */
+    /* --breakpoint-lg: 992px; */
+    /* --breakpoint-xl: 1200px; */
 }

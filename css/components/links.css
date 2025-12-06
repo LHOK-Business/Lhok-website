@@ -1,0 +1,82 @@
+/* ============================================
+   NAVIGATION LINKS - SHARED STYLES
+   ============================================ */
+
+/* Base link styling - shared by all navigation links */
+.nav-link,
+.footer-nav-link,
+.body-nav-link {
+    /* Reset */
+    text-decoration: none;
+    
+    /* Typography */
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    
+    /* Spacing & Visual */
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    
+    /* Interaction */
+    cursor: pointer;
+    transition: all var(--transition-speed-normal) var(--transition-easing);
+    
+    /* Accessibility - keyboard focus */
+    outline-offset: 2px;
+}
+
+/* Hover state - shared by all navigation links */
+.nav-link:hover,
+.footer-nav-link:hover,
+.body-nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+/* Focus state for accessibility (keyboard navigation) */
+.nav-link:focus-visible,
+.footer-nav-link:focus-visible,
+.body-nav-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Active state */
+.nav-link:active,
+.footer-nav-link:active,
+.body-nav-link:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   BODY CONTENT LINKS - VARIATION
+   ============================================ */
+
+/* Body links have inverted hover colors */
+.body-nav-link {
+    color: var(--color-link);
+    font-size: var(--font-size-body);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius-md);
+}
+
+.body-nav-link:hover {
+    background-color: var(--color-primary);
+    color: var(--color-link-hover);
+    transform: none; /* Body links don't lift up */
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .nav-link,
+    .footer-nav-link {
+        font-size: 0.6875rem; /* 11px */
+        padding: var(--spacing-xs) var(--spacing-xs);
+    }
+}
