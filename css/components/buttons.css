@@ -1,28 +1,242 @@
+/* ============================================
+   BUTTON COMPONENTS
+   ============================================ */
+
+/* ============================================
+   BASE BUTTON STYLES
+   ============================================ */
+
+.btn,
 .custom-button {
-    background-color: #007bff;
-    color: white;
+    /* Reset */
     border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 6px;
+    background: none;
+    
+    /* Typography */
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    text-decoration: none;
+    
+    /* Layout */
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    
+    /* Visual */
+    border-radius: var(--border-radius-md);
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    /* Effects */
+    transition: all var(--transition-speed-normal) var(--transition-easing);
+    box-shadow: var(--shadow-sm);
+    
+    /* Prevent text selection */
+    user-select: none;
+    -webkit-user-select: none;
 }
 
+/* ============================================
+   BUTTON VARIANTS
+   ============================================ */
+
+/* Primary Button - Brand color */
+.btn-primary,
+.custom-button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover,
 .custom-button:hover {
-    background-color: #0056b3;
+    background-color: var(--color-primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-md);
 }
 
-.custom-button:active {
+/* Secondary Button - Outlined */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: var(--border-width) solid var(--color-primary);
+    box-shadow: none;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Success Button - Green */
+.btn-success {
+    background-color: #4CAF50;
+    color: var(--color-white);
+}
+
+.btn-success:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Danger Button - Red */
+.btn-danger {
+    background-color: #dc3545;
+    color: var(--color-white);
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Ghost Button - Minimal */
+.btn-ghost {
+    background-color: transparent;
+    color: var(--color-text-primary);
+    box-shadow: none;
+}
+
+.btn-ghost:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================
+   BUTTON STATES
+   ============================================ */
+
+/* Active/Pressed State */
+.btn:active,
+.custom-button:active,
+.btn-primary:active,
+.btn-secondary:active,
+.btn-success:active,
+.btn-danger:active {
     transform: translateY(0);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
 }
 
-.custom-button:focus {
-    outline: 2px solid #0056b3;
+/* Focus State - Accessibility */
+.btn:focus-visible,
+.custom-button:focus-visible {
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
+}
+
+/* Disabled State */
+.btn:disabled,
+.custom-button:disabled,
+.btn[disabled],
+.custom-button[disabled] {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.6;
+}
+
+.btn:disabled:hover,
+.custom-button:disabled:hover {
+    background-color: #cccccc;
+    transform: none;
+}
+
+/* ============================================
+   BUTTON SIZES
+   ============================================ */
+
+/* Small Button */
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: var(--font-size-small);
+}
+
+/* Large Button */
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+/* Full Width Button */
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* ============================================
+   BUTTON GROUPS
+   ============================================ */
+
+.btn-group {
+    display: inline-flex;
+    gap: var(--spacing-sm);
+}
+
+.btn-group .btn:not(:last-child) {
+    margin-right: 0;
+}
+
+/* ============================================
+   ICON BUTTONS
+   ============================================ */
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.btn-icon svg,
+.btn-icon img {
+    width: 1.25em;
+    height: 1.25em;
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+
+.btn-loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    top: 50%;
+    left: 50%;
+    margin-left: -0.5em;
+    margin-top: -0.5em;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: button-spin 0.6s linear infinite;
+}
+
+@keyframes button-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .btn,
+    .custom-button {
+        padding: 0.625rem 1.25rem;
+        font-size: var(--font-size-small);
+    }
+    
+    .btn-lg {
+        padding: 0.875rem 1.75rem;
+    }
 }

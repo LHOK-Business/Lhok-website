@@ -1,0 +1,87 @@
+/* ============================================
+   GLOBAL BASE STYLES
+   ============================================ */
+
+html {
+    font-size: 16px; /* Base font size for rem calculations */
+    height: 100%;
+}
+
+body {
+    /* Typography */
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-body);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    
+    /* Layout */
+    min-height: 100vh;
+    
+    /* Account for fixed header and footer */
+    padding-top: var(--header-height);
+    padding-bottom: var(--footer-height);
+    
+    /* Visual */
+    background-color: var(--color-background);
+    
+    /* Text */
+    text-align: center; /* Default center alignment - override in components */
+}
+
+/* ============================================
+   DEFAULT LINK STYLES
+   ============================================ */
+/* Base styles for standard content links (not navigation) */
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+    transition: color var(--transition-speed-normal) var(--transition-easing);
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #800080; /* Consider adding to variables as --color-link-visited */
+}
+
+a:active {
+    color: #ff0000; /* Consider adding to variables as --color-link-active */
+}
+
+/* Focus state for accessibility */
+a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-sm);
+}
+
+/* ============================================
+   IMAGE CONTAINERS
+   ============================================ */
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--spacing-lg);
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ============================================
+   LOGO (when used outside header/footer)
+   ============================================ */
+
+.logo img {
+    height: var(--logo-height-header);
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}

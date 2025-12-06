@@ -1,0 +1,105 @@
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+/* Import Google Fonts - Note: Better to import in HTML <head> for performance */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* ============================================
+   TYPOGRAPHY UTILITY CLASSES
+   ============================================ */
+
+/* Title/Heading Text */
+.title-text,
+.text-title {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: var(--font-size-title);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Subtitle/Subheading Text */
+.subtitle-text,
+.text-subtitle {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: var(--font-size-subheading);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    font-style: italic;
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Normal Body Text */
+.normal-text,
+.text-body {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-body);
+    color: var(--color-text-primary);
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* ============================================
+   TEXT ALIGNMENT UTILITIES
+   ============================================ */
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* ============================================
+   FONT WEIGHT UTILITIES
+   ============================================ */
+
+.font-normal {
+    font-weight: var(--font-weight-normal);
+}
+
+.font-medium {
+    font-weight: var(--font-weight-medium);
+}
+
+.font-bold {
+    font-weight: var(--font-weight-bold);
+}
+
+/* ============================================
+   FONT SIZE UTILITIES
+   ============================================ */
+
+.text-small {
+    font-size: var(--font-size-small);
+}
+
+.text-tiny {
+    font-size: var(--font-size-tiny);
+}
+
+/* ============================================
+   TEXT COLOR UTILITIES
+   ============================================ */
+
+.text-primary {
+    color: var(--color-text-primary);
+}
+
+.text-secondary {
+    color: var(--color-text-secondary);
+}
+
+.text-brand {
+    color: var(--color-primary);
+}

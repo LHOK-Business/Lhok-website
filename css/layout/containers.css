@@ -1,27 +1,139 @@
-/* testing flex containers*/
+/* ============================================
+   LAYOUT CONTAINER UTILITIES
+   ============================================ */
 
+/* ============================================
+   FLEXBOX CONTAINERS
+   ============================================ */
+
+/* Basic flex container with even spacing */
 .flex-container {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 20px;
+    gap: var(--spacing-lg);
 }
 
-.center-everything{
+/* Flex row with wrapping */
+.flex-row {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+/* Flex column */
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* ============================================
+   CENTERING UTILITIES
+   ============================================ */
+
+/* Center content horizontally and vertically */
+/* Use carefully - accounts for fixed header/footer */
+.center-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
-.navbar {
+/* Center only horizontally */
+.center-horizontal {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+/* Center only vertically */
+.center-vertical {
+    display: flex;
     align-items: center;
 }
 
+/* ============================================
+   CONTENT WIDTH CONTAINERS
+   ============================================ */
+
+/* Constrained width container */
+.container {
+    width: 100%;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* Narrow container for reading content */
+.container-narrow {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* Full width container */
+.container-fluid {
+    width: 100%;
+    padding: 0 var(--spacing-lg);
+}
+
+/* ============================================
+   CARD LAYOUTS
+   ============================================ */
+
+/* Card grid layout */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+}
+
+/* Card row with wrapping */
 .card-row {
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap; /* Items wrap to next line if needed */
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   SPACING SECTIONS
+   ============================================ */
+
+.section {
+    padding: var(--spacing-xl) 0;
+}
+
+.section-sm {
+    padding: var(--spacing-lg) 0;
+}
+
+.section-lg {
+    padding: calc(var(--spacing-xl) * 2) 0;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .container,
+    .container-narrow,
+    .container-fluid {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .flex-container,
+    .card-grid,
+    .card-row {
+        gap: var(--spacing-md);
+    }
+    
+    /* Stack flex containers on mobile */
+    .flex-container,
+    .flex-row {
+        flex-direction: column;
+    }
 }
