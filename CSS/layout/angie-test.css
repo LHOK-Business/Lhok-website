@@ -1,9 +1,40 @@
 div {
-  margin: 10px;
-  padding: 10px;
   border: thin solid black;
+  padding: 10px;
 }
 
-.yellow { background-color: yellow; }
-.red { background-color: red; }
-.blue { background-color: cyan; }
+/* On mobile, the page layout is a single column. */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* On mobile, hide the left sidebar. */
+.left-sidebar {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  /* On desktop, the page layout is a grid.  */
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-rows: 1fr auto 1fr;
+  }
+
+  .header {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+  
+  /* On desktop, show the left sidebar. */
+  .left-sidebar {
+    display: block;
+  }
+
+  .footer {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+}
