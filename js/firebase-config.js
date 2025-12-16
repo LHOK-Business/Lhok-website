@@ -1,3 +1,6 @@
+// Contact Us functionality using Firebase Firestore
+
+
 // Test if script is loading
 console.log('Firebase config script loaded!');
 
