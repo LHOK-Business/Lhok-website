@@ -103,6 +103,19 @@ authButton.addEventListener('click', async () => {
         showError('Please fill in all fields');
         return;
     }
+
+
+    // Basic email format validation
+    if (!email.includes('@') || !email.includes('.')) {
+    showError('Please enter a valid email address');
+    return;
+    }
+
+    if (password.length < 8) {
+        showError('Password must be at least 8 characters');
+        return;
+    }
+    
     
     try {
         if (isSignUpMode) {
