@@ -6,23 +6,43 @@ Naming Conventions (from industry standards)
 
 
 project-root/
+css/
+ main.css                      # Orchestrates all imports
+├── variables.css                 # all variables/hardcoded values
 │
-├── index.html                 # Main landing page (stays in root)
+├── base/
+│   ├── reset.css                 # NEW: WIP seems like we are already doing this is just structured
+│   ├── typography.css            # Global Font Use
+│   └── global.css                # main styles reused throughout the website, html, body, global elements
 │
-├── pages/                     # All other pages
-│   ├── contact-us.html
-│   ├── about.html
-│   └── components/            # Reusable components
-│       ├── header.html
-│       └── footer.html
+├── layout/
+│   ├── containers.css            # Layout utilities
+│   ├── grid.css                  # grid
+│   └── spacing.css               # Margin/padding utilities
 │
-├── css/                       # All stylesheets
-│   ├── variables.css
-│   ├── main.css
-│   └── components.css         # Optional: styles for components
+├── components/
+│   ├── buttons.css               # refactored, Hunain to adjust this 
+│   ├── links.css                 # link styles 
+│   ├── forms.css                 # empty
+│   ├── cards.css                 # carousel
+│   ├── header.css                # as is
+│   └── footer.css                # as is 
 │
-├── js/                        # All JavaScript files
-│   ├── main.js               # Main functionality
-│   └── components.js         # Component loading logic
-│
-├── media/                     # All images and media (lowercase convention)
+└── pages/						   # Seems we should minimize use of these css, instead using classes from above
+    ├── contact-us.css            
+    └── terms-and-conditions.css
+
+js/
+├── componenets.js                # link several instances of a single element  
+├── firebase-config.js            # contact us form to send information to firebase
+├── main.js                       # home screen carousel
+
+
+index.html                 # Main landing page (stays in root)
+pages/                      # All other pages
+├── contact-us.html
+├── about.html
+├── {other pages}
+└── components/            # Reusable components
+    ├── header.html
+    └── footer.html

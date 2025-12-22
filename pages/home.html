@@ -1,0 +1,73 @@
+<!-- This is shown to only logged on users-->
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+        <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="../css/main.css">
+
+
+</head>
+
+<body>
+
+<!-- Header section starts -->
+<div id="header-placeholder"></div>
+<!-- Header section ends -->
+
+    <div class="container">
+        
+        <div class="welcome-card">
+            <div class="header">
+                <h1 id="welcome-message">Hello, Friend! 👋</h1>
+                <p class="subtitle">Welcome to your personalized dashboard</p>
+            </div>
+
+            <div class="profile-section">
+                <h2>Your Profile</h2>
+                <div class="profile-info">
+                    <div class="info-row">
+                        <span class="label">Full Name:</span>
+                        <span id="full-name" class="value">Loading...</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Email:</span>
+                        <span id="email" class="value">Loading...</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">User ID:</span>
+                        <span id="user-id" class="value">Loading...</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Account Created:</span>
+                        <span id="account-created" class="value">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-section">
+                <h2>You're all set! ✅</h2>
+                <p>You can now use this authentication throughout your website. The user's first name is extracted from their displayName property.</p>
+            </div>
+
+            <button id="sign-out-button" class="btn btn-signout">Sign Out</button>
+        </div>
+    </div>
+<!-- Footer section starts -->
+<div id="footer-placeholder"></div>
+<!-- Footer section ends -->
+
+
+    <script src="../js/components.js"></script>
+    <script type="module" src="../js/home.js"></script>
+</body>
+</html>
