@@ -1,40 +1,20 @@
-div {
-  border: thin solid black;
-  padding: 10px;
-}
-
-/* On mobile, the page layout is a single column. */
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: [left] 1fr 2fr [right];
+  grid-template-rows : 100px [middle] 50px 100px [bottom];
 }
 
-/* On mobile, hide the left sidebar. */
-.left-sidebar {
-  display: none;
+.red {
+  background-color: red;
+  grid-column-start: left;
+  grid-column-end: right;
 }
 
-@media (min-width: 600px) {
-  /* On desktop, the page layout is a grid.  */
-  .container {
-    display: grid;
-    grid-template-columns: 1fr 10fr 1fr;
-    grid-template-rows: 1fr auto 1fr;
-  }
-
-  .header {
-    grid-column-start: 1;
-    grid-column-end: 4;
-  }
-  
-  /* On desktop, show the left sidebar. */
-  .left-sidebar {
-    display: block;
-  }
-
-  .footer {
-    grid-column-start: 1;
-    grid-column-end: 4;
-  }
+.green {
+  background-color: lime;
+  grid-row-start: middle;
+  grid-row-end: bottom;
 }
+
+.blue { background-color: cyan; }
+.yellow { background-color: yellow; }
