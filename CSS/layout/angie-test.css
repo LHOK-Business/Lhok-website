@@ -1,27 +1,19 @@
 .container-test {
-  display: grid;
-  grid-template-columns: [left] 1fr 2fr [right];
-  grid-template-rows : 100px [middle] 50px 100px [bottom];
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.red {
-  background-color: red;
-  grid-column-start: left;
-  grid-column-end: right;
+.middle {
+  display: flex;
+  gap: 10px
 }
 
-.green {
-  background-color: lime;
-  grid-row-start: middle;
-  grid-row-end: bottom;
+.content {
+  flex-grow: 1;
 }
 
-.blue { background-color: cyan; }
-.yellow { background-color: yellow; }
-
-p {
-  margin: 0;
-  padding: 1rem;
-  font-size: 10.25px;
-  font-weight: bold;
+div {
+  border: thin solid rgb(78, 160, 88);
+  padding: 10px;
 }
