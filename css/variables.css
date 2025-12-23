@@ -45,8 +45,8 @@
     /* ============================================
        LAYOUT
        ============================================ */
-    --header-height: 80px;
-    --footer-height: 80px;
+    --header-height: 100px;
+    --footer-height: 100px;
     --max-content-width: 1200px;
     
     /* Logo dimensions */

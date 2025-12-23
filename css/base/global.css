@@ -8,6 +8,8 @@ html {
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     /* Typography */
     font-family: var(--font-family-primary);
     font-size: var(--font-size-body);
@@ -26,6 +28,7 @@ body {
     
     /* Text */
     text-align: center; /* Default center alignment - override in components */
+    flex: 1;
 }
 
 /* ============================================

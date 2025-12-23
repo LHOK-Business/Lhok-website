@@ -1,0 +1,14 @@
+.holy-grail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.middle1234 {
+  display: flex;
+  gap: 10px
+}
+
+.content1234 {
+  flex-grow: 1;
+}
