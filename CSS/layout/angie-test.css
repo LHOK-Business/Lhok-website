@@ -1,4 +1,4 @@
-.container {
+.container-test {
   display: grid;
   grid-template-columns: [left] 1fr 2fr [right];
   grid-template-rows : 100px [middle] 50px 100px [bottom];
@@ -18,3 +18,10 @@
 
 .blue { background-color: cyan; }
 .yellow { background-color: yellow; }
+
+p {
+  margin: 0;
+  padding: 1rem;
+  font-size: 10.25px;
+  font-weight: bold;
+}
