@@ -1,14 +1,12 @@
-.holy-grail {
-  display: flex;
-  flex-direction: column;
+.container1101 { /*big wrapper creating 1 ds*/
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  grid-template-rows: auto;
   gap: 10px;
 }
 
-.middle1234 {
-  display: flex;
-  gap: 10px
-}
 
-.content1234 {
-  flex-grow: 1;
+.left-side-bar-1101 {
+  background-color: grey;
+  text-align: center;
 }

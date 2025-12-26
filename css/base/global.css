@@ -31,6 +31,11 @@ body {
     flex: 1;
 }
 
+main {
+
+    flex: 1 0 auto; /* Grow to fill space, don't shrink, auto basis*/ 
+    width: 100%;
+}
 /* ============================================
    DEFAULT LINK STYLES
    ============================================ */
