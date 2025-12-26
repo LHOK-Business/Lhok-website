@@ -1,12 +1,25 @@
 .container1101 { /*big wrapper creating 1 ds*/
   display: grid;
-  grid-template-columns: 1fr 10fr;
-  grid-template-rows: auto;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  align-content: stretch;
   gap: 10px;
+  justify-items: stretch;
+  height: 100%3
 }
 
 
 .left-side-bar-1101 {
-  background-color: grey;
+  
+  background-color: blue;
   text-align: center;
+  justify-items: stretch;
+  grid-row: span 3;
+}
+
+.content1101 {
+  background-color: yellow;
+  justify-items: stretch;
+  grid-column: 2 / span 2;
+  grid-row: 1 / span 2
 }
