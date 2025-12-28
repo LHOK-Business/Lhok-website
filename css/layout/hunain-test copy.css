@@ -1,4 +1,4 @@
-.container3by3 { /*big wrapper creating 1 ds*/
+.container-3by3 { /*big wrapper creating 1 ds*/
   display: grid;
   grid-template-columns:  repeat(3, auto);
   grid-template-rows: repeat(3, auto);
@@ -8,7 +8,7 @@
   height: 100%;
 }
 
-.container4by4 { /*big wrapper creating 1 ds*/
+.container-4by4 { /*big wrapper creating 1 ds*/
   display: grid;
   grid-template-columns:  repeat(4, auto);
   grid-template-rows: repeat(4, auto);
