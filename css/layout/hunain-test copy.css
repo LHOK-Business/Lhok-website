@@ -1,33 +1,37 @@
-.container-3by3 { /*big wrapper creating 1 ds*/
+.container-3by3 { /*big wrapper creating a grid*/
   display: grid;
   grid-template-columns:  repeat(3, auto);
   grid-template-rows: repeat(3, auto);
   align-content: stretch;
   gap: 10px;
   justify-items: stretch;
-  height: 100%;
+  min-height: 100vh;/* the minimum height of the container/grid is the view window*/
+  height: auto; /* auto set height, bc class=body is 100% height, this will fill the entire screen. */
 }
 
-.container-4by4 { /*big wrapper creating 1 ds*/
+.container-4by4 { /*big wrapper creating a  grid*/
   display: grid;
   grid-template-columns:  repeat(4, auto);
   grid-template-rows: repeat(4, auto);
   align-content: stretch;
   gap: 10px;
   justify-items: stretch;
-  height: 100%;
+  min-height: 100vh;/* the minimum height of the container/grid is the view window*/
+  height: auto; /* auto set height, bc class=body is 100% height, this will fill the entire screen. */
 }
 
+
+.single-4by4-cell {
+  align-self: center;
+  background-color: rgb(236, 214, 165);
+}
 
 .left-side-bar-1101 {
   background-color: blue;
-  text-align: center;
-  justify-items: stretch;
-  grid-row: span 3;
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 2;
 }
 
 .content1101 {
-  background-color: yellow;
-  justify-items: stretch;
   grid-row: 1 / span 3
 }

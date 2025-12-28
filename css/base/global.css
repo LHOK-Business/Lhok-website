@@ -17,6 +17,7 @@ body {
     line-height: 1.6;
     
     /* Layout */
+    height: 100%;
     min-height: 100vh;
     
     /* Account for fixed header and footer */
