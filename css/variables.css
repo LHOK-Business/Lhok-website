@@ -1,7 +1,7 @@
 :root {
     /* ============================================
        COLORS
-       ============================================ */
+       ============================================ x:var(-- lets you search the color you want */
     --color-primary: #b54dbc;
     --color-primary-dark: #9a3ea3;
     --color-white: #ffffff;
@@ -27,7 +27,7 @@
     --font-size-body: 1rem;         /* 16px */
     --font-size-small: 0.875rem;    /* 14px */
     --font-size-tiny: 0.75rem;      /* 12px */
-    
+   
     /* Font weights */
     --font-weight-normal: 400;
     --font-weight-medium: 500;
