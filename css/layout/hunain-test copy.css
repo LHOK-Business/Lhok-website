@@ -26,6 +26,13 @@
   background-color: rgb(236, 214, 165);
 }
 
+.center-block {
+  background-color: blue;
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 2;
+
+}
+
 .left-side-bar-1101 {
   background-color: blue;
   grid-row: 1 / span 2;
