@@ -93,3 +93,52 @@
 /* ============================================
    Standard Children Containers for 3 by 3 Grid
    ============================================ */
+
+   .One-Two {   
+  background-color: rgb(211, 154, 230);
+  justify-items: center;
+  grid-row: 1;
+  grid-column: 2 ;
+  /*   
+       1 2 3 
+     1 -|x|-
+     2 -|-|-
+     3 -|-|-
+     Row first then column for naming*/
+}
+
+.Two-One {
+  background-color: rgb(211, 154, 230);
+  grid-row: 2;
+  grid-column: 1;
+  /* 
+       1 2 3 
+     1 -|-|-
+     2 x|-|-
+     3 -|-|-
+     Row first then column for naming*/
+}
+
+.Two-Two {
+  background-color: rgb(211, 154, 230);
+  grid-row: 2;
+  grid-column: 2;
+  /* 
+       1 2 3 
+     1 -|-|-
+     2 -|x|-
+     3 -|-|-
+     Row first then column for naming*/
+}
+
+.Two-Three {
+  background-color: rgb(211, 154, 230);
+  grid-row: 2;
+  grid-column: 3;
+  /* 
+       1 2 3 
+     1 -|-|-
+     2 -|-|x
+     3 -|-|-
+     Row first then column for naming*/
+}
