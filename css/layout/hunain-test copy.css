@@ -150,3 +150,19 @@
   align-self: center;
   background-color: rgb(236, 214, 165);
 }
+
+
+   .Testchild {   
+  background-color: rgb(211, 154, 230);
+  justify-items: center;
+  grid-row: 1 / 1;
+  grid-column: 1 / 1 ;
+  /*   
+       1 2 3 
+     1 -|x|-
+     2 -|-|-
+     3 -|-|-
+
+
+     Row first then column for naming*/
+}
