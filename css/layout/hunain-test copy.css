@@ -93,37 +93,25 @@
 /* ============================================
    Standard Children Containers for 3 by 3 Grid
    ============================================ */
-
    .One-Two {   
-  background-color: rgb(211, 154, 230);
-  justify-items: center;
+  justify-content: center;
+  align-items: center;     
   grid-row: 1;
   grid-column: 2 ;
   /*   
        1 2 3 
-     1 -|x|-
+     1 -|1|-
      2 -|-|-
      3 -|-|-
      Row first then column for naming*/
 }
-
-.Two-One {
-  background-color: rgb(211, 154, 230);
+   
+   .Two-Two {   
+  justify-content: center;
+  align-items: center;     
   grid-row: 2;
-  grid-column: 1;
-  /* 
-       1 2 3 
-     1 -|-|-
-     2 x|-|-
-     3 -|-|-
-     Row first then column for naming*/
-}
-
-.Two-Two {
-  background-color: rgb(211, 154, 230);
-  grid-row: 2;
-  grid-column: 2;
-  /* 
+  grid-column: 2 ;
+  /*   
        1 2 3 
      1 -|-|-
      2 -|x|-
@@ -131,38 +119,53 @@
      Row first then column for naming*/
 }
 
-.Two-Three {
-  background-color: rgb(211, 154, 230);
-  grid-row: 2;
+.Three-One {
+  grid-row: 3;
+  grid-column: 1;
+  /* 
+       1 2 3 
+     1 -|-|-
+     2 -|-|-
+     3 x|-|-
+     Row first then column for naming*/
+}
+
+.Three-Two {
+  grid-row: 3;
+  grid-column: 2;
+  /* 
+       1 2 3 
+     1 -|-|-
+     2 -|-|-
+     3 -|x|-
+     Row first then column for naming*/
+}
+
+.Three-Three {
+  grid-row: 3;
   grid-column: 3;
   /* 
        1 2 3 
      1 -|-|-
-     2 -|-|x
-     3 -|-|-
+     2 -|-|-
+     3 -|-|x
      Row first then column for naming*/
 }
 
+
+.Waves_Icon {
+  justify-self: center;
+  align-self: center;
+  padding-bottom: 10px;
+}
+
+.extra-space {
+  height: 50px;
+}
 
 
 /* Testing cell numbrs in grids */
 .single-4by4-cell { 
   align-self: center;
   background-color: rgb(236, 214, 165);
-}
-
-
-   .Testchild {   
-  background-color: rgb(211, 154, 230);
-  justify-items: center;
-  grid-row: 1 / 1;
-  grid-column: 1 / 1 ;
-  /*   
-       1 2 3 
-     1 -|x|-
-     2 -|-|-
-     3 -|-|-
-
-
-     Row first then column for naming*/
 }
