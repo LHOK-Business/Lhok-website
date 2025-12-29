@@ -40,10 +40,11 @@
 
 .middle-container {
   background-color: rgb(98, 98, 95);
-  grid-row:2 ;
-  justify-items: center;
-  grid-column:2 /span 2;
 
+  justify-items: center;
+  grid-row:2 / 3;
+  grid-column-start:3;
+  grid-column-end:3;
 }
 
 .section-first {
