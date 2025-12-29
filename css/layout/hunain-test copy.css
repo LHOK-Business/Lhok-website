@@ -38,11 +38,15 @@
   grid-row: 1 / span 3
 }
 
-.middle-container {
+.B1-C1 {   
   background-color: rgb(211, 154, 230);
   justify-items: center;
   grid-row: 1 / 1;
   grid-column: 2 / 3;
+  /*   A B C D
+     1 x|o|o|x
+     2 x|x|x|x
+     3 x|x|x|x */
 }
 
 .section-first {
