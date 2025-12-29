@@ -4,27 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signin</title>
+    <title>Template Page</title>
 
         <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    
+    <link rel="stylesheet" href="../css/layout/hunain-test copy.css">
     <link rel="stylesheet" href="../css/main.css">
 </head>
 
-
 <body>
-<!-- Header section starts -->
-<div id="header-placeholder"></div>
-<!-- Header section ends -->
 
-<main>
-    <div class="container"> <!-- Only took this out -->
-        <div class="auth-card">
-            <h2 id="auth-title">Sign In</h2>
+    <!-- Header section starts -->
+    <div id="header-placeholder"></div>
+    <!-- Header section ends -->
+
+    <main>   <!-- Main content -->
+
+        <div class="container3by3">
+            <div class="OneThree-Two">
+                <div class="auth-card">
+            <h1 id="auth-title">Sign In</h1>
 
             <div id="error-message" class="error-message hidden"></div>
 
@@ -75,17 +77,18 @@
                 <button id="toggle-button">Don't have an account? Sign up</button>
             </div>
         </div>
-    </div>
+            </div>
+        </div>
+    </main>
 
-</main>
+        <!-- Footer section starts -->
+        <div id="footer-placeholder"></div>
+        <!-- Footer section ends -->
+
+        <script src="../js/components.js"></script>
+        <script src="../js/main.js"></script>
 
 
-<!-- Footer section starts -->
-<div id="footer-placeholder"></div>
-<!-- Footer section ends -->
-    
-    <script src="../js/components.js"></script>
-    <!-- Firebase SDK -->
-    <script type="module" src="../js/firebase-auth.js"></script>
 </body>
+
 </html>

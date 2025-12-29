@@ -163,6 +163,13 @@
      3 -|x|-
      Row first then column for naming*/
 }
+
+/* Testing cell numbrs in grids */
+.single-4by4-cell { 
+  align-self: center;
+  background-color: rgb(236, 214, 165);
+}
+
 /* ============================================
    Standard helper classes
    ============================================ */
@@ -177,8 +184,3 @@
 }
 
 
-/* Testing cell numbrs in grids */
-.single-4by4-cell { 
-  align-self: center;
-  background-color: rgb(236, 214, 165);
-}
