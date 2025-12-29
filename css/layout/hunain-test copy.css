@@ -1,68 +1,95 @@
-.container3by3 { /*big wrapper creating 1 ds*/
+/* ============================================
+   Standard Parent Grids
+     /*   1 2 3 4
+     1 -|-|-|-
+     2 -|-|-|-
+     3 -|-|-|-
+     4 -|-|-|- 
+     Row first then column for naming
+
+       1 2 3 
+     1 -|-|-
+     2 -|-|-
+     3 -|-|-
+     
+     Row first then column for naming     
+   ============================================ */
+
+.container3by3 { 
   display: grid;
   grid-template-columns:  repeat(3, auto);
   grid-template-rows: repeat(3, auto);
   align-content: stretch;
-  gap: 10px;
   justify-items: stretch;
+  gap: 10px;
   height: 100%;
+  min-height: 100vh;
 }
 
-.container4by4 { /*big wrapper creating 1 ds*/
+.container4by4 { 
   display: grid;
   grid-template-columns:  repeat(4, auto);
   grid-template-rows: repeat(4, auto);
   align-content: stretch;
+  justify-items: stretch;
   gap: 10px;
-  justify-items: stretch;
   height: 100%;
+  min-height: 100vh;
 }
 
-.left-nav-bar-1101 {
-  background-color: purple;
-  text-align: center;
-  justify-items: stretch;
-  grid-row: span 2;
-}
+/* ============================================
+   Standard Children Containers for 4 by 4 Grid
+   ============================================ */
 
-.left-side-bar-1101 {
-  background-color: blue;
-  text-align: center;
-  justify-items: stretch;
-  grid-row: span 3;
-}
-
-.content1101 {
-  background-color: yellow;
-  justify-items: center;
-  grid-row: 1 / span 3
-}
-
-.B1-C1 {   
+.OneTwo-OneThree {   
   background-color: rgb(211, 154, 230);
   justify-items: center;
   grid-row: 1 / 1;
   grid-column: 2 / 3;
-  /*   A B C D
-     1 x|o|o|x
-     2 x|x|x|x
-     3 x|x|x|x */
+  /*   1 2 3 4
+     1 -|x|x|-
+     2 -|-|-|-
+     3 -|-|-|-
+     4 -|-|-|- 
+     Row first then column for naming*/
 }
 
-.section-first {
+.ThreeOne-FourTwo {
   background-color: rgb(211, 154, 230);
   grid-row: 3 / 4;
   grid-column: 1 / 2;
+  /*   1 2 3 4
+     1 -|-|-|-
+     2 -|-|-|-
+     3 x|x|-|-
+     4 x|x|-|- 
+     Row first then column for naming*/
 }
 
-.section-second {
+.ThreeTwo-FourThree {
   background-color: rgb(211, 154, 230);
   grid-row: 3 / 4;
   grid-column: 2 / 3;
+    /* 1 2 3 4
+     1 -|-|-|-
+     2 -|-|-|-
+     3 -|x|x|-
+     4 -|x|x|- 
+     Row first then column for naming*/
 }
 
-.section-third {
+.ThreeThree-FourFour {
   background-color: rgb(211, 154, 230);
   grid-row: 3 / 4;
   grid-column: 3 / 4;
+    /*   1 2 3 4
+     1 -|-|-|-
+     2 -|-|-|-
+     3 -|-|x|x
+     4 -|-|x|x 
+     Row first then column for naming*/
 }
+
+/* ============================================
+   Standard Children Containers for 3 by 3 Grid
+   ============================================ */

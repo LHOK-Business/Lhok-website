@@ -46,3 +46,13 @@ pages/                      # All other pages
 └── components/            # Reusable components
     ├── header.html
     └── footer.html
+
+
+    /* 
+|\|A|B|C|D|
+|1|-|-|-|-|
+|2|-|-|-|-|
+|3|-|-|-|-|
+|4|-|-|-|-|
+
+ */
