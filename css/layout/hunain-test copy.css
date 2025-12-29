@@ -39,22 +39,26 @@
 }
 
 .middle-container {
+  background-color: rgb(211, 154, 230);
   justify-items: center;
-  grid-row:2 / 3;
-  grid-column:3 / 3;
+  grid-row: 1 / 1;
+  grid-column: 2 / 3;
 }
 
 .section-first {
+  background-color: rgb(211, 154, 230);
+  grid-row: 3 / 4;
+  grid-column: 1 / 2;
+}
+
+.section-second {
+  background-color: rgb(211, 154, 230);
   grid-row: 3 / 4;
   grid-column: 2 / 3;
 }
 
-.section-second {
+.section-third {
+  background-color: rgb(211, 154, 230);
   grid-row: 3 / 4;
   grid-column: 3 / 4;
-}
-
-.section-third {
-  grid-row: 3 / 4;
-  grid-column: 4 / 5;
 }
