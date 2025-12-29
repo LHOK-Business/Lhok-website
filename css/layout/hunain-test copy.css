@@ -39,8 +39,6 @@
 }
 
 .middle-container {
-  background-color: rgb(98, 98, 95);
-
   justify-items: center;
   grid-row:2 / 3;
   grid-column-start:3;
@@ -48,7 +46,6 @@
 }
 
 .section-first {
-  background-color: red;
   grid-row-start:3;
   grid-row-end:4;
   grid-column-start:2;
@@ -56,7 +53,6 @@
 }
 
 .section-second {
-  background-color: rgb(49, 61, 132);
   grid-row-start:3;
   grid-row-end:4;
   grid-column-start:3;
@@ -64,7 +60,6 @@
 }
 
 .section-third {
-  background-color: rgb(132, 61, 49);
   grid-row-start:3;
   grid-row-end:4;
   grid-column-start:4;
