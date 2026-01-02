@@ -38,7 +38,7 @@ footer {
     padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-xs) var(--spacing-lg);
     position: relative;
 }
-
+/* Using below */
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(7, auto);
@@ -47,10 +47,7 @@ footer {
     width: 100%;
 }
 
-.footer-One-four {
-    grid-column: 4 ;
-    justify-self: start;
-}
+
 
 
 /* ============================================
@@ -79,7 +76,7 @@ footer {
 /* ============================================
    FOOTER LOGO
    ============================================ */
-
+/* Using below  to force the logo*/
 .footer-logo {
     grid-column: 4 ;
 }

@@ -77,7 +77,7 @@ header {
     flex: 1;
     min-width: 0; /* Allows shrinking */
 }
-
+/* Using below */
 .header-nav-left {
     justify-content: flex-start;
 }
