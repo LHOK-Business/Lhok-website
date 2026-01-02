@@ -57,3 +57,9 @@ the additional parameters should be added to "OneThree-Two*/
     justify-self: center;
 
 }
+
+.home .OneThree-Two {
+    max-width: 20%;
+    justify-self: center;
+
+}
