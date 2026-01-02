@@ -48,3 +48,12 @@
     margin-left: 20px;
     line-height: 1.8;
 }
+
+/* this line specifies that if class "OneThree-Two" 
+is within class "terms-and-conditions" (which is not explicityly defined)
+the additional parameters should be added to "OneThree-Two*/
+.terms-and-conditions .OneThree-Two {
+    max-width: 66%;
+    justify-self: center;
+
+}
