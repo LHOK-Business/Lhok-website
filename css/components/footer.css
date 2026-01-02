@@ -2,7 +2,7 @@
    FOOTER
    ============================================ */
 
-.footer {
+footer {
     /* Positioning */
     position: relative;
     bottom: 0;
@@ -39,6 +39,20 @@
     position: relative;
 }
 
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+}
+
+.footer-One-four {
+    grid-column: 4 ;
+    justify-self: start;
+}
+
+
 /* ============================================
    FOOTER CONTENT
    ============================================ */
@@ -67,9 +81,7 @@
    ============================================ */
 
 .footer-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    grid-column: 4 ;
 }
 
 .footer-logo img {
