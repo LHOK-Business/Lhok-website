@@ -55,7 +55,7 @@ onAuthStateChanged(auth, (user) => {
         
     } else {
         // No user is signed in - redirect to auth page
-        window.location.href = 'login.html'; // CHANGE THIS to your auth page filename
+        window.location.href = 'login.html';
     }
 });
 
