@@ -60,6 +60,12 @@ header {
     width: 100%;
 }
 
+.header-One-One {
+    grid-column: 1 ;
+    justify-self: start;
+}
+
+
 /* ============================================
    HEADER NAVIGATION CONTAINERS
    ============================================ */

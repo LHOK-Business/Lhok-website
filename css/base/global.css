@@ -93,3 +93,16 @@ a:focus-visible {
     max-width: 100%;
     object-fit: contain;
 }
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+
+@media (max-width: 768px) { /* Only apply these styles on screens 768px or narrower (tablets/phones) */
+    .nav-link,
+    .footer-nav-link { /* Target both navigation links and footer navigation links */
+        font-size: 0.6875rem; /* 11px */
+        padding: var(--spacing-xs) var(--spacing-xs); /* Reduce the spacing around the links (using a CSS variable for extra-small spacing) */
+    }
+}
