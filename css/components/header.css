@@ -52,6 +52,14 @@ header {
     position: relative;
 }
 
+.header-grid {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+}
+
 /* ============================================
    HEADER NAVIGATION CONTAINERS
    ============================================ */
