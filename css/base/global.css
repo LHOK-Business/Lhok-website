@@ -36,36 +36,7 @@ main {
     flex: 1 0 auto; /* Grow to fill space, don't shrink, auto basis*/ 
     width: 100%;
 }
-/* ============================================
-   DEFAULT LINK STYLES
-   ============================================ */
-/* Base styles for standard content links (not navigation) */
 
-a {
-    color: var(--color-link);
-    text-decoration: none;
-    transition: color var(--transition-speed-normal) var(--transition-easing);
-}
-
-a:hover {
-    color: var(--color-primary-dark);
-    text-decoration: underline;
-}
-
-a:visited {
-    color: #800080; /* Consider adding to variables as --color-link-visited */
-}
-
-a:active {
-    color: #ff0000; /* Consider adding to variables as --color-link-active */
-}
-
-/* Focus state for accessibility */
-a:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-    border-radius: var(--border-radius-sm);
-}
 
 /* ============================================
    IMAGE CONTAINERS
