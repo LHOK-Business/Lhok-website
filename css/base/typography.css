@@ -10,9 +10,7 @@
    ============================================ */
 
 /* Title/Heading Text --> One per page */
-h1,
-.title-text,
-.text-title {
+h1 {
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: var(--font-size-title);
     font-weight: var(--font-weight-bold);
