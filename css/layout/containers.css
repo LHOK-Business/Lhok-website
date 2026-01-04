@@ -6,13 +6,7 @@
    FLEXBOX CONTAINERS
    ============================================ */
 
-/* Basic flex container with even spacing */
-.flex-container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: var(--spacing-lg);
-}
+
 
 /* Flex row with wrapping */
 .flex-row {
@@ -124,16 +118,4 @@
     .container-fluid {
         padding: 0 var(--spacing-md);
     }
-    
-    .flex-container,
-    .card-grid,
-    .card-row {
-        gap: var(--spacing-md);
     }
-    
-    /* Stack flex containers on mobile */
-    .flex-container,
-    .flex-row {
-        flex-direction: column;
-    }
-}
