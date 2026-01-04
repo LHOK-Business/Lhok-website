@@ -76,7 +76,7 @@
 }
 
 .btn-success:hover {
-    background-color: #45a049;
+    background-color: #5e4f94;
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
