@@ -10,8 +10,8 @@
    ============================================ */
 
 
-/* Set font size for each header */
-h1, h2, h3, h4 ,h5 ,h6 {
+/* Set font for each header */
+h1, h2, h3, h4 ,h5 ,h6, p, a {
     font-family: var(--font-family-primary);
 }
 
@@ -83,11 +83,29 @@ a:focus-visible {
     outline-offset: 2px;
     border-radius: var(--border-radius-sm);
 }
-
-
 /* ============================================
-   Emphasis, use this in line to and text format 
-   ex: <div> There <strong> is </strong> emphasis on <em> THIS </em>
+Indented Lists
+   ============================================ */
+ul, ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+/* ============================================
+   EMPHASIS
+   use this in line to and text format; ex: <div> There <strong> is </strong> emphasis on <em> THIS </em>
    ============================================ */
 
    /* Bold  */
@@ -100,6 +118,7 @@ a:focus-visible {
     font-style: italic;
     /* Or use a different approach */
     }
+    
 /* ============================================
    TEXT ALIGNMENT UTILITIES
    ============================================ */
