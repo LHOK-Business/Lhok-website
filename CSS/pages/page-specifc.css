@@ -58,6 +58,12 @@ the additional parameters should be added to "OneThree-Two*/
 
 }
 
+.privacy-policy .OneThree-Two {
+    max-width: 66%;
+    justify-self: center;
+
+}
+
 .home .OneThree-Two {
     max-width: 20%;
     justify-self: center;
