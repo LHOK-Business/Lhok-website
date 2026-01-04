@@ -9,6 +9,12 @@
    TYPOGRAPHY UTILITY CLASSES
    ============================================ */
 
+
+/* Set font size for each header */
+h1, h2, h3, h4 ,h5 ,h6 {
+    font-family: var(--font-family-primary);
+}
+
 /* Title/Heading Text --> One per page */
 h1 {
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -20,10 +26,8 @@ h1 {
 }
 
 /* Subtitle/Main Content Subheading */
-h2,
-.subtitle-text,
-.text-subtitle {
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+h2{
+
     font-size: var(--font-size-subheading);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-secondary);
@@ -33,7 +37,6 @@ h2,
 
 /* subsub headings */
 h3 {
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: var(--font-size-subheading);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-secondary);
@@ -42,10 +45,8 @@ h3 {
 }
 
 /* Normal Body Text */
-p,
-.normal-text,
-.text-body {
-    font-family: var(--font-family-primary);
+p{
+    font-family: var(--font-family-secondary);
     font-size: var(--font-size-body);
     color: var(--color-text-primary);
     line-height: 1.6;
@@ -85,13 +86,16 @@ a:focus-visible {
 
 
 /* ============================================
-   Emphasis
+   Emphasis, use this in line to and text format 
+   ex: <div> There <strong> is </strong> emphasis on <em> THIS </em>
    ============================================ */
 
-    strong {
+   /* Bold  */
+    strong { 
     font-weight: 700;
     }
 
+    /* */
     em {
     font-style: italic;
     /* Or use a different approach */
