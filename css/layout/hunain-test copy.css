@@ -68,7 +68,6 @@
 }
 
 .ThreeTwo-FourThree {
-  background-color: rgb(211, 154, 230);
   grid-row: 3 / 4;
   grid-column: 2 / 3;
     /* 1 2 3 4
@@ -80,7 +79,28 @@
 }
 
 .ThreeThree-FourFour {
-  background-color: rgb(211, 154, 230);
+  grid-row: 3 / 4;
+  grid-column: 3 / 4;
+    /*   1 2 3 4
+     1 -|-|-|-
+     2 -|-|-|-
+     3 -|-|x|x
+     4 -|-|x|x 
+     Row first then column for naming*/
+}
+
+.TwoTwo-ThreeTwo {
+  grid-row: 2 / 3;
+  grid-column: 2 / 2;
+    /*  1 2 3 4
+     1 -|-|-|-
+     2 -|x|x|-
+     3 -|x|x|-
+     4 -|-|-|- 
+     Row first then column for naming*/
+}
+
+.ThreeThree-FourFour {
   grid-row: 3 / 4;
   grid-column: 3 / 4;
     /*   1 2 3 4
