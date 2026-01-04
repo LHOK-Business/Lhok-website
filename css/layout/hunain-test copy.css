@@ -41,12 +41,12 @@
    Standard Children Containers for 4 by 4 Grid
    ============================================ */
 
-/* .OneTwo-OneThree {   
+.OneTwo-OneThree {   
   background-color: rgb(211, 154, 230);
   justify-items: center;
   grid-row: 1 / 1;
   grid-column: 2 / 3;
-  } */
+  }
   /*   1 2 3 4
      1 -|x|x|-
      2 -|-|-|-
