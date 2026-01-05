@@ -11,13 +11,17 @@
 
 
 /* Set font for each header */
-h1, h2, h3, h4 ,h5 ,h6, p, a {
+h1, h2, h3, h4 ,h5 ,h6 {
     font-family: var(--font-family-primary);
+}
+
+/* set font for normal links and text */
+a, p {
+    font-family: var(--font-family-secondary);
 }
 
 /* Title/Heading Text --> One per page */
 h1 {
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: var(--font-size-title);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
@@ -178,3 +182,5 @@ ol {
 .text-brand {
     color: var(--color-primary);
 }
+
+

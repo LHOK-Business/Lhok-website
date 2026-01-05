@@ -8,7 +8,6 @@
     --color-secondary: #333333;
     --color-secondary-dark: #333333;
 
-
     --color-white: #ffffff;
     --color-gray-dark: #333333;
     --color-gray-medium: #666666;
@@ -76,7 +75,7 @@
        TRANSITIONS & ANIMATIONS
        ============================================ */
     --transition-speed-fast: 0.15s;
-    --transition-speed-normal: 0.3s;
+    --transition-speed-normal: 0.10s;
     --transition-speed-slow: 0.5s;
     --transition-easing: ease;
     

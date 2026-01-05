@@ -28,6 +28,7 @@
 @import url('components/links.css');
 
 /* 6. PAGES - Page-specific styles (use sparingly) */
+@import url('pages/page-specifc.css');
 
 /* page specific css's are called individually in respective html files  */
 
