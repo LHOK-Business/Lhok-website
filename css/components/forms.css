@@ -1,4 +1,5 @@
-.contact-form {
+/* The Block around the Header */
+.basic-form-1 {
     max-width: 600px;
     margin: var(--spacing-xl) auto;
     padding: var(--spacing-xl);
@@ -7,3 +8,94 @@
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-md);
 }
+
+.form-group {
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    
+    font-size: var(--font-size-body);
+    font-family: var(--font-family-primary);
+    
+    background: #f9f9f9;
+    border: var(--border-width) solid var(--color-gray-light);
+    border-radius: var(--border-radius-md);
+    
+    transition: all var(--transition-speed-normal) var(--transition-easing);
+}
+
+/* Focus state */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    background: var(--color-background);
+    border-color: #4CAF50; /* Consider adding to variables */
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+/* Invalid state */
+.form-group input.invalid,
+.form-group textarea.invalid {
+    border-color: #dc3545; /* Consider adding to variables */
+}
+
+/* ============================================
+   TEXTAREA
+   ============================================ */
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* ============================================
+   SELECT DROPDOWN
+   ============================================ */
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+/* ============================================
+   HELPER TEXT & VALIDATION
+   ============================================ */
+
+.char-count {
+    display: block;
+    text-align: right;
+    margin-top: var(--spacing-xs);
+    
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+}
+
+.error-message {
+    display: block;
+    margin-top: var(--spacing-xs);
+    min-height: 1.2rem;
+    
+    font-size: var(--font-size-small);
+    color: #dc3545;
+}
+

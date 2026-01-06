@@ -1,12 +1,66 @@
 /* ============================================
    BUTTON COMPONENTS
    ============================================ */
+/* ============================================
+   FORM SUBMIT BUTTON
+   ============================================ */
+
+.submit-btn {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-xl);
+    
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+
+    /*change submit button colour*/
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%); 
+    border: none;
+    border-radius: var(--border-radius-md);
+    
+    cursor: pointer;
+    transition: all var(--transition-speed-normal) var(--transition-easing);
+    
+    position: relative;
+    overflow: hidden;
+}
+
+    /*change submit button colour*/
+.submit-btn:hover {
+    background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Loading animation */
+.btn-loader {
+    display: inline-block;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+
 
 /* ============================================
    BASE BUTTON STYLES
    ============================================ */
 
 .btn,
+.basic-btn-1,
 .custom-button {
     /* Reset */
     border: none;
