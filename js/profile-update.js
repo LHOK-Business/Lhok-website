@@ -177,7 +177,8 @@ onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in
         currentUser = user;
-        userEmailSpan.textContent = user.email;
+        userEmailmessage.textContent = "user.email";
+        userEmail-message.textContent = "user.email";
         
         // Load existing profile data
         loadProfileData(user.uid);
