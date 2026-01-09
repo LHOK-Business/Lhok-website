@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Page</title>
+
+        <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    
+<!-- Header section starts -->
+<div id="header-placeholder"></div>
+<!-- Header section ends -->
+
+<main>
+    <div class = "profile-update">  <!-- This is an page specific class that does not need to be explicitly defined-->
+       <div class="container3by3"> <!-- or container4by4-->
+        <div class = "OneThree-Two"> <!-- container specific class-->
+            <!-- main content here -->
+             <h1> Update Your Profile</h1>
+              <!-- Message display area -->
+        <div id="message" class="message"></div>
+        
+        <!-- User email display -->
+        <div class="user-info">
+            <strong>Logged in as:</strong> <span id="userEmail">Loading...</span>
+        </div>
+
+        <!-- Profile form -->
+        <form id="profileUpdateForm" class = "basic-form-1">
+            <div class="form-group">
+                <label for="displayName">Display Name</label>
+                <input 
+                    type="text" 
+                    id="displayName" 
+                    placeholder="Enter your name" 
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input 
+                type="tel" 
+                id="phoneNumber" 
+                placeholder="e.g., +1234567890">
+            </div>
+
+            <div class="form-group">
+                <label for="bio">Bio</label>
+                <textarea 
+                    id="bio" 
+                    placeholder="Tell us about yourself">
+                </textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input 
+                type="text" 
+                id="location" 
+                placeholder="First 3 digits of Postal Code (this will ...)">
+            </div>
+
+            <div class="form-group">
+                <label for="website">Website or Instagram</label>
+                <input 
+                type="url" 
+                id="website"
+                placeholder="https://yourwebsite.com">
+            </div>
+
+            <button type="submit"  id="submitBtn" class="submit-btn" = >Update Profile Settings</button>
+        </form>
+        </div>
+       </div>
+    </div>
+</main>
+
+<!-- Footer section starts -->
+<div id="footer-placeholder"></div>
+<!-- Footer section ends -->
+
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <!-- Utilized to hook up profile -->
+    <script type="module" src="profile.js"></script>
+</body>
+
+</html>
