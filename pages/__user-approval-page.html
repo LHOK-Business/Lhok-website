@@ -423,7 +423,7 @@ function isAdmin() {
                         `<button class="approve-btn" onclick="approveUser('${userId}')">✓ Approve</button>` :
                         `<button class="unapprove-btn" onclick="unapproveUser('${userId}')">↶ Unapprove</button>`
                     }
-                    <button class="delete-btn" onclick="deleteUser('${userId}', '${(userData.displayName || userData.email).replace(/'/g, "\\'")}')">🗑 Delete</button>
+                   <button class="delete-btn" onclick="deleteUser('${userId}', '${(userData.displayName || userData.email).replace(/'/g, "\\'")}')">🗑 Delete</button>
                 </div>
             `;
 
@@ -530,25 +530,25 @@ function isAdmin() {
         /**
          * Delete a user
          */
-        window.deleteUser = async function(userId, userName) {
-            if (!confirm(`Delete ${userName}?\n\nThis action CANNOT be undone!\n\nAll profile data will be permanently removed.`)) {
-                return;
-            }
+        // window.deleteUser = async function(userId, userName) {
+        //     if (!confirm(`Delete ${userName}?\n\nThis action CANNOT be undone!\n\nAll profile data will be permanently removed.`)) {
+        //         return;
+        //     }
 
-            // Second confirmation for safety
-            if (!confirm('Are you ABSOLUTELY sure? This cannot be undone!')) {
-                return;
-            }
+        //     // Second confirmation for safety
+        //     if (!confirm('Are you ABSOLUTELY sure? This cannot be undone!')) {
+        //         return;
+        //     }
 
-            try {
-                const userRef = doc(db, 'users', userId);
-                await deleteDoc(userRef);
-                console.log('User deleted:', userId);
-            } catch (error) {
-                console.error('Error deleting user:', error);
-                alert('Error deleting user: ' + error.message);
-            }
-        };
+        //     try {
+        //         const userRef = doc(db, 'users', userId);
+        //         await deleteDoc(userRef);
+        //         console.log('User deleted:', userId);
+        //     } catch (error) {
+        //         console.error('Error deleting user:', error);
+        //         alert('Error deleting user: ' + error.message);
+        //     }
+        // };
 
         /**
          * Handle tab clicks
