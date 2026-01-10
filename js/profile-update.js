@@ -115,6 +115,8 @@ async function saveProfileData(profileData) {
             await setDoc(userDocRef, {
                 ...profileData,
                 email: currentUser.email, // Store email for reference
+                approved: false, // Store new users as unapproved
+                approvedAt: null, // Will store when user was approved by admins
                 createdAt: serverTimestamp(), // Add creation timestamp
                 updatedAt: serverTimestamp() // Add update timestamp
             });
@@ -177,7 +179,7 @@ onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in
         currentUser = user;
-        userEmailmessage.textContent = "user.email";
+        userEmailmessage.textContent = user.email;
         
         // Load existing profile data
         loadProfileData(user.uid);

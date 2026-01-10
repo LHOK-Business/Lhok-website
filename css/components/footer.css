@@ -41,7 +41,7 @@ footer {
 /* Using below */
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(7, auto);
+    grid-template-columns: repeat(8, auto);
     align-items: center;
     justify-items: center;
     width: 100%;
