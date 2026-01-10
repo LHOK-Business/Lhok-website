@@ -53,13 +53,18 @@
 is within class "terms-and-conditions" (which is not explicityly defined)
 the additional parameters should be added to "OneThree-Two*/
 .terms-and-conditions .OneThree-Two {
-    max-width: 66%;
+    max-width: 50%;
     justify-self: center;
 
 }
 
-.privacy-policy .OneThree-Two {
+.contact-us .OneThree-Two {
     max-width: 66%;
+    justify-self: center;
+
+}
+.privacy-policy .OneThree-Two {
+    max-width: 50%;
     justify-self: center;
 
 }
