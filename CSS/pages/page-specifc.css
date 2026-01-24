@@ -78,3 +78,7 @@ the additional parameters should be added to "OneThree-Two*/
     justify-self: center;
 }
 
+.user-dashboard .container4by4{
+  grid-template-columns:  1fr 2fr 2fr 2fr;
+
+}
