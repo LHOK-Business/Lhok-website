@@ -13,11 +13,14 @@
     font-weight: var(--font-weight-bold);
     text-align: center;
     text-decoration: none;
+    color: var(--color-white);
+         
     
     /* Layout */
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    
+    background-color: var(--color-primary);
+        
     /* Visual */
     border-radius: var(--border-radius-md);
     cursor: pointer;
@@ -26,6 +29,7 @@
     transition: all var(--transition-speed-normal) var(--transition-easing);
     box-shadow: var(--shadow-sm);
     
+        
     /* Prevent text selection */
     user-select: none;
     -webkit-user-select: none;
@@ -62,6 +66,12 @@
     transform: none;
     box-shadow: none;
     opacity: 0.6;
+}
+
+.btn:hover
+ {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
 }
 
 .btn:disabled:hover
