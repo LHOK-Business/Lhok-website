@@ -3,9 +3,7 @@
    ============================================ */
 
 /* Base link styling - shared by all navigation links */
-.nav-link,
-.footer-nav-link,
-.body-nav-link {
+.nav-link {
     /* Reset */
     text-decoration: none;
     
@@ -28,26 +26,23 @@
 }
 
 /* Hover state - shared by all navigation links */
-.nav-link:hover,
-.footer-nav-link:hover,
-.body-nav-link:hover {
+
+.nav-link:hover {
     background-color: rgba(255, 255, 255, 0.3);
     color: var(--color-primary);
     transform: translateY(-2px);
 }
 
 /* Focus state for accessibility (keyboard navigation) */
-.nav-link:focus-visible,
-.footer-nav-link:focus-visible,
-.body-nav-link:focus-visible {
+
+.nav-link:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
 
 /* Active state */
-.nav-link:active,
-.footer-nav-link:active,
-.body-nav-link:active {
+
+.nav-link:active {
     transform: translateY(0);
 }
 
@@ -56,17 +51,17 @@
    ============================================ */
 
 /* Body links have inverted hover colors */
-.body-nav-link {
+/* .nav-link {
     color: var(--color-link);
     font-size: var(--font-size-body);
     padding: var(--spacing-xs) var(--spacing-md);
     border-radius: var(--border-radius-md);
 }
 
-.body-nav-link:hover {
+.nav-link:hover {
     background-color: var(--color-primary);
     color: var(--color-link-hover);
-    transform: none; /* Body links don't lift up */
-}
+    transform: none; 
+} */
 
 
