@@ -1,8 +1,6 @@
-// Import Firebase modules (adjust path/config based on your setup)
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
-import { getFirestore, doc, getDoc, setDoc, updateDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
-
+// ============================================
+// FIREBASE CONFIGURATION
+// ============================================
 // Your Firebase configuration (replace with your actual config)
 const firebaseConfig = {
   apiKey: "AIzaSyB2DccAwpNnzfNPhhP6KQJ58xVOEFsLB8Y",
@@ -13,27 +11,38 @@ const firebaseConfig = {
   appId: "1:228980882242:web:6c5a9f0c36544aba03e6db"
 };
 
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Get DOM elements
+// ============================================
+// GET DOM ELEMENTS
+// ============================================
+// These variables store references to HTML elements so we can interact with them
 const profileUpdateForm = document.getElementById('profileUpdateForm');
 const submitBtn = document.getElementById('submitBtn');
 const messageDiv = document.getElementById('message');
-const userEmailSpan = document.getElementById('userEmail');
+const userEmailSpan = document.getElementById('userEmailmessage');
 
-// Form input fields
+// ============================================
+// FORM INPUT FIELDS
+// ============================================
 const displayNameInput = document.getElementById('displayName');
-const phoneNumberInput = document.getElementById('phoneNumber');
 const bioInput = document.getElementById('bio');
 const locationInput = document.getElementById('location');
 const websiteInput = document.getElementById('website');
+const specialtiesInput = document.getElementById('specialties');           // Multi-select dropdown
+const yearsInIndustryInput = document.getElementById('yearsInIndustry');  // Single dropdown
+const preferredContactInput = document.getElementById('preferredContact'); // Single dropdown
+const instagramInput = document.getElementById('instagram');               // Text input (URL)
 
 // Store current user globally
 let currentUser = null;
+
+// ============================================
+// HELPER FUNCTIONS
+// ============================================
 
 /**
  * Display a message to the user
@@ -54,15 +63,37 @@ function showMessage(text, type) {
 }
 
 /**
+ * EDUCATIONAL NOTE: Getting values from a multi-select dropdown
+ * 
+ * When you have a <select multiple> element, you can't just use .value
+ * Instead, you need to loop through all options and check which are selected
+ * This function returns an array of selected values like: ["Lashes", "Nails", "Haircuts"]
+ */
+function getSelectedSpecialties() {
+    // Get all selected options from the multi-select dropdown
+    const selectedOptions = Array.from(specialtiesInput.selectedOptions);
+    
+    // Extract just the values from those options
+    const values = selectedOptions.map(option => option.value);
+    
+    console.log('Selected specialties:', values); // For debugging
+    return values;
+}
+
+/**
  * Load existing profile data from Firestore
  * @param {string} userId - The user's UID
+ * 
+ * EDUCATIONAL NOTE: This function retrieves existing data from Firestore
+ * and populates the form fields. This lets users edit their existing profile.
  */
 async function loadProfileData(userId) {
     try {
         // Reference to the user's document in the 'users' collection
+        // Path structure: users/{userId}
         const userDocRef = doc(db, 'users', userId);
         
-        // Fetch the document
+        // Fetch the document from Firestore
         const userDoc = await getDoc(userDocRef);
         
         // Check if document exists
@@ -70,11 +101,40 @@ async function loadProfileData(userId) {
             // Document exists - populate form with existing data
             const data = userDoc.data();
             
+            console.log('Loading profile data:', data); // For debugging
+            
+            // Populate OLD fields (if they exist in Firestore)
             displayNameInput.value = data.displayName || '';
-            phoneNumberInput.value = data.phoneNumber || '';
             bioInput.value = data.bio || '';
             locationInput.value = data.location || '';
             websiteInput.value = data.website || '';
+            
+            // Populate NEW fields
+            // For Instagram (simple text input)
+            instagramInput.value = data.instagram || '';
+            
+            // For Years in Industry (dropdown)
+            if (data.yearsInIndustry) {
+                yearsInIndustryInput.value = data.yearsInIndustry;
+            }
+            
+            // For Preferred Contact (dropdown)
+            if (data.preferredContact) {
+                preferredContactInput.value = data.preferredContact;
+            }
+            
+            // For Specialties (multi-select dropdown)
+            // EDUCATIONAL NOTE: Setting multi-select values is tricky
+            // We need to loop through all options and mark the ones that match
+            if (data.specialties && Array.isArray(data.specialties)) {
+                // Loop through each option in the dropdown
+                Array.from(specialtiesInput.options).forEach(option => {
+                    // Check if this option's value is in the saved specialties array
+                    if (data.specialties.includes(option.value)) {
+                        option.selected = true; // Mark it as selected
+                    }
+                });
+            }
             
             console.log('Profile data loaded successfully');
         } else {
@@ -90,18 +150,24 @@ async function loadProfileData(userId) {
 /**
  * Save or update profile data in Firestore
  * @param {Object} profileData - The profile data to save
+ * 
+ * EDUCATIONAL NOTE: This function handles both creating NEW profiles
+ * and updating EXISTING profiles. It checks if the document exists first.
  */
 async function saveProfileData(profileData) {
     try {
         // Reference to the user's document
+        // Path: users/{currentUser.uid}
         const userDocRef = doc(db, 'users', currentUser.uid);
         
         // Check if document already exists
         const userDoc = await getDoc(userDocRef);
         
         if (userDoc.exists()) {
-            // Document exists - UPDATE existing document
-            // Note: updateDoc only updates specified fields, leaving others unchanged
+            // ============================================
+            // DOCUMENT EXISTS - UPDATE IT
+            // ============================================
+            // updateDoc only updates specified fields, leaving others unchanged
             await updateDoc(userDocRef, {
                 ...profileData,
                 updatedAt: serverTimestamp() // Add timestamp of last update
@@ -110,19 +176,21 @@ async function saveProfileData(profileData) {
             console.log('Profile updated successfully');
             showMessage('Profile updated successfully!', 'success');
         } else {
-            // Document doesn't exist - CREATE new document
-            // Note: setDoc creates a new document with all specified fields
+            // ============================================
+            // DOCUMENT DOESN'T EXIST - CREATE IT
+            // ============================================
+            // setDoc creates a new document with all specified fields
             await setDoc(userDocRef, {
                 ...profileData,
-                email: currentUser.email, // Store email for reference
-                approved: false, // Store new users as unapproved
-                approvedAt: null, // Will store when user was approved by admins
+                email: currentUser.email,    // Store email for reference
+                approved: false,             // New users start as unapproved
+                approvedAt: null,           // Will be set when admin approves
                 createdAt: serverTimestamp(), // Add creation timestamp
-                updatedAt: serverTimestamp() // Add update timestamp
+                updatedAt: serverTimestamp()  // Add update timestamp
             });
             
             console.log('Profile created successfully');
-            showMessage('Profile created successfully!', 'success');
+            showMessage('Profile created successfully! Awaiting admin approval.', 'success');
         }
     } catch (error) {
         console.error('Error saving profile:', error);
@@ -133,9 +201,12 @@ async function saveProfileData(profileData) {
 
 /**
  * Handle form submission
+ * 
+ * EDUCATIONAL NOTE: This is the main function that runs when the user
+ * clicks "Save Profile". It gathers all form data and sends it to Firestore.
  */
 profileUpdateForm.addEventListener('submit', async (e) => {
-    // Prevent default form submission behavior
+    // Prevent default form submission behavior (which would reload the page)
     e.preventDefault();
     
     // Check if user is authenticated
@@ -149,14 +220,27 @@ profileUpdateForm.addEventListener('submit', async (e) => {
     submitBtn.textContent = 'Saving...';
     
     try {
-        // Gather form data into an object
+        // ============================================
+        // GATHER FORM DATA - UPDATED FOR NEW FIELDS
+        // ============================================
+        // Create an object with all the profile data
         const profileData = {
+            // OLD FIELDS (kept)
             displayName: displayNameInput.value.trim(),
-            phoneNumber: phoneNumberInput.value.trim(),
             bio: bioInput.value.trim(),
             location: locationInput.value.trim(),
-            website: websiteInput.value.trim()
+            website: websiteInput.value.trim(),
+            
+            // NEW FIELDS (added)
+            specialties: getSelectedSpecialties(),              // Array: ["Lashes", "Nails"]
+            yearsInIndustry: yearsInIndustryInput.value,       // String: "3-5"
+            preferredContact: preferredContactInput.value,      // String: "Instagram"
+            instagram: instagramInput.value.trim()              // String: "https://instagram.com/..."
+            
+            // REMOVED FIELD - phoneNumber is no longer collected
         };
+        
+        console.log('Saving profile data:', profileData); // For debugging
         
         // Save to Firestore
         await saveProfileData(profileData);
@@ -166,7 +250,7 @@ profileUpdateForm.addEventListener('submit', async (e) => {
         // to ensure the button gets re-enabled
         console.error('Form submission error:', error);
     } finally {
-        // Re-enable submit button
+        // Re-enable submit button (happens whether save succeeded or failed)
         submitBtn.disabled = false;
         submitBtn.textContent = 'Save Profile';
     }
@@ -174,14 +258,17 @@ profileUpdateForm.addEventListener('submit', async (e) => {
 
 /**
  * Initialize the page - check authentication state
+ * 
+ * EDUCATIONAL NOTE: This runs automatically when the page loads.
+ * It checks if a user is logged in, and if so, loads their profile data.
  */
 onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in
         currentUser = user;
-        userEmailmessage.textContent = user.email;
+        userEmailSpan.textContent = user.email; // Fixed typo from original (was userEmailmessage)
         
-        // Load existing profile data
+        // Load existing profile data for this user
         loadProfileData(user.uid);
         
         console.log('User authenticated:', user.uid);
