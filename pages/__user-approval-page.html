@@ -312,8 +312,23 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // IMPORTANT: Set your admin email here (must match Firestore rules)
-        const ADMIN_EMAIL = "your-admin-email@example.com";
+        // ============================================
+        // ADMIN CONFIGURATION - MULTIPLE ADMINS
+        // ============================================
+        // Add all admin emails to this array (must match Firestore rules)
+        // All emails will be converted to lowercase for comparison
+        const ADMIN_EMAILS = [
+            "hunain.jd@gmail.com",
+            "jenngbari@gmail.com",
+            "angeleenmatti@gmail.com", 
+            "lhok.business@gmail.com"
+        ];
+        // Helper function to check if user is admin
+        function isAdmin(userEmail) {
+            if (!userEmail) return false;
+            const normalizedEmail = userEmail.toLowerCase();
+            return ADMIN_EMAILS.some(adminEmail => adminEmail.toLowerCase() === normalizedEmail);
+        }
 
         // Get DOM elements
         const loadingDiv = document.getElementById('loadingDiv');
@@ -331,16 +346,16 @@
         async function checkAdminAccess(user) {
             console.log('Checking admin access for:', user.email);
             
-            if (!user || user.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
-                console.error('Access denied. User email:', user?.email, 'Expected:', ADMIN_EMAIL);
+            if (!user || !isAdmin(user.email)) {
+                console.error('Access denied. User email:', user?.email);
                 
                 usersContainer.innerHTML = `
                     <div class="error-message">
                         <h2>❌ Access Denied</h2>
                         <p>This page is for administrators only.</p>
                         <p><strong>Your email:</strong> ${user?.email || 'Not logged in'}</p>
-                        <p><strong>Required:</strong> ${ADMIN_EMAIL}</p>
-                        <p>If you are the admin, update ADMIN_EMAIL in this file.</p>
+                        <p><strong>Authorized admins:</strong> ${ADMIN_EMAILS.length} admin(s) configured</p>
+                        <p>If you should have access, contact your system administrator.</p>
                     </div>
                 `;
                 loadingDiv.style.display = 'none';
