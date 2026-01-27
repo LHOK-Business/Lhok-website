@@ -42,8 +42,41 @@
             
             <!-- Profile form -->
             <form id="profileUpdateForm" class="basic-form-1">
-                
-                <!-- FIELD 1: Display Name (KEPT - no changes) -->
+
+                <!-- Profile Picture Upload Section -->
+                <div class="profile-picture-section">
+                    <!-- Show current profile picture or placeholder -->
+                    <div class="profile-picture-preview">
+                        <img id="profilePicturePreview" 
+                            src="https://via.placeholder.com/150/b54dbc/ffffff?text=No+Photo" 
+                            alt="Profile picture preview">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profilePicture">Profile Picture</label>
+                        <input 
+                            type="file" 
+                            id="profilePicture" 
+                            accept="image/*">
+                        <small class="form-hint">Max 5MB. JPG, PNG, or GIF. Recommended: Square image, at least 400x400px</small>
+                    </div>
+                    
+                    <!-- Show upload progress -->
+                    <div id="uploadProgress" class="upload-progress" style="display: none;">
+                        <div class="progress-bar">
+                            <div id="progressBar" class="progress-fill"></div>
+                        </div>
+                        <span id="progressText">Uploading...</span>
+                    </div>
+                    
+                    <!-- Button to remove current picture -->
+                    <button type="button" id="removePictureBtn" class="btn-secondary" style="display: none;">
+                        Remove Picture
+                    </button>
+                </div>
+
+
+                <!-- Display Name -->
                 <div class="form-group">
                     <label for="displayName">Display Name *</label>
                     <input 
@@ -53,7 +86,7 @@
                         required>
                 </div>
 
-                <!-- FIELD 2: Specialties-->
+                <!--Specialties-->
                 <!-- This will store multiple services like "Lashes, Haircuts, Nails" -->
                 <div class="form-group">
                     <label for="specialties">Specialties *</label>
@@ -76,7 +109,7 @@
                     <small class="form-hint">Hold Ctrl (Windows) or Cmd (Mac) to select multiple</small>
                 </div>
 
-                <!-- FIELD 3: Years in Industry-->
+                <!--Years in Industry-->
                 <!-- Stores a number representing years of experience -->
                 <div class="form-group">
                     <label for="yearsInIndustry">Years in Industry *</label>
@@ -94,7 +127,7 @@
                     </select>
                 </div>
 
-                <!-- FIELD 4: Preferred Contact Method -->
+                <!--Preferred Contact Method -->
                 <!-- Tells visitors how they should reach out to this member -->
                 <div class="form-group">
                     <label for="preferredContact">Preferred Way to Connect *</label>
@@ -109,7 +142,7 @@
                     </select>
                 </div>
 
-                <!-- FIELD 5: Bio -->
+                <!-- Bio -->
                 <div class="form-group">
                     <label for="bio">Bio</label>
                     <textarea 
@@ -119,7 +152,7 @@
                     </textarea>
                 </div>
 
-                <!-- FIELD 6: Location -->
+                <!-- Location -->
                 <div class="form-group">
                     <label for="location">Location</label>
                     <input 
@@ -131,7 +164,7 @@
                     <small class="form-hint">First 3 characters only (e.g., M5V)</small>
                 </div>
 
-                <!-- FIELD 7: Instagram -->
+                <!-- Instagram -->
                 <!-- Stores the full Instagram URL so users can click to visit -->
                 <div class="form-group">
                     <label for="instagram">Instagram</label>
@@ -142,7 +175,7 @@
                     <small class="form-hint">Full Instagram URL</small>
                 </div>
 
-                <!-- FIELD 8: Website-->
+                <!-- Website-->
                 <div class="form-group">
                     <label for="website">Website</label>
                     <input 

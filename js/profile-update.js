@@ -2,7 +2,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { getFirestore, doc, getDoc, setDoc, updateDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
-
+import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
 // ============================================
 // FIREBASE CONFIGURATION
@@ -21,7 +21,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-
+const storage = getStorage(app);
 // ============================================
 // GET DOM ELEMENTS
 // ============================================
@@ -30,6 +30,14 @@ const profileUpdateForm = document.getElementById('profileUpdateForm');
 const submitBtn = document.getElementById('submitBtn');
 const messageDiv = document.getElementById('message');
 const userEmailSpan = document.getElementById('userEmailmessage');
+
+// Profile Picture Elements
+const profilePictureInput = document.getElementById('profilePicture');
+const profilePicturePreview = document.getElementById('profilePicturePreview');
+const uploadProgress = document.getElementById('uploadProgress');
+const progressBar = document.getElementById('progressBar');
+const progressText = document.getElementById('progressText');
+const removePictureBtn = document.getElementById('removePictureBtn');
 
 // ============================================
 // FORM INPUT FIELDS
@@ -86,6 +94,123 @@ function getSelectedSpecialties() {
     return values;
 }
 
+
+/**
+ * Preview selected image before upload
+ */
+profilePictureInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        // Check file size (5MB max)
+        if (file.size > 5 * 1024 * 1024) {
+            showMessage('Image must be smaller than 5MB', 'error');
+            profilePictureInput.value = '';
+            return;
+        }
+        
+        // Check file type
+        if (!file.type.startsWith('image/')) {
+            showMessage('Please select an image file', 'error');
+            profilePictureInput.value = '';
+            return;
+        }
+        
+        // Show preview
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            profilePicturePreview.src = e.target.result;
+            removePictureBtn.style.display = 'inline-block';
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+/**
+ * Remove/Clear selected picture
+ */
+removePictureBtn.addEventListener('click', () => {
+    profilePictureInput.value = '';
+    profilePicturePreview.src = 'https://via.placeholder.com/150/b54dbc/ffffff?text=No+Photo';
+    removePictureBtn.style.display = 'none';
+});
+
+/**
+ * Upload profile picture to Firebase Storage
+ * @param {File} file - The image file to upload
+ * @param {string} userId - The user's ID
+ * @returns {Promise<string>} - The download URL of uploaded image
+ */
+async function uploadProfilePicture(file, userId) {
+    return new Promise((resolve, reject) => {
+        // Create a unique filename
+        const timestamp = Date.now();
+        const fileName = `profile_${timestamp}.${file.name.split('.').pop()}`;
+        
+        // Create storage reference
+        const storageRef = ref(storage, `profile-pictures/${userId}/${fileName}`);
+        
+        // Start upload
+        const uploadTask = uploadBytesResumable(storageRef, file);
+        
+        // Show progress bar
+        uploadProgress.style.display = 'block';
+        
+        // Monitor upload progress
+        uploadTask.on('state_changed',
+            (snapshot) => {
+                // Calculate progress percentage
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                progressBar.style.width = progress + '%';
+                progressText.textContent = `Uploading: ${Math.round(progress)}%`;
+            },
+            (error) => {
+                // Handle upload error
+                console.error('Upload error:', error);
+                uploadProgress.style.display = 'none';
+                reject(error);
+            },
+            async () => {
+                // Upload completed successfully
+                try {
+                    const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+                    uploadProgress.style.display = 'none';
+                    progressBar.style.width = '0%';
+                    resolve(downloadURL);
+                } catch (error) {
+                    reject(error);
+                }
+            }
+        );
+    });
+}
+
+/**
+ * Delete old profile picture from Storage
+ * @param {string} photoURL - The URL of the photo to delete
+ */
+async function deleteOldProfilePicture(photoURL) {
+    if (!photoURL || photoURL.includes('placeholder')) {
+        return; // Nothing to delete
+    }
+    
+    try {
+        // Extract the file path from the URL
+        const baseURL = 'https://firebasestorage.googleapis.com/v0/b/';
+        if (photoURL.startsWith(baseURL)) {
+            const filePath = decodeURIComponent(
+                photoURL.split('/o/')[1].split('?')[0]
+            );
+            const fileRef = ref(storage, filePath);
+            await deleteObject(fileRef);
+            console.log('Old profile picture deleted');
+        }
+    } catch (error) {
+        console.error('Error deleting old picture:', error);
+        // Don't throw error - not critical if old picture deletion fails
+    }
+}
+
+
 /**
  * Load existing profile data from Firestore
  * @param {string} userId - The user's UID
@@ -109,13 +234,18 @@ async function loadProfileData(userId) {
             
             console.log('Loading profile data:', data); // For debugging
             
-            // Populate OLD fields (if they exist in Firestore)
+            // Populate general fields (if they exist in Firestore)
             displayNameInput.value = data.displayName || '';
             bioInput.value = data.bio || '';
             locationInput.value = data.location || '';
             websiteInput.value = data.website || '';
             
-            // Populate NEW fields
+            //Populate Profile Picture if exists
+            if (data.profilePhotoURL) {
+                profilePicturePreview.src = data.profilePhotoURL;
+                removePictureBtn.style.display = 'inline-block';
+            } 
+           
             // For Instagram (simple text input)
             instagramInput.value = data.instagram || '';
             
@@ -226,26 +356,45 @@ profileUpdateForm.addEventListener('submit', async (e) => {
     submitBtn.textContent = 'Saving...';
     
     try {
+        let newPhotoURL = null;
+        const file = profilePictureInput.files[0];
+        
+        if (file) {
+            try {
+                showMessage('Uploading profile picture...', 'success');
+                newPhotoURL = await uploadProfilePicture(file, currentUser.uid);
+                
+                // Delete old picture if exists
+                const userDocRef = doc(db, 'users', currentUser.uid);
+                const userDoc = await getDoc(userDocRef);
+                if (userDoc.exists() && userDoc.data().profilePhotoURL) {
+                    await deleteOldProfilePicture(userDoc.data().profilePhotoURL);
+                }
+            } catch (error) {
+                console.error('Error uploading picture:', error);
+                showMessage('Error uploading picture: ' + error.message, 'error');
+                throw error;
+            }
+        }
         // ============================================
         // GATHER FORM DATA - UPDATED FOR NEW FIELDS
         // ============================================
         // Create an object with all the profile data
         const profileData = {
-            // OLD FIELDS (kept)
             displayName: displayNameInput.value.trim(),
             bio: bioInput.value.trim(),
             location: locationInput.value.trim(),
             website: websiteInput.value.trim(),
-            
-            // NEW FIELDS (added)
-            specialties: getSelectedSpecialties(),              // Array: ["Lashes", "Nails"]
+            specialties: getSelectedSpecialties(),             // Array: ["Lashes", "Nails"]
             yearsInIndustry: yearsInIndustryInput.value,       // String: "3-5"
-            preferredContact: preferredContactInput.value,      // String: "Instagram"
-            instagram: instagramInput.value.trim()              // String: "https://instagram.com/..."
-            
-            // REMOVED FIELD - phoneNumber is no longer collected
+            preferredContact: preferredContactInput.value,     // String: "Instagram"
+            instagram: instagramInput.value.trim(),            // String: "https://instagram.com/..."
+            profilePhotoURL: (await getDoc(userDocRef)).data()?.profilePhotoURL || null
         };
         
+        if (newPhotoURL) {
+            profileData.profilePhotoURL = newPhotoURL;
+        }
         console.log('Saving profile data:', profileData); // For debugging
         
         // Save to Firestore

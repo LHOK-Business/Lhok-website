@@ -77,9 +77,21 @@ function createProfileCard(userData) {
     // AVATAR SECTION
     // --------------------------------------------
     // 🎨 STYLE .profile-avatar in CSS to change avatar appearance
-    cardHTML += `
-        <div class="profile-avatar">${initials}</div>
-    `;
+    if (userData.profilePhotoURL) {
+        // User has uploaded a picture - show it
+        cardHTML += `
+            <div class="profile-photo-container">
+                <img src="${userData.profilePhotoURL}" 
+                    alt="${userData.displayName}'s profile picture" 
+                    class="profile-photo">
+            </div>
+        `;
+    } else {
+        // No picture - show initials avatar
+        cardHTML += `
+            <div class="profile-avatar">${initials}</div>
+        `;
+    }
     
     // --------------------------------------------
     // NAME SECTION
