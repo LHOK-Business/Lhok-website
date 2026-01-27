@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firebase Test</title>
+</head>
+<body>
+    <h1>Firebase Test</h1>
+    <div id="status">Loading...</div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyB2DccAwpNnzfNPhhP6KQJ58xVOEFsLB8Y",
+            authDomain: "lhok-e77ba.firebaseapp.com",
+            projectId: "lhok-e77ba",
+            storageBucket: "lhok-e77ba.firebasestorage.app",
+            messagingSenderId: "228980882242",
+            appId: "1:228980882242:web:6c5a9f0c36544aba03e6db"
+        };
+        
+        try {
+            const app = initializeApp(firebaseConfig);
+            document.getElementById('status').textContent = '✅ Firebase loaded successfully!';
+            document.getElementById('status').style.color = 'green';
+            console.log('Firebase initialized:', app);
+        } catch (error) {
+            document.getElementById('status').textContent = '❌ Firebase error: ' + error.message;
+            document.getElementById('status').style.color = 'red';
+            console.error('Firebase error:', error);
+        }
+    </script>
+</body>
+</html>
