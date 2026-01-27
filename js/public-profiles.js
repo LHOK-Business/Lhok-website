@@ -102,14 +102,6 @@ function createProfileCard(userData) {
     `;
     
     // --------------------------------------------
-    // EMAIL SECTION
-    // --------------------------------------------
-    // 🎨 STYLE .profile-email in CSS to change email appearance
-    cardHTML += `
-        <div class="profile-email">${userData.email || ''}</div>
-    `;
-    
-    // --------------------------------------------
     // SPECIALTIES SECTION (NEW)
     // --------------------------------------------
     // Display specialties as tags/badges if they exist
@@ -125,7 +117,7 @@ function createProfileCard(userData) {
     }
     
     // --------------------------------------------
-    // BIO SECTION (KEPT)
+    // BIO SECTION 
     // --------------------------------------------
     // 🎨 STYLE .profile-bio in CSS to change bio appearance
     if (userData.bio) {
@@ -219,6 +211,14 @@ function createProfileCard(userData) {
         // 🎨 STYLE .website-link in CSS
     }
     
+        // --------------------------------------------
+    // EMAIL SECTION
+    // --------------------------------------------
+    // 🎨 STYLE .profile-email in CSS to change email appearance
+    cardHTML += `
+        <div class="profile-email">${userData.email || ''}</div>
+    `;
+
     cardHTML += '</div>'; // End of profile-links
     
     // Set the HTML content of the card
