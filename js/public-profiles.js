@@ -127,12 +127,10 @@ function createProfileCard(userData) {
             </div>
         `;
     }
-    
     // ============================================
     // PROFILE INFO SECTION (Location, Years, Contact)
     // ============================================
     cardHTML += '<div class="profile-info">'; // 🎨 STYLE THIS CLASS
-    
     // --------------------------------------------
     // YEARS IN INDUSTRY (NEW)
     // --------------------------------------------
@@ -144,7 +142,6 @@ function createProfileCard(userData) {
             </div>
         `;
     }
-    
     // --------------------------------------------
     // LOCATION (KEPT - existing field)
     // --------------------------------------------
@@ -156,7 +153,6 @@ function createProfileCard(userData) {
             </div>
         `;
     }
-    
     // --------------------------------------------
     // PREFERRED CONTACT METHOD (NEW)
     // --------------------------------------------
