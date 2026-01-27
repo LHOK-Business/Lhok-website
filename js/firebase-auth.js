@@ -55,7 +55,7 @@ let isSignUpMode = false;
 onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in, redirect to home page
-        window.location.href = 'home.html'; // CHANGE THIS to your home page filename
+        window.location.href = 'login-home.html'; // CHANGE THIS to your home page filename
     }
 });
 
@@ -138,7 +138,7 @@ authButton.addEventListener('click', async () => {
             });
             
             // Redirect to home page
-            window.location.href = 'home.html'; // CHANGE THIS to your home page filename
+            window.location.href = 'login-home.html'; // CHANGE THIS to your home page filename
         } else {
             // Sign In
             await signInWithEmailAndPassword(auth, email, password);

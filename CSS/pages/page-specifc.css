@@ -82,3 +82,103 @@ the additional parameters should be added to "OneThree-Two*/
   grid-template-columns:  1fr 2fr 2fr 2fr;
 
 }
+
+
+
+/* Modify Porfile Picture Preview */
+
+/* Profile Picture Section */
+.profile-picture-section {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: var(--color-gray-light);
+    border-radius: var(--border-radius-md);
+    text-align: center;
+}
+
+/* Profile Picture Preview */
+.profile-picture-preview {
+    margin-bottom: var(--spacing-md);
+}
+
+.profile-picture-preview img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;  /* Makes it circular */
+    object-fit: cover;   /* Crops to fill circle */
+    border: 4px solid var(--color-primary);
+    box-shadow: var(--shadow-md);
+    background: white;
+}
+
+/* File Input Styling */
+input[type="file"] {
+    display: block;
+    margin: var(--spacing-sm) auto;
+    padding: var(--spacing-sm);
+    border: 2px dashed var(--color-primary);
+    border-radius: var(--border-radius-md);
+    background: white;
+    cursor: pointer;
+    transition: all var(--transition-speed-normal);
+}
+
+input[type="file"]:hover {
+    border-color: var(--color-primary-dark);
+    background: var(--color-gray-light);
+}
+
+/* Upload Progress Bar */
+.upload-progress {
+    margin: var(--spacing-md) 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: white;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+#progressText {
+    display: block;
+    margin-top: var(--spacing-xs);
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+}
+
+/* Secondary Button (for remove picture) */
+.btn-secondary {
+    background: var(--color-gray-medium);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-small);
+    transition: all var(--transition-speed-normal);
+    margin-top: var(--spacing-sm);
+}
+
+.btn-secondary:hover {
+    background: var(--color-gray-dark);
+}
+
+/* Form hint text */
+.form-hint {
+    display: block;
+    font-size: var(--font-size-tiny);
+    color: var(--color-text-secondary);
+    margin-top: var(--spacing-xs);
+    font-style: italic;
+}

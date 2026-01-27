@@ -275,6 +275,7 @@
         <header>
             <h1>👥 User Management</h1>
             <div class="user-badge" id="adminBadge">Loading...</div>
+                <a href="../index.html" class="nav-link">Home</a>
         </header>
 
         <div class="tabs">
@@ -297,7 +298,7 @@
         import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
         import { getFirestore, collection, query, where, getDocs, doc, updateDoc, deleteDoc, serverTimestamp, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-        // ⚠️ REPLACE WITH YOUR FIREBASE CONFIG
+        // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyB2DccAwpNnzfNPhhP6KQJ58xVOEFsLB8Y",
             authDomain: "lhok-e77ba.firebaseapp.com",
@@ -312,8 +313,23 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // IMPORTANT: Set your admin email here (must match Firestore rules)
-        const ADMIN_EMAIL = "your-admin-email@example.com";
+        // ============================================
+        // ADMIN CONFIGURATION - MULTIPLE ADMINS
+        // ============================================
+        // Add all admin emails to this array (must match Firestore rules)
+        // All emails will be converted to lowercase for comparison
+        const ADMIN_EMAILS = [
+            "hunain.jd@gmail.com",
+            "jenngbari@gmail.com",
+            "angeleenmatti@gmail.com", 
+            "lhok.business@gmail.com"
+        ];
+        // Helper function to check if user is admin
+        function isAdmin(userEmail) {
+            if (!userEmail) return false;
+            const normalizedEmail = userEmail.toLowerCase();
+            return ADMIN_EMAILS.some(adminEmail => adminEmail.toLowerCase() === normalizedEmail);
+        }
 
         // Get DOM elements
         const loadingDiv = document.getElementById('loadingDiv');
@@ -331,24 +347,22 @@
         async function checkAdminAccess(user) {
             console.log('Checking admin access for:', user.email);
             
-            if (!user || user.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
-                console.error('Access denied. User email:', user?.email, 'Expected:', ADMIN_EMAIL);
+            if (!user || !isAdmin(user.email)) {
+                console.error('Access denied. User email:', user?.email);
                 
-                // Show error message
                 usersContainer.innerHTML = `
                     <div class="error-message">
                         <h2>❌ Access Denied</h2>
                         <p>This page is for administrators only.</p>
                         <p><strong>Your email:</strong> ${user?.email || 'Not logged in'}</p>
-                        <p><strong>Required:</strong> ${ADMIN_EMAIL}</p>
-                        <p>If you are the admin, update ADMIN_EMAIL in this file.</p>
+                        <p><strong>Authorized admins:</strong> ${ADMIN_EMAILS.length} admin(s) configured</p>
+                        <p>If you should have access, contact your system administrator.</p>
                     </div>
                 `;
                 loadingDiv.style.display = 'none';
                 return false;
             }
 
-            // Test actual Firestore permissions
             try {
                 console.log('Testing Firestore admin permissions...');
                 const testQuery = await getDocs(collection(db, 'users'));
@@ -362,11 +376,7 @@
                         <h2>❌ Firestore Permission Denied</h2>
                         <p>Your email matches (${user.email}), but Firestore rules are blocking access.</p>
                         <p><strong>Error:</strong> ${error.message}</p>
-                        <p><strong>Fix:</strong> Update your Firestore rules to include your email:</p>
-                        <pre style="background: #f4f4f4; padding: 10px; border-radius: 4px; text-align: left; overflow-x: auto;">
-function isAdmin() {
-  return isSignedIn() && request.auth.token.email == '${user.email}';
-}</pre>
+                        <p><strong>Fix:</strong> Update your Firestore rules to include your email</p>
                     </div>
                 `;
                 loadingDiv.style.display = 'none';
@@ -385,7 +395,7 @@ function isAdmin() {
         }
 
         /**
-         * Create a user card element
+         * Create a user card element - UPDATED FOR NEW FIELDS
          */
         function createUserCard(userId, userData) {
             const card = document.createElement('div');
@@ -404,16 +414,34 @@ function isAdmin() {
                 <span class="status-badge ${userData.approved ? 'status-approved' : 'status-pending'}">
                     ${userData.approved ? '✅ Approved' : '⏳ Pending'}
                 </span>
-                ${userData.tags && userData.tags.length > 0 ? `
+                
+                <!-- UPDATED: Display specialties instead of tags -->
+                ${userData.specialties && userData.specialties.length > 0 ? `
                     <div class="user-tags">
-                        ${userData.tags.map(tag => `<span class="user-tag">${tag}</span>`).join('')}
+                        ${userData.specialties.map(specialty => `<span class="user-tag">${specialty}</span>`).join('')}
                     </div>
                 ` : ''}
+                
                 <div class="user-info"><strong>Email:</strong> ${userData.email}</div>
-                ${userData.phoneNumber ? `<div class="user-info"><strong>Phone:</strong> ${userData.phoneNumber}</div>` : ''}
+                
+                <!-- NEW: Years in Industry -->
+                ${userData.yearsInIndustry ? `<div class="user-info"><strong>Years in Industry:</strong> ${userData.yearsInIndustry}</div>` : ''}
+                
+                <!-- NEW: Preferred Contact Method -->
+                ${userData.preferredContact ? `<div class="user-info"><strong>Preferred Contact:</strong> ${userData.preferredContact}</div>` : ''}
+                
+                <!-- KEPT: Location -->
                 ${userData.location ? `<div class="user-info"><strong>Location:</strong> ${userData.location}</div>` : ''}
+                
+                <!-- KEPT: Bio -->
                 ${userData.bio ? `<div class="user-info"><strong>Bio:</strong> ${userData.bio}</div>` : ''}
+                
+                <!-- NEW: Instagram (separate from website) -->
+                ${userData.instagram ? `<div class="user-info"><strong>Instagram:</strong> <a href="${userData.instagram}" target="_blank">${userData.instagram}</a></div>` : ''}
+                
+                <!-- KEPT: Website -->
                 ${userData.website ? `<div class="user-info"><strong>Website:</strong> <a href="${userData.website}" target="_blank">${userData.website}</a></div>` : ''}
+                
                 <div class="user-info"><strong>Joined:</strong> ${createdAt}</div>
                 ${userData.approved ? `<div class="user-info"><strong>Approved:</strong> ${approvedAt}</div>` : ''}
                 ${unapprovedAt ? `<div class="user-info" style="color: #ff9800;"><strong>Unapproved:</strong> ${unapprovedAt}</div>` : ''}
@@ -528,18 +556,15 @@ function isAdmin() {
         };
 
         /**
-         * Delete a user
+         * Delete a user (commented out for safety - uncomment if needed)
          */
         // window.deleteUser = async function(userId, userName) {
-        //     if (!confirm(`Delete ${userName}?\n\nThis action CANNOT be undone!\n\nAll profile data will be permanently removed.`)) {
+        //     if (!confirm(`Delete ${userName}?\n\nThis action CANNOT be undone!`)) {
         //         return;
         //     }
-
-        //     // Second confirmation for safety
         //     if (!confirm('Are you ABSOLUTELY sure? This cannot be undone!')) {
         //         return;
         //     }
-
         //     try {
         //         const userRef = doc(db, 'users', userId);
         //         await deleteDoc(userRef);
