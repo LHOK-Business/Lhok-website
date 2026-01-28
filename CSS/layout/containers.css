@@ -173,6 +173,7 @@
 }
 
 .Three-One {
+  background-color: rgb(49, 23, 97);
   grid-row: 3;
   grid-column: 1;
   /* 
