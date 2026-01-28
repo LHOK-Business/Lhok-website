@@ -2,9 +2,10 @@
    GLOBAL BASE STYLES
    ============================================ */
 
-html {
-    font-size: 16px; /* Base font size for rem calculations */
-    height: 100%;
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 body {

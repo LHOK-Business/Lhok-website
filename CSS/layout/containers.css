@@ -20,7 +20,7 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 10px;
-  height: 100%; /* Use 100% of main's height */
+  flex: 1; /* This makes it fill the main container */
   width: 100%;
 }
 
