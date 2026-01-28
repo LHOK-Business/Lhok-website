@@ -274,3 +274,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+.container3by3fr { 
+  background-color: red !important; 
+  border: 5px solid blue !important; 
+  min-height: 100vh !important; 
+}
