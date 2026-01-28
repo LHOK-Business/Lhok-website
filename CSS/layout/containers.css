@@ -20,8 +20,8 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 10px;
-  flex: 1; /* Allow container to fill main */
-  min-height: 0; /* Important: allows flex child to shrink if needed */
+  height: 100%; /* Use 100% of main's height */
+  width: 100%;
 }
 
 .container4by4 { 
