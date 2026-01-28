@@ -15,14 +15,16 @@
      Row first then column for naming     
    ============================================ */
 
-.container3by3 { 
+.container3by3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 10px;
-  flex: 1; /* This makes it fill the main container */
+  flex: 1;
   width: 100%;
+  background: red;
 }
+
 
 .container4by4 { 
   display: grid;
