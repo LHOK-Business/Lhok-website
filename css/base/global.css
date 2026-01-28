@@ -33,8 +33,10 @@ body {
 }
 
 main {
-    flex: 1 0 auto; /* Grow to fill space, don't shrink, auto basis*/ 
-    width: 100%;
+  flex: 1; /* Allow main to grow and fill available space */
+  display: flex; /* Make main a flex container too */
+  flex-direction: column; /* Stack children vertically */
+  width: 100%;
 }
 
 

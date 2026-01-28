@@ -17,13 +17,11 @@
 
 .container3by3 { 
   display: grid;
-  grid-template-columns:  repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  align-content: stretch;
-  justify-items: stretch;
   gap: 10px;
-  min-height: 100vh;
-  height: 100%;
+  flex: 1; /* Allow container to fill main */
+  min-height: 0; /* Important: allows flex child to shrink if needed */
 }
 
 .container4by4 { 
