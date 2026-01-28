@@ -16,14 +16,12 @@
    ============================================ */
 
 .container3by3 { 
-  display: grid !important;
+  display: grid;
   grid-template-columns:  repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  align-content: stretch;
-  justify-items: stretch;
   gap: 10px;
-  height: 100%;
   min-height: 100vh;
+  height: 100%;
 }
 
 .container4by4 { 
