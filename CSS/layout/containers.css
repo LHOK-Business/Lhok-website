@@ -16,7 +16,7 @@
    ============================================ */
 
 .container3by3 { 
-  display: grid;
+  display: grid !important;
   grid-template-columns:  repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   align-content: stretch;
