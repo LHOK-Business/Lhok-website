@@ -19,6 +19,8 @@
   display: grid;
   grid-template-columns:  repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  align-content: stretch;
+  justify-items: stretch;
   gap: 10px;
   min-height: 100vh;
   height: 100%;
