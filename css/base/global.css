@@ -8,6 +8,7 @@ html {
 }
 
 body {
+    display: flex;
     flex-direction: column;
     /* Typography */
     font-family: var(--font-family-primary);
