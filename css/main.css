@@ -14,7 +14,7 @@
 @import url('layout/spacing.css');
 
 /*@import url('layout/containers.css');*/
-@import url('layout/containers.css');
+@import url('CSS/layout/containers.css');
 
 /* 5. COMPONENTS - Reusable UI components */
 @import url('components/buttons.css');
