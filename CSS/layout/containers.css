@@ -22,7 +22,7 @@
   gap: 10px;
   flex: 1;
   width: 100%;
-  background: red;   
+   
 }
 
 
@@ -42,7 +42,7 @@
    ============================================ */
 
 .OneTwo-OneThree {   
-  background-color: rgb(211, 154, 230);
+ 
   justify-items: center;
   grid-row: 1 / 1;
   grid-column: 2 / 3;
@@ -56,7 +56,7 @@
 
 
 .ThreeOne-FourTwo {
-  background-color: rgb(211, 154, 230);
+ 
   grid-row: 3 / 4;
   grid-column: 1 / 2;
   /*   1 2 3 4
@@ -89,7 +89,7 @@
      Row first then column for naming*/
 }
 .OneOne-FourOne {
-  background-color: rgb(211, 52, 73);
+
   grid-row: 1 / 5;
   grid-column: 1 / 2;
     /* 1 2 3 4
@@ -101,7 +101,7 @@
 }
 
 .OneTwo-FourFour {
-  background-color: rgb(49, 23, 97);
+
   grid-row: 1 / 5;
   grid-column: 2 / 5;
     /* 1 2 3 4
@@ -173,7 +173,7 @@
 }
 
 .Three-One {
-  background-color: rgb(49, 23, 97);
+
   grid-row: 3;
   grid-column: 1;
   /* 
@@ -221,7 +221,7 @@
 /* Testing cell numbrs in grids */
 .single-4by4-cell { 
   align-self: center;
-  background-color: rgb(236, 214, 165);
+
 }
 
 /* ============================================
