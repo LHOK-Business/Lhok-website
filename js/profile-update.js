@@ -376,6 +376,16 @@ profileUpdateForm.addEventListener('submit', async (e) => {
                 throw error;
             }
         }
+
+    // determine which Photo URL to use:
+    let existingPhotoURL = null;
+    if (!newPhotoURL) {
+        const userDocRef = doc(db, 'users', currentUser.uid);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists() && userDoc.data().profilePhotoURL) {
+            existingPhotoURL = userDoc.data().profilePhotoURL;
+        }
+    }
         // ============================================
         // GATHER FORM DATA - UPDATED FOR NEW FIELDS
         // ============================================
@@ -389,7 +399,8 @@ profileUpdateForm.addEventListener('submit', async (e) => {
             yearsInIndustry: yearsInIndustryInput.value,       // String: "3-5"
             preferredContact: preferredContactInput.value,     // String: "Instagram"
             instagram: instagramInput.value.trim(),            // String: "https://instagram.com/..."
-            profilePhotoURL: (await getDoc(userDocRef)).data()?.profilePhotoURL || null
+            profilePhotoURL: newPhotoURL || existingPhotoURL || null
+            // profilePhotoURL: (await getDoc(userDocRef)).data()?.profilePhotoURL || null
         };
         
         if (newPhotoURL) {
