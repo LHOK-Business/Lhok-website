@@ -402,10 +402,7 @@ profileUpdateForm.addEventListener('submit', async (e) => {
             profilePhotoURL: newPhotoURL || existingPhotoURL || null
             // profilePhotoURL: (await getDoc(userDocRef)).data()?.profilePhotoURL || null
         };
-        
-        if (newPhotoURL) {
-            profileData.profilePhotoURL = newPhotoURL;
-        }
+
         console.log('Saving profile data:', profileData); // For debugging
         
         // Save to Firestore
