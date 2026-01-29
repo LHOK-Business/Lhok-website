@@ -24,8 +24,9 @@
 @import url('components/header.css');
 @import url('components/links.css');
 @import url('components/profile-lite.css');
+
 /* 6. PAGES - Page-specific styles (use sparingly) */
-@import url('pages/page-specifc.css');
+@import url('pages/page-specific-css.css');
 
 /* page specific css's are called individually in respective html files  */
 
