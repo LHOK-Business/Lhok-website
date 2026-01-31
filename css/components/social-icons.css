@@ -1,0 +1,195 @@
+/* ============================================
+   SOCIAL ICONS STYLING
+   ============================================
+   These styles create small, clickable social icons
+   at the bottom left of each profile card.
+   The icons are reusable for company links too!
+   ============================================ */
+
+/* Container for the social icons */
+.profile-social-icons {
+    display: flex;
+    gap: 12px; /* Space between icons */
+    align-items: center;
+    justify-content: flex-end; /* Position icons to the right */
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1); /* Optional: separator line */
+}
+
+/* Individual icon styling */
+.social-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px; /* Rounded corners */
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    background: #f5f5f5; /* Light gray background */
+    color: #333; /* Dark icon color */
+    position: relative;
+}
+
+/* Hover effect for all icons */
+.social-icon:hover {
+    transform: translateY(-2px); /* Subtle lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Active/click effect */
+.social-icon:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   SPECIFIC ICON COLORS
+   You can customize these for your brand!
+   ============================================ */
+
+/* Instagram icon - Instagram gradient colors */
+.instagram-icon {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+}
+
+.instagram-icon:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    filter: brightness(1.1);
+}
+
+/* Website icon - Blue color */
+.website-icon {
+    background: #4285f4; /* Google blue - change to your brand color! */
+    color: white;
+}
+
+.website-icon:hover {
+    background: #357ae8; /* Darker blue on hover */
+}
+
+/* Email icon - Green color */
+.email-icon {
+    background: #34a853; /* Green for email */
+    color: white;
+}
+
+.email-icon:hover {
+    background: #2d8e47; /* Darker green on hover */
+}
+
+/* ============================================
+   COPY TOOLTIP (for email copy notification)
+   ============================================ */
+
+.copy-tooltip {
+    background: #323232;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    z-index: 10000;
+    pointer-events: none;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.copy-tooltip.visible {
+    opacity: 1;
+}
+
+/* Add a small arrow pointing down */
+.copy-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #323232;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Focus visible for keyboard navigation */
+.social-icon:focus-visible {
+    outline: 2px solid #4285f4;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Slightly smaller icons on mobile */
+@media (max-width: 768px) {
+    .social-icon {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .social-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .profile-social-icons {
+        gap: 10px;
+    }
+}
+
+/* ============================================
+   REUSABLE FOR COMPANY LINKS
+   ============================================
+   You can use these same classes for your company's
+   social media links! Just add the icons to your footer
+   or header:
+   
+   Example:
+   <div class="profile-social-icons">
+       <a href="YOUR_INSTAGRAM" class="social-icon instagram-icon">
+           [Instagram SVG]
+       </a>
+       <a href="YOUR_WEBSITE" class="social-icon website-icon">
+           [Website SVG]
+       </a>
+   </div>
+   ============================================ */
+
+/* ============================================
+   ALTERNATIVE: Larger icon size (optional)
+   ============================================
+   Uncomment below if you want bigger icons:
+   
+.social-icon {
+    width: 44px;
+    height: 44px;
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+}
+   ============================================ */
+
+/* ============================================
+   ALTERNATIVE: Circle icons (optional)
+   ============================================
+   Uncomment below for circular icons instead of rounded squares:
+   
+.social-icon {
+    border-radius: 50%;
+}
+   ============================================ */

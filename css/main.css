@@ -24,6 +24,7 @@
 @import url('components/header.css');
 @import url('components/links.css');
 @import url('components/profile-lite.css');
+@import url('components/social-icons.css');
 
 /* 6. PAGES - Page-specific styles (use sparingly) */
 @import url('pages/page-specific-css.css');
