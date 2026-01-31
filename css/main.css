@@ -25,6 +25,7 @@
 @import url('components/links.css');
 @import url('components/profile-lite.css');
 @import url('components/social-icons.css');
+@import url('components/toast-notifications.css');
 
 /* 6. PAGES - Page-specific styles (use sparingly) */
 @import url('pages/page-specific-css.css');
