@@ -8,6 +8,9 @@ console.log('Firebase config script loaded!');
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
+// Import toast notification system
+import { showToast, toastSuccess, toastError, toastInfo } from './toast-notifications.js';
+
 console.log('Firebase modules imported successfully!');
 
 // ========================================
@@ -39,7 +42,6 @@ window.addEventListener('DOMContentLoaded', function() {
     
     // Get form elements - matching your HTML IDs
     const form = document.getElementById('contactForm');
-    const messageDiv = document.getElementById('formMessage');
     const submitBtn = document.getElementById('submitBtn');
     const btnText = submitBtn.querySelector('.btn-text');
     const btnLoader = submitBtn.querySelector('.btn-loader');
@@ -70,20 +72,6 @@ window.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Function to show messages
-    function showMessage(text, type) {
-        messageDiv.textContent = text;
-        messageDiv.className = `message ${type} show`;
-        messageDiv.style.display = 'block';
-        
-        // Auto-hide success messages after 5 seconds
-        if (type === 'success') {
-            setTimeout(() => {
-                messageDiv.style.display = 'none';
-            }, 5000);
-        }
-    }
-
     // Form submit event listener
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -93,7 +81,6 @@ window.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = true;
         btnText.style.display = 'none';
         btnLoader.style.display = 'inline';
-        messageDiv.style.display = 'none';
 
         // Get form data - matching your HTML field IDs
         const formData = {
@@ -114,8 +101,8 @@ window.addEventListener('DOMContentLoaded', function() {
             
             console.log('✅ Document written with ID:', docRef.id);
             
-            // Show success message
-            showMessage('✓ Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
+            // Show success toast notification
+            toastSuccess('Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
             
             // Reset form
             form.reset();
@@ -126,7 +113,7 @@ window.addEventListener('DOMContentLoaded', function() {
             console.error('Error code:', error.code);
             console.error('Error message:', error.message);
             
-            // Show error message with more details
+            // Show error toast with more details
             let errorMessage = 'Oops! Something went wrong. Please try again later.';
             
             if (error.code === 'permission-denied') {
@@ -135,7 +122,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 errorMessage = 'Service temporarily unavailable. Please try again.';
             }
             
-            showMessage(errorMessage, 'error');
+            toastError(errorMessage);
         } finally {
             // Re-enable button
             submitBtn.disabled = false;

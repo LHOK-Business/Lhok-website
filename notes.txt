@@ -34,7 +34,7 @@ css/
 
 js/
 ├── componenets.js                # link several instances of a single element  
-├── firebase-config.js            # contact us form to send information to firebase
+├── contact-us.js            # contact us form to send information to firebase
 ├── main.js                       # home screen carousel
 
 
