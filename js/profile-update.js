@@ -4,6 +4,8 @@ import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/
 import { getFirestore, doc, getDoc, setDoc, updateDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
+import { showToast, toastSuccess, toastError, toastInfo, toastWarning } from './toast-notifications.js'; // ← ADD THIS
+
 // ============================================
 // FIREBASE CONFIGURATION
 // ============================================
@@ -107,14 +109,13 @@ profilePictureInput.addEventListener('change', (e) => {
             profilePictureInput.value = '';
             return;
         }
-        
+
         // Check file type
         if (!file.type.startsWith('image/')) {
             showMessage('Please select an image file', 'error');
             profilePictureInput.value = '';
             return;
         }
-        
         // Show preview
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -122,6 +123,7 @@ profilePictureInput.addEventListener('change', (e) => {
             removePictureBtn.style.display = 'inline-block';
         };
         reader.readAsDataURL(file);
+        toastInfo('Image selected and ready to upload');
     }
 });
 
@@ -132,6 +134,7 @@ removePictureBtn.addEventListener('click', () => {
     profilePictureInput.value = '';
     profilePicturePreview.src = 'https://via.placeholder.com/150/b54dbc/ffffff?text=No+Photo';
     removePictureBtn.style.display = 'none';
+    toastInfo('Profile picture cleared');
 });
 
 /**
@@ -273,13 +276,15 @@ async function loadProfileData(userId) {
             }
             
             console.log('Profile data loaded successfully');
+            toastInfo('Profile data loaded');
         } else {
             // Document doesn't exist yet - this is a new profile
             console.log('No existing profile found. Ready to create new profile.');
+            toastInfo('Ready to create your profile');
         }
     } catch (error) {
         console.error('Error loading profile data:', error);
-        showMessage('Error loading profile data: ' + error.message, 'error');
+        toastError('Error loading profile data: ' + error.message);
     }
 }
 
@@ -310,7 +315,7 @@ async function saveProfileData(profileData) {
             });
             
             console.log('Profile updated successfully');
-            showMessage('Profile updated successfully!', 'success');
+            toastSuccess('Profile updated successfully!');
         } else {
             // ============================================
             // DOCUMENT DOESN'T EXIST - CREATE IT
@@ -324,13 +329,12 @@ async function saveProfileData(profileData) {
                 createdAt: serverTimestamp(), // Add creation timestamp
                 updatedAt: serverTimestamp()  // Add update timestamp
             });
-            
             console.log('Profile created successfully');
-            showMessage('Profile created successfully! Awaiting admin approval.', 'success');
+            toastSuccess('Profile created successfully! Awaiting admin approval.');
         }
     } catch (error) {
         console.error('Error saving profile:', error);
-        showMessage('Error saving profile: ' + error.message, 'error');
+        toastError('Error saving profile: ' + error.message);
         throw error; // Re-throw to handle in form submit
     }
 }
@@ -347,7 +351,7 @@ profileUpdateForm.addEventListener('submit', async (e) => {
     
     // Check if user is authenticated
     if (!currentUser) {
-        showMessage('You must be logged in to update your profile', 'error');
+        toastError('You must be logged in to update your profile');
         return;
     }
     
@@ -361,7 +365,7 @@ profileUpdateForm.addEventListener('submit', async (e) => {
         
         if (file) {
             try {
-                showMessage('Uploading profile picture...', 'success');
+                toastInfo('Uploading profile picture...');
                 newPhotoURL = await uploadProfilePicture(file, currentUser.uid);
                 
                 // Delete old picture if exists
@@ -370,9 +374,10 @@ profileUpdateForm.addEventListener('submit', async (e) => {
                 if (userDoc.exists() && userDoc.data().profilePhotoURL) {
                     await deleteOldProfilePicture(userDoc.data().profilePhotoURL);
                 }
+                toastSuccess('Profile picture uploaded successfully!');
             } catch (error) {
                 console.error('Error uploading picture:', error);
-                showMessage('Error uploading picture: ' + error.message, 'error');
+                toastError('Error uploading picture: ' + error.message);
                 throw error;
             }
         }
@@ -438,8 +443,7 @@ onAuthStateChanged(auth, (user) => {
     } else {
         // User is not signed in - redirect to login page
         console.log('No user authenticated, redirecting to login');
-        showMessage('Please log in to access this page', 'error');
-        
+        toastError('Please log in to access this page');
         // Redirect to login page after 2 seconds
         setTimeout(() => {
             window.location.href = 'login.html'; // Adjust path as needed
