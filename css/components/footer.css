@@ -31,13 +31,29 @@ footer {
    ============================================ */
 
 .footer-container {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
     padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-xs) var(--spacing-lg);
+    position: relative;} */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    /* Dimensions */
+    height: 100%;
+    width: 100%;
+    max-width: var(--max-content-width);
+    
+    /* Spacing */
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    
+    /* Positioning */
     position: relative;
 }
+
 /* Using below */
 .footer-grid {
     display: grid;
