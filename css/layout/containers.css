@@ -55,27 +55,17 @@
      Row first then column for naming*/
 
 
-.TwoThree-OneTwo {   
-  grid-row: 1 / 2;
-  grid-column: 2 / 3;
+.TwoFour-One {   
+  grid-row: 1;
+  grid-column: 2 / 4;
   }
-  /*   1 2 3 4
-     1 -|x|x|-
-     2 -|x|x|-
-     3 -|-|-|-
-     4 -|-|-|- 
-     Row first then column for naming*/
 
-.TwoThree-TwoThree {   
+
+.TwoFour-TwoThree {   
   grid-row: 2 / 3;
-  grid-column: 2 / 3;
+  grid-column: 2 / 4;
   }
-  /*   1 2 3 4
-     1 -|-|-|-
-     2 -|-|-|-
-     3 -|x|x|-
-     4 -|x|x|- 
-     Row first then column for naming*/
+
 
 
 .ThreeOne-FourTwo {
