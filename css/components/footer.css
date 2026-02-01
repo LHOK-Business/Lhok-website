@@ -3,134 +3,79 @@
    ============================================ */
 
 footer {
-    /* Positioning */
     position: relative;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: var(--z-index-fixed);
-    
-    /* Dimensions */
-    height: var(--footer-height);
     width: 100%;
-    
-    /* Styling */
     background: linear-gradient(
         to top,
         var(--color-primary) 1%,
         var(--color-white) 100%
     );
-    
-    /* Box model */
     margin: 0;
-    padding: var(--spacing-sm) 0;
+    padding: var(--spacing-md) var(--spacing-lg);
     box-sizing: border-box;
-    
-    /* Content control */
-    overflow: visible; /* Changed from hidden to prevent clipping */
 }
 
 /* ============================================
    FOOTER LAYOUT
    ============================================ */
 
-.footer-container {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-xs) var(--spacing-lg);
-    position: relative;} */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
-    /* Dimensions */
-    height: 100%;
-    width: 100%;
-    max-width: var(--max-content-width);
-    
-    /* Spacing */
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-    
-    /* Positioning */
-    position: relative;
-}
-
-/* Using below */
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    align-items: center;
-    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);  /* 4 equal columns */
+    gap: var(--spacing-md);
+    align-items: start;
     width: 100%;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
 }
 
 /* ============================================
    FOOTER CONTAINERS
    ============================================ */
-   .One {   
-   
-  grid-column: 1 ;
- }
 
-    .Two {   
-   
-  grid-column: 2 ;
- }
+.One {   
+    grid-column: 1;
+}
 
-    .Three {   
-   
-  grid-column: 3 ;
- }
+.Two {   
+    grid-column: 2;
+}
 
-    .Four {   
-   
-  grid-column: 4 ;
- }
-  
+.Three {   
+    grid-column: 3;
+}
 
-/* ============================================
-   FOOTER CONTENT
-   ============================================ */
-
-.footer-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-xl);
-    flex-grow: 1;
+.Four {   
+    grid-column: 4;
+    text-align: right;  /* Align copyright to the right */
 }
 
 /* ============================================
-   FOOTER NAVIGATION
+   FOOTER LISTS
    ============================================ */
 
-.footer-links-left,
-.footer-links-right {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-lg);
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-/* ============================================
-   FOOTER LOGO
-   ============================================ */
-/* Using below  to force the logo*/
-.footer-logo {
-    grid-column: 4 ;
+footer ul li {
+    margin-bottom: var(--spacing-xs);
 }
 
-.footer-logo img {
-    height: var(--logo-height-footer);
-    width: auto;
-    filter: brightness(0.8);
-    transition: filter var(--transition-speed-normal) var(--transition-easing);
+footer ul li a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: color var(--transition-speed-normal);
 }
 
-.footer-logo img:hover {
-    filter: brightness(1);
+footer ul li a:hover {
+    color: var(--color-primary);
 }
 
 /* ============================================
@@ -138,13 +83,8 @@ footer {
    ============================================ */
 
 .footer-bottom {
-    position: absolute;
-    bottom: var(--spacing-xs);
-    right: var(--spacing-lg);
-    
     font-size: var(--font-size-tiny);
     color: var(--color-text-secondary);
-    text-align: right;
 }
 
 .footer-bottom p {
@@ -152,24 +92,58 @@ footer {
 }
 
 /* ============================================
+   RESPONSIVE - TABLET
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);  /* 2 columns on tablet */
+        gap: var(--spacing-lg);
+    }
+    
+    .One {
+        grid-column: 1;
+    }
+    
+    .Two {
+        grid-column: 2;
+    }
+    
+    .Three {
+        grid-column: 1;
+    }
+    
+    .Four {
+        grid-column: 2;
+        text-align: right;
+    }
+}
+
+/* ============================================
    RESPONSIVE - MOBILE
    ============================================ */
 
 @media (max-width: 768px) {
-    .footer-content {
+    footer {
+        padding: var(--spacing-md) var(--spacing-md);
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;  /* Single column on mobile */
         gap: var(--spacing-md);
+        text-align: center;
     }
     
-    .footer-links-left,
-    .footer-links-right {
-        gap: var(--spacing-sm);
-    }
-    
-    .footer-logo img {
-        height: var(--logo-height-footer);
+    .One,
+    .Two,
+    .Three,
+    .Four {
+        grid-column: 1;
+        text-align: center;
     }
     
     .footer-bottom {
-        font-size: 0.625rem; /* 10px - increased from 9px for readability */
+        font-size: 0.625rem;
+        text-align: center;
     }
 }
