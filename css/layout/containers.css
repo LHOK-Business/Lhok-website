@@ -207,7 +207,33 @@
      3 -|-|-
      Row first then column for naming*/
 }   
-   
+
+   .Two-Two {   
+  justify-content: center;
+  align-items: center;     
+  grid-row: 2;
+  grid-column: 2 ;
+  /*   
+       1 2 3 
+     1 -|-|-
+     2 -|x|-
+     3 -|-|-
+     Row first then column for naming*/
+} 
+
+   .Two-Three {   
+  justify-content: center;
+  align-items: center;     
+  grid-row: 2;
+  grid-column: 3 ;
+  /*   
+       1 2 3 
+     1 -|-|-
+     2 -|-|x
+     3 -|-|-
+     Row first then column for naming*/
+} 
+
    
    
    .One-Two {   
@@ -223,18 +249,6 @@
      Row first then column for naming*/
 }
    
-   .Two-Two {   
-  justify-content: center;
-  align-items: center;     
-  grid-row: 2;
-  grid-column: 2 ;
-  /*   
-       1 2 3 
-     1 -|-|-
-     2 -|x|-
-     3 -|-|-
-     Row first then column for naming*/
-}
 
 .Three-One {
 

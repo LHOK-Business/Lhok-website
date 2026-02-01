@@ -41,14 +41,39 @@ footer {
 /* Using below */
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(8, auto);
+    grid-template-columns: repeat(5, auto);
     align-items: center;
     justify-items: center;
     width: 100%;
 }
 
+/* ============================================
+   FOOTER CONTAINERS
+   ============================================ */
+   .One {   
+   
+  grid-column: 1 ;
+ }
 
+    .Two {   
+   
+  grid-column: 2 ;
+ }
 
+    .Three {   
+   
+  grid-column: 3 ;
+ }
+
+    .Four {   
+   
+  grid-column: 4 ;
+ }
+
+    .Five {   
+   
+  grid-column: 5 ;
+ }
 
 /* ============================================
    FOOTER CONTENT
@@ -99,11 +124,11 @@ footer {
 .footer-bottom {
     position: absolute;
     bottom: var(--spacing-xs);
-    left: var(--spacing-lg);
+    right: var(--spacing-lg);
     
     font-size: var(--font-size-tiny);
     color: var(--color-text-secondary);
-    text-align: left;
+    text-align: right;
 }
 
 .footer-bottom p {
