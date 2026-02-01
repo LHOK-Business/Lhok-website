@@ -23,7 +23,11 @@ footer {
     
     /* Box model */
     margin: 0;
+    padding: var(--spacing-sm) 0;
     box-sizing: border-box;
+    
+    /* Content control */
+    overflow: visible; /* Changed from hidden to prevent clipping */
 }
 
 /* ============================================
@@ -57,7 +61,7 @@ footer {
 /* Using below */
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(3, auto);
     align-items: center;
     justify-items: center;
     width: 100%;
@@ -85,11 +89,7 @@ footer {
    
   grid-column: 4 ;
  }
-
-    .Five {   
-   
-  grid-column: 5 ;
- }
+  
 
 /* ============================================
    FOOTER CONTENT
