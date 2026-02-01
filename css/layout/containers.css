@@ -307,6 +307,18 @@
      3 -|-|-
      Row first then column for naming*/
 }
+   .Two-TwoThree {   
+  justify-content: center;
+  align-items: center;     
+  grid-row: 2 / 3;
+  grid-column: 2;
+  /*   
+       1 2 3 
+     1 -|-|-
+     2 -|x|-
+     3 -|x|-
+     Row first then column for naming*/
+}
 
    .OneTwo-One {   
   justify-content: center;

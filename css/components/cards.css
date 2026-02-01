@@ -13,6 +13,7 @@
     position: relative;
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
 }
 
 /* Wrapper that actually scrolls */
@@ -248,9 +249,10 @@ PROFILE SEARCH
                 gap: 20px;
             }
         }
+        /* {
             min-height: 100vh;
             padding: 40px 20px;
-        }
+        } */
 
         .container {
             max-width: 1400px;
@@ -721,10 +723,9 @@ PROFILE SEARCH
    WEBSITE LINK - Specific styling
    -------------------------------------------- */
 
-.website-link {
+/* .website-link 
     /* Uses default brand colors from .social-link */
     /* Add custom styling here if you want website links to look different */
-}
 
 /* UI DESIGNER NOTE: Add custom styles for website link if needed */
 /* Example: .website-link { background: #333; } */
