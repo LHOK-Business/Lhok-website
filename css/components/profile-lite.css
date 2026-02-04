@@ -7,10 +7,9 @@ PROFILE SEARCH
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
             gap: 30px;
             margin-top: 40px;
-        }
 
         .profile-card {
-            background: rgb(10, 149, 43);
+            background: rgb(255, 255, 255);
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -21,7 +20,7 @@ PROFILE SEARCH
 
         .profile-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         }
 
         .profile-card::before {
@@ -31,14 +30,14 @@ PROFILE SEARCH
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, #cf64d4 0%, #764ba2 100%);
         }
 
         .profile-avatar {
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #cf64d4 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
