@@ -84,8 +84,10 @@ the additional parameters should be added to "OneThree-Two*/
 }
 
 
+.login .btn{
+    width: 100%;
 
-/* Modify Porfile Picture Preview */
+}
 
 /* Profile Picture Section */
 .profile-picture-section {
