@@ -50,7 +50,7 @@ onAuthStateChanged(auth, (user) => {
         // Display full profile information
         fullNameElement.textContent = user.displayName || 'Not set';
         emailElement.textContent = user.email;
-        userIdElement.textContent = user.uid;
+        // userIdElement.textContent = user.uid;
         accountCreatedElement.textContent = new Date(user.metadata.creationTime).toLocaleDateString();
         
     } else {

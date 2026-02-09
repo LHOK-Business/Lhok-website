@@ -171,11 +171,12 @@ function createProfileCard(userData) {
     // --------------------------------------------
     // YEARS IN INDUSTRY (NEW)
     // --------------------------------------------
+    // Icon functionality added with "<div class="info-icon"></div>"
     if (userData.yearsInIndustry) {
         cardHTML += `
+            <div class="info-label"> Experience:</div>   
             <div class="info-item">
-                <div class="info-icon">⏱️</div>
-                <div class="info-text">${userData.yearsInIndustry} years</div>
+                <div class="info-text"><strong>${userData.yearsInIndustry} years</strong></div>
             </div>
         `;
     }
@@ -185,10 +186,10 @@ function createProfileCard(userData) {
     // --------------------------------------------
     if (userData.location) {
         cardHTML += `
-            <div class="info-item">
-                <div class="info-icon">📍</div>
-                <div class="info-text">${userData.location}</div>
-            </div>
+        <div class="info-label">General Location:</div>    
+        <div class="info-item">
+                <div class="info-text"><strong>${userData.location}</strong></div>
+        </div>
         `;
     }
     
@@ -198,14 +199,13 @@ function createProfileCard(userData) {
     if (userData.preferredContact) {
         // Choose an appropriate icon based on the contact method
         let contactIcon = '💬'; // Default icon
-        if (userData.preferredContact === 'Email') contactIcon = '📧';
-        if (userData.preferredContact === 'Phone') contactIcon = '📞';
-        if (userData.preferredContact === 'Instagram') contactIcon = '📸';
-        if (userData.preferredContact === 'Website') contactIcon = '🌐';
+        if (userData.preferredContact === 'Email') contactIcon = '';
+        if (userData.preferredContact === 'Phone') contactIcon = '';
+        if (userData.preferredContact === 'Instagram') contactIcon = '';
+        if (userData.preferredContact === 'Website') contactIcon = '';
         
         cardHTML += `
             <div class="info-item">
-                <div class="info-icon">${contactIcon}</div>
                 <div class="info-text">Contact via ${userData.preferredContact}</div>
             </div>
         `;
