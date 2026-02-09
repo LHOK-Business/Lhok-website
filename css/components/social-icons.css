@@ -11,7 +11,7 @@
     display: flex;
     gap: 12px; /* Space between icons */
     align-items: center;
-    justify-content: flex-end; /* Position icons to the right */
+    justify-content: center; /* Position icons to the right */
     margin-top: 16px;
     padding-top: 12px;
     border-top: 1px solid rgba(0, 0, 0, 0.1); /* Optional: separator line */
