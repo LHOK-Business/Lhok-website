@@ -362,8 +362,16 @@
   padding-bottom: 10px;
 }
 
+.extra-space-sm {
+  height: 25px;
+}
+
 .extra-space {
   height: 50px;
+}
+
+.extra-space-lg {
+  height: 75px;
 }
 
 
