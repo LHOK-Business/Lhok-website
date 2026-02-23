@@ -1,72 +1,152 @@
 <!-- This is shown to only logged on users-->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login-dashboard</title>
+    <title>Dashboard - LHOK</title>
 
-        <!-- Google Font -->
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-   
+
+    <!-- Global Styles -->
     <link rel="stylesheet" href="../css/layout/containers.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/pages/dashboard.css">
 
-
+    <!-- Page Styles -->
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 
 <body>
 
-<!-- Header section starts -->
-<div id="header-placeholder"></div>
-<!-- Header section ends -->
+    <!-- Header -->
+    <div id="header-placeholder"></div>
 
-<main>
-    <div class="home">
-        <div class="container3by3">
-            <div class="OneThree-Two">
-                    <h1 id="welcome-message">Hello, Friend! 👋</h1>
-                    <p class="subtitle">Welcome to your personalized dashboard</p>
-                   
-                    <h2>Your Profile</h2>
-                        <div class="info-row">
-                            <span class="label">Full Name:</span>
-                            <span id="full-name" class="value">Loading...</span>
+    <main>
+        <div class="home">
+            <div class="container3by3">
+                <div class="OneThree-Two">
+
+                    <!-- PROFILE STRIP -->
+                    <div class="profile-strip">
+                        <div class="profile-strip-left">
+                            <div class="profile-avatar-circle" id="avatar-initials">?</div>
+                            <div class="profile-strip-info">
+                                <h3 id="welcome-message">Hello, Friend! 👋</h3>
+                                <p id="email">Loading...</p>
+                            </div>
+                        </div>
+                        <div class="profile-strip-actions">
+                            <button onclick="window.location.href='profile-update.html'" class="btn btn-sm">Edit Profile</button>
+                            <button id="sign-out-button" class="btn btn-sm btn-signout">Sign Out</button>
+                        </div>
+                    </div>
+
+                    <!-- FEATURE PREVIEW CARDS -->
+                    <div class="dashboard-section">
+                        <div class="dashboard-intro">
+                            <h1>Your Member Dashboard</h1>
+                            <p>We're building something great for LHOK members. Here's a preview of what's coming — and we want to know what matters most to you.</p>
                         </div>
 
-                        <div class="info-row">
-                            <span class="label">Email:</span>
-                            <span id="email" class="value">Loading...</span>
+                        <div class="feature-grid">
+
+                            <div class="feature-card">
+                                <span class="feature-badge">Coming Soon</span>
+                                <span class="feature-icon">📅</span>
+                                <h3>Booking & Appointments</h3>
+                                <p>Manage your bookings, set your availability, and connect with clients directly.</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <span class="feature-badge">Coming Soon</span>
+                                <span class="feature-icon">💬</span>
+                                <h3>Member Messaging</h3>
+                                <p>Reach out to other LHOK members, share tips, and build your network.</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <span class="feature-badge">Coming Soon</span>
+                                <span class="feature-icon">🗂️</span>
+                                <h3>Portfolio Showcase</h3>
+                                <p>Upload your work, showcase your style, and attract the right clients.</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <span class="feature-badge">Coming Soon</span>
+                                <span class="feature-icon">⭐</span>
+                                <h3>Reviews & Ratings</h3>
+                                <p>Collect verified reviews from clients to build trust and credibility.</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <span class="feature-badge">Coming Soon</span>
+                                <span class="feature-icon">📊</span>
+                                <h3>Insights & Analytics</h3>
+                                <p>See how many people have viewed your profile and where your traffic comes from.</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <span class="feature-badge">Coming Soon</span>
+                                <span class="feature-icon">🎓</span>
+                                <h3>Education & Resources</h3>
+                                <p>Access guides, tutorials, and industry resources curated for beauty professionals.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- FEEDBACK / POLL -->
+                    <div class="feedback-section">
+                        <h2>What would you like to see first?</h2>
+                        <p>Your feedback shapes what we build next. Pick the feature that would help you most.</p>
+
+                        <div class="poll-options">
+                            <button class="poll-option" data-value="Booking & Appointments">
+                                <span class="option-emoji">📅</span> Booking & Appointments
+                            </button>
+                            <button class="poll-option" data-value="Member Messaging">
+                                <span class="option-emoji">💬</span> Member Messaging
+                            </button>
+                            <button class="poll-option" data-value="Portfolio Showcase">
+                                <span class="option-emoji">🗂️</span> Portfolio Showcase
+                            </button>
+                            <button class="poll-option" data-value="Reviews & Ratings">
+                                <span class="option-emoji">⭐</span> Reviews & Ratings
+                            </button>
+                            <button class="poll-option" data-value="Insights & Analytics">
+                                <span class="option-emoji">📊</span> Insights & Analytics
+                            </button>
+                            <button class="poll-option" data-value="Something else">
+                                <span class="option-emoji">💡</span> Something else entirely
+                            </button>
                         </div>
 
-                        <!-- <div class="info-row">
-                            <span class="label">User ID:</span>
-                            <span id="user-id" class="value">Loading...</span>
-                        </div> -->
-                        
-                        <div class="info-row">
-                            <span class="label">Member Since:</span>
-                            <span id="account-created" class="value">Loading...</span>
+                        <div class="feedback-cta">
+                            <button class="btn" id="submit-feedback-btn" disabled>Send My Vote</button>
+                            <p>Or tell us in detail — we read every message.</p>
+                            <button class="btn" onclick="window.location.href='contact-us.html'">Contact Us</button>
                         </div>
-                    
-                
-                    <h2>You can now add to your profile.</h2>
-                    <button onclick="window.location.href='profile-update.html'"" class="btn">Modify Profile</button>
-                <button id="sign-out-button" class="btn btn-signout">Sign Out</button>
+
+                        <div class="thankyou-message" id="thankyou-msg">
+                            ✅ Thank you! Your vote has been recorded. We'll be in touch as we build out the dashboard.
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
-</main>
-<!-- Footer section starts -->
-<div id="footer-placeholder"></div>
-<!-- Footer section ends -->
+    </main>
 
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
 
     <script src="../js/components.js"></script>
     <script type="module" src="../js/home.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,286 @@
+/* ============================================
+   LOGIN HOME / MEMBER DASHBOARD
+   dashboard.css
+   ============================================ */
+
+/* ============================================
+   PROFILE STRIP (top of page)
+   ============================================ */
+
+.profile-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: white;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.profile-strip-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-avatar-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-primary);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.profile-strip-info h3 {
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 0.1rem 0;
+    color: var(--color-text-primary);
+}
+
+.profile-strip-info p {
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.profile-strip-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   DASHBOARD INTRO
+   ============================================ */
+
+.dashboard-section {
+    padding: 2rem 0;
+}
+
+.dashboard-intro {
+    margin-bottom: 2.5rem;
+}
+
+.dashboard-intro p {
+    color: var(--color-text-secondary);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   FEATURE PLACEHOLDER CARDS
+   ============================================ */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.feature-card {
+    background: var(--color-gray-light);
+    border: 2px dashed var(--color-gray-medium);
+    border-radius: var(--border-radius-md);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all var(--transition-speed-normal) ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(181, 77, 188, 0.04) 100%);
+    pointer-events: none;
+}
+
+.feature-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.feature-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-primary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background: rgba(181, 77, 188, 0.1);
+    border-radius: 20px;
+    padding: 3px 10px;
+    margin-bottom: 1rem;
+}
+
+.feature-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.feature-card h3 {
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ============================================
+   FEEDBACK / POLL SECTION
+   ============================================ */
+
+.feedback-section {
+    background: linear-gradient(
+        135deg,
+        var(--color-gray-light) 0%,
+        rgba(181, 77, 188, 0.06) 100%
+    );
+    border-radius: var(--border-radius-md);
+    padding: 2.5rem 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(181, 77, 188, 0.15);
+}
+
+.feedback-section h2 {
+    margin-bottom: 0.5rem;
+}
+
+.feedback-section > p {
+    color: var(--color-text-secondary);
+    margin-bottom: 1.75rem;
+}
+
+.poll-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+    text-align: left;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.poll-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.25rem;
+    background: white;
+    border: 2px solid var(--color-gray-medium);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all var(--transition-speed-normal) ease;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-body);
+    color: var(--color-text-primary);
+    width: 100%;
+    text-align: left;
+}
+
+.poll-option:hover {
+    border-color: var(--color-primary);
+    background: rgba(181, 77, 188, 0.04);
+}
+
+.poll-option.selected {
+    border-color: var(--color-primary);
+    background: rgba(181, 77, 188, 0.08);
+    font-weight: var(--font-weight-bold);
+}
+
+.option-emoji {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   FEEDBACK CTA
+   ============================================ */
+
+.feedback-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.feedback-cta p {
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* ============================================
+   THANK YOU STATE
+   ============================================ */
+
+.thankyou-message {
+    display: none;
+    padding: 1.25rem;
+    background: rgba(76, 175, 80, 0.1);
+    border: 2px solid rgba(76, 175, 80, 0.3);
+    border-radius: var(--border-radius-md);
+    color: #2e7d32;
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-bold);
+    margin-top: 1rem;
+}
+
+.thankyou-message.visible {
+    display: block;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-strip {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-strip-actions {
+        width: 100%;
+    }
+
+    .profile-strip-actions .btn {
+        flex: 1;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
