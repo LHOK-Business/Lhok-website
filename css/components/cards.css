@@ -210,6 +210,7 @@ PROFILE SEARCH
         }
 
         .no-profiles {
+            grid-column: 1/span1;
             text-align: center;
             padding: 60px;
             background: white;

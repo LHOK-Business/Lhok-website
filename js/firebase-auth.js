@@ -13,7 +13,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 
 // ============================================
-// FIREBASE CONFIG - REPLACE WITH YOUR VALUES
+// FIREBASE CONFIG 
 // ============================================
 const firebaseConfig = {
   apiKey: "AIzaSyB2DccAwpNnzfNPhhP6KQJ58xVOEFsLB8Y",
