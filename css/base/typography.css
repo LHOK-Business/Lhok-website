@@ -73,9 +73,9 @@ a:hover {
     text-decoration: underline;
 }
 
-a:visited {
+/* a:visited {
     color: #800080; /* Consider adding to variables as --color-link-visited */
-}
+} */
 
 a:active {
     color: #ff0000; /* Consider adding to variables as --color-link-active */

@@ -188,3 +188,9 @@ footer ul li a:hover {
         padding: var(--spacing-sm) var(--spacing-md);
     }
 }
+
+
+.footer-follow-row .instagram-icon svg {
+    color: var(--color-white);
+    fill: var(--color-white);
+}
