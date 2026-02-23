@@ -79,387 +79,14 @@
 }
 
 
-
-/* ============================================
-PROFILE SEARCH
-   ============================================ */
-
-        .profiles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .profile-card {
-            background: rgb(10, 149, 43);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .profile-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2.5em;
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .profile-name {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-            margin-bottom: 5px;
-        }
-
-        .profile-email {
-            text-align: center;
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-            word-break: break-word;
-        }
-
-        .profile-info {
-            margin: 15px 0;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px;
-            font-size: 0.95em;
-        }
-
-        .info-icon {
-            width: 20px;
-            margin-right: 10px;
-            color: #667eea;
-            flex-shrink: 0;
-        }
-
-        .info-text {
-            color: #555;
-            line-height: 1.5;
-            word-break: break-word;
-        }
-
-        .profile-bio {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            color: #555;
-            line-height: 1.6;
-            font-size: 0.95em;
-            font-style: italic;
-        }
-
-        .profile-website {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .website-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9em;
-            transition: transform 0.2s ease;
-        }
-
-        .website-link:hover {
-            transform: scale(1.05);
-        }
-
-        .loading {
-            text-align: center;
-            padding: 60px;
-            color: white;
-            font-size: 1.3em;
-        }
-
-        .no-profiles {
-            grid-column: 1/span1;
-            text-align: center;
-            padding: 60px;
-            background: white;
-            border-radius: 15px;
-            color: #666;
-            font-size: 1.2em;
-        }
-
-        /* Loading animation */
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            
-            .subtitle {
-                font-size: 1em;
-            }
-
-            .profiles-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-        /* {
-            min-height: 100vh;
-            padding: 40px 20px;
-        } */
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            color: white;
-        }
-
-        h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-
-        .profiles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .profile-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .profile-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2.5em;
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .profile-name {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-            margin-bottom: 5px;
-        }
-
-        .profile-email {
-            text-align: center;
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-            word-break: break-word;
-        }
-
-        .profile-info {
-            margin: 15px 0;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px;
-            font-size: 0.95em;
-        }
-
-        .info-icon {
-            width: 20px;
-            margin-right: 10px;
-            color: #667eea;
-            flex-shrink: 0;
-        }
-
-        .info-text {
-            color: #555;
-            line-height: 1.5;
-            word-break: break-word;
-        }
-
-        .profile-bio {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            color: #555;
-            line-height: 1.6;
-            font-size: 0.95em;
-            font-style: italic;
-        }
-
-        .profile-website {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .website-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9em;
-            transition: transform 0.2s ease;
-        }
-
-        .website-link:hover {
-            transform: scale(1.05);
-        }
-
-        .loading {
-            text-align: center;
-            padding: 60px;
-            color: white;
-            font-size: 1.3em;
-        }
-
-        .no-profiles {
-            text-align: center;
-            padding: 60px;
-            background: white;
-            border-radius: 15px;
-            color: #666;
-            font-size: 1.2em;
-        }
-
-        /* Loading animation */
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            
-            .subtitle {
-                font-size: 1em;
-            }
-
-            .profiles-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-
-
-
-
 /* ============================================
    PROFILE CARDS - PUBLIC PROFILES PAGE
-   ============================================
-   
-   This file contains all styles for the member profile cards
-   displayed on the public profiles page.
-   
-   UI DESIGNER NOTES:
-   - All colors use CSS variables from variables.css
-   - To change colors, edit the variables, not these rules
-   - Layout uses flexbox and grid for responsiveness
-   - Modify spacing using --spacing-* variables
-   
+   cards.css
+
+   Styles for member profile cards displayed
+   on the public profiles page.
    ============================================ */
+
 
 /* ============================================
    PROFILES GRID CONTAINER
@@ -467,15 +94,12 @@ PROFILE SEARCH
 
 .profiles-grid {
     display: grid;
-    /* Creates a responsive grid that fits as many 300px-wide cards as possible */
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--spacing-lg); /* Space between cards */
+    gap: var(--spacing-lg);
     padding: var(--spacing-lg);
     width: 100%;
 }
 
-/* UI DESIGNER NOTE: To change card width, modify the 300px value above */
-/* Smaller value = more cards per row, Larger value = fewer cards per row */
 
 /* ============================================
    INDIVIDUAL PROFILE CARD
@@ -486,58 +110,82 @@ PROFILE SEARCH
     border-radius: var(--border-radius-lg);
     padding: var(--spacing-lg);
     box-shadow: var(--shadow-md);
-    
-    /* Smooth transitions for hover effects */
-    transition: transform var(--transition-speed-normal) var(--transition-easing),
-                box-shadow var(--transition-speed-normal) var(--transition-easing);
-    
-    /* Layout */
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-speed-normal) var(--transition-easing),
+                box-shadow var(--transition-speed-normal) var(--transition-easing);
 }
 
-/* Hover effect - card lifts slightly */
+/* Accent bar at top of card */
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+}
+
 .profile-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
 }
 
-/* UI DESIGNER NOTE: To remove hover effect, delete the :hover rule above */
 
 /* ============================================
-   AVATAR (Circular initials)
+   AVATAR - INITIALS FALLBACK
    ============================================ */
 
 .profile-avatar {
-    /* Size and shape */
     width: 80px;
     height: 80px;
-    border-radius: 50%; /* Makes it circular */
-    
-    /* Colors - uses your brand gradient */
+    border-radius: 50%;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: var(--color-white);
-    
-    /* Center the text */
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    /* Text styling */
     font-size: 2rem;
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-primary);
-    
-    /* Spacing */
-    margin: 0 auto var(--spacing-md); /* Centers avatar, adds space below */
+    margin: 0 auto var(--spacing-md);
+    box-shadow: var(--shadow-sm);
 }
 
-/* UI DESIGNER NOTE: To change avatar size, adjust width and height above */
-/* To change avatar colors, edit --color-primary in variables.css */
 
 /* ============================================
-   NAME AND EMAIL
+   AVATAR - UPLOADED PHOTO
+   ============================================ */
+
+.profile-photo-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--color-primary);
+    box-shadow: var(--shadow-md);
+    margin: 0 auto var(--spacing-md);
+    transition: transform var(--transition-speed-normal) var(--transition-easing);
+}
+
+.profile-photo-container:hover {
+    transform: scale(1.05);
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* ============================================
+   NAME
    ============================================ */
 
 .profile-name {
@@ -549,15 +197,6 @@ PROFILE SEARCH
     margin-bottom: var(--spacing-xs);
 }
 
-.profile-email {
-    font-family: var(--font-family-secondary);
-    font-size: var(--font-size-small);
-    color: var(--color-text-secondary);
-    text-align: center;
-    margin-bottom: var(--spacing-md);
-}
-
-/* UI DESIGNER NOTE: To change text alignment, modify text-align property */
 
 /* ============================================
    SPECIALTIES TAGS
@@ -565,41 +204,30 @@ PROFILE SEARCH
 
 .profile-specialties {
     display: flex;
-    flex-wrap: wrap; /* Tags wrap to next line if needed */
+    flex-wrap: wrap;
     gap: var(--spacing-sm);
     justify-content: center;
     margin-bottom: var(--spacing-md);
 }
 
 .specialty-tag {
-    /* Tag appearance */
     background: var(--color-primary);
     color: var(--color-white);
-    
-    /* Spacing and shape */
     padding: var(--spacing-xs) var(--spacing-md);
     border-radius: var(--border-radius-lg);
-    
-    /* Text */
     font-family: var(--font-family-secondary);
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-medium);
-    
-    /* Subtle transition */
     transition: background var(--transition-speed-normal) var(--transition-easing);
 }
 
-/* Optional hover effect for tags */
 .specialty-tag:hover {
     background: var(--color-primary-dark);
 }
 
-/* UI DESIGNER NOTE: To use different colors for specialties */
-/* Add this to variables.css: --color-specialty: #yourcolor; */
-/* Then replace var(--color-primary) above with var(--color-specialty) */
 
 /* ============================================
-   BIO SECTION
+   BIO
    ============================================ */
 
 .profile-bio {
@@ -615,10 +243,9 @@ PROFILE SEARCH
     margin-bottom: var(--spacing-md);
 }
 
-/* UI DESIGNER NOTE: To change bio background, modify background property above */
 
 /* ============================================
-   INFO ITEMS (Location, Years, Contact Method)
+   INFO ITEMS (Location, Experience, Contact)
    ============================================ */
 
 .profile-info {
@@ -628,16 +255,17 @@ PROFILE SEARCH
     margin-bottom: var(--spacing-md);
 }
 
+.info-label {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+}
+
 .info-item {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-}
-
-.info-icon {
-    font-size: 1.2rem;
-    width: 24px; /* Fixed width for alignment */
-    text-align: center;
 }
 
 .info-text {
@@ -645,91 +273,63 @@ PROFILE SEARCH
     font-size: var(--font-size-small);
     color: var(--color-text-primary);
     flex: 1;
+    word-break: break-word;
+    line-height: 1.5;
 }
 
-/* UI DESIGNER NOTE: To change icon size, modify font-size in .info-icon */
-/* To change text size, modify font-size in .info-text */
 
 /* ============================================
-   SOCIAL LINKS (Instagram, Website)
+   SOCIAL ICONS (Instagram, Website, Email)
    ============================================ */
 
-.profile-links {
+.profile-social-icons {
     display: flex;
-    flex-direction: column;
     gap: var(--spacing-sm);
-    margin-top: auto; /* Pushes links to bottom of card */
+    justify-content: center;
+    margin-top: auto;
+    padding-top: var(--spacing-sm);
 }
 
-.social-link {
-    /* Base link styles */
+.social-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-sm);
-    
-    /* Spacing and shape */
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--border-radius-md);
-    
-    /* Text */
-    font-family: var(--font-family-secondary);
-    font-size: var(--font-size-small);
-    font-weight: var(--font-weight-medium);
-    text-decoration: none;
-    
-    /* Colors - default */
-    background: var(--color-primary);
     color: var(--color-white);
-    
-    /* Transitions */
-    transition: all var(--transition-speed-normal) var(--transition-easing);
+    background: var(--color-primary);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background var(--transition-speed-normal) var(--transition-easing),
+                transform var(--transition-speed-normal) var(--transition-easing);
 }
 
-.social-link:hover {
+.social-icon:hover {
     background: var(--color-primary-dark);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
 }
 
-.link-icon {
-    font-size: 1.2rem;
+/* Copy tooltip for email button */
+.copy-tooltip {
+    background: var(--color-text-primary);
+    color: var(--color-white);
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-small);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    opacity: 0;
+    transition: opacity var(--transition-speed-normal) var(--transition-easing);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: var(--z-index-dropdown);
 }
 
-.link-text {
-    font-weight: var(--font-weight-bold);
+.copy-tooltip.visible {
+    opacity: 1;
 }
 
-/* --------------------------------------------
-   INSTAGRAM LINK - Specific styling
-   -------------------------------------------- */
-
-.instagram-link {
-    /* Instagram brand colors - optional, remove if you want to keep brand colors */
-    /* background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); */
-    
-    /* Or keep your brand color: */
-    background: var(--color-primary);
-}
-
-.instagram-link:hover {
-    /* background: linear-gradient(45deg, #d87f2a 0%, #cf5c30 25%, #c31f38 50%, #b31d5c 75%, #a01677 100%); */
-    background: var(--color-primary-dark);
-}
-
-/* UI DESIGNER NOTE: Uncomment the gradient lines above for Instagram colors */
-/* Or keep var(--color-primary) to use your brand colors */
-
-/* --------------------------------------------
-   WEBSITE LINK - Specific styling
-   -------------------------------------------- */
-
-/* .website-link 
-    /* Uses default brand colors from .social-link */
-    /* Add custom styling here if you want website links to look different */
-
-/* UI DESIGNER NOTE: Add custom styles for website link if needed */
-/* Example: .website-link { background: #333; } */
 
 /* ============================================
    LOADING AND EMPTY STATES
@@ -752,7 +352,7 @@ PROFILE SEARCH
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
+    0%   { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
@@ -764,100 +364,37 @@ PROFILE SEARCH
     color: var(--color-text-secondary);
 }
 
+
 /* ============================================
-   RESPONSIVE DESIGN
+   RESPONSIVE
    ============================================ */
 
-/* Tablet and smaller */
 @media (max-width: 768px) {
     .profiles-grid {
-        /* Fewer cards per row on smaller screens */
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: var(--spacing-md);
         padding: var(--spacing-md);
     }
-    
+
     .profile-card {
         padding: var(--spacing-md);
     }
-    
-    .profile-avatar {
+
+    .profile-avatar,
+    .profile-photo-container {
         width: 60px;
         height: 60px;
+    }
+
+    .profile-avatar {
         font-size: 1.5rem;
     }
 }
 
-/* Mobile */
 @media (max-width: 480px) {
     .profiles-grid {
-        /* Single column on mobile */
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
         padding: var(--spacing-sm);
     }
-}
-
-/* UI DESIGNER NOTE: Responsive breakpoints explained */
-/* 768px = Tablet and below */
-/* 480px = Mobile phones */
-/* Adjust these values in the @media queries to change when layout shifts */
-
-/* ============================================
-   FORM STYLING ADDITIONS
-   ============================================ */
-
-/* Styling for the multi-select dropdown and form hints */
-.form-hint {
-    display: block;
-    font-family: var(--font-family-secondary);
-    font-size: var(--font-size-tiny);
-    color: var(--color-text-secondary);
-    margin-top: var(--spacing-xs);
-    font-style: italic;
-}
-
-#specialties {
-    width: 100%;
-    padding: var(--spacing-sm);
-    border: 2px solid var(--color-gray-light);
-    border-radius: var(--border-radius-md);
-    font-family: var(--font-family-secondary);
-    font-size: var(--font-size-body);
-}
-
-#specialties option {
-    padding: var(--spacing-xs);
-}
-
-#specialties option:checked {
-    background: var(--color-primary);
-    color: var(--color-white);
-}
-
-/* UI DESIGNER NOTE: Multi-select styling is limited by browser defaults */
-/* For advanced multi-select styling, consider using a JavaScript library */
-
-/* Profile Photo Container */
-.profile-photo-container {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto var(--spacing-md);
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--color-primary);
-    box-shadow: var(--shadow-md);
-}
-
-.profile-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;  /* Ensures image fills circle properly */
-    display: block;
-}
-
-/* Hover effect for photos */
-.profile-photo-container:hover {
-    transform: scale(1.05);
-    transition: transform var(--transition-speed-normal);
 }
