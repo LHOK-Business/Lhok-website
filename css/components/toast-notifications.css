@@ -184,17 +184,17 @@
    INFO TOAST STYLING
    ============================================ */
 .toast-info {
-    border-left: 4px solid #3b82f6;
+    border-left: 4px solid #9a3ea3;
     background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
 }
 
 .toast-info .toast-icon {
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    background: linear-gradient(135deg,#b54dbc 0%, #9a3ea3 100%);
     color: white;
 }
 
 .toast-info .toast-progress {
-    background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+    background: linear-gradient(90deg,#b54dbc 0%, #9a3ea3 100%);
 }
 
 /* ============================================
