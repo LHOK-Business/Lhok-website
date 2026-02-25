@@ -22,6 +22,9 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    object-position: 50% 50%;  /* horizontal% vertical% — adjust these */
+    transform-origin: 50% 50%; /* zoom anchor point, matches object-position */
+    transform: scale(1.2);        /* zoom — 1 = normal, 1.2 = 20% zoomed in */
     display: block;
 }
 
