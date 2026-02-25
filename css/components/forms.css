@@ -32,8 +32,8 @@
     font-size: var(--font-size-body);
     font-family: var(--font-family-primary);
     
-    background: #f9f9f9;
-    border: var(--border-width) solid var(--color-gray-light);
+    background: #ffffff;
+    border: var(--border-width) solid rgb(138, 86, 185);
     border-radius: var(--border-radius-md);
     
     transition: all var(--transition-speed-normal) var(--transition-easing);
@@ -45,7 +45,7 @@
 .form-group select:focus {
     outline: none;
     background: var(--color-background);
-    border-color: #4CAF50; /* Consider adding to variables */
+    border-color: #c247b8; /* Consider adding to variables */
     box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
 }
 
