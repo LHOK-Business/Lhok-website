@@ -91,8 +91,8 @@
 }
 
 .feature-card {
-    background: var(--color-gray-light);
-    border: 2px dashed var(--color-gray-medium);
+    background: var(--color-white);
+    border: 2px solid var(--color-primary-dark);
     border-radius: var(--border-radius-md);
     padding: 2rem 1.5rem;
     text-align: center;
