@@ -3,54 +3,27 @@
    ============================================ */
 
 header {
-    /* Positioning */
     position: relative;
     top: 0;
     left: 0;
     right: 0;
     z-index: var(--z-index-fixed);
-    
-    /* Dimensions */
     height: var(--header-height);
     width: 100%;
-    
-    /* Styling */
     background: linear-gradient(
         to bottom,
         var(--color-primary) 1%,
         var(--color-white) 100%
     );
-    
-    /* Box model */
     margin: 0;
-    padding: var(--spacing-sm) 0;
+    padding: var(--spacing-sm) var(--spacing-md);  /* Added horizontal padding */
     box-sizing: border-box;
-    
-    /* Content control */
-    overflow: visible; /* Changed from hidden to prevent clipping */
+    overflow: visible;
 }
 
 /* ============================================
    HEADER LAYOUT
    ============================================ */
-
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
-    /* Dimensions */
-    height: 100%;
-    width: 100%;
-    max-width: var(--max-content-width);
-    
-    /* Spacing */
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-    
-    /* Positioning */
-    position: relative;
-}
 
 .header-grid {
     display: grid;
@@ -58,32 +31,15 @@ header {
     align-items: center;
     justify-items: center;
     width: 100%;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);  /* Added padding to prevent edge cutoff */
+    box-sizing: border-box;
 }
 
 .header-One-One {
-    grid-column: 1 ;
-}
-
-
-/* ============================================
-   HEADER NAVIGATION CONTAINERS
-   ============================================ */
-
-.header-nav-left,
-.header-nav-right {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    flex: 1;
-    min-width: 0; /* Allows shrinking */
-}
-/* Using below */
-.header-nav-left {
-    justify-content: flex-start;
-}
-
-.header-nav-right {
-    justify-content: flex-end;
+    grid-column: 1;
+    justify-self: start;  /* Align logo to the left */
 }
 
 /* ============================================
@@ -114,22 +70,41 @@ header {
    ============================================ */
 
 @media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-        justify-content: center;
-        gap: var(--spacing-sm);
-        padding: 0 var(--spacing-md);
+    header {
+        height: auto;  /* Allow header to grow on mobile */
+        padding: var(--spacing-sm) var(--spacing-sm);
     }
     
-    .logo {
-        order: 1;
+    .header-grid {
+        grid-template-columns: 1fr;  /* Stack vertically */
+        gap: var(--spacing-xs);
+        padding: 0;
+        justify-items: center;  /* Center all items */
     }
     
-    .header-nav-left,
-    .header-nav-right {
-        flex: none;
-        order: 2;
-        justify-content: center;
-        gap: var(--spacing-sm);
+    .header-One-One {
+        grid-column: 1;
+        justify-self: center;  /* Center logo on mobile */
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .logo img {
+        height: calc(var(--logo-height-header) * 0.8);  /* Slightly smaller on mobile */
+    }
+    
+    /* Stack nav links */
+    .header-grid a {
+        font-size: var(--font-size-small);
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 390px) {
+    .header-grid {
+        font-size: var(--font-size-tiny);
+    }
+    
+    .logo img {
+        height: calc(var(--logo-height-header) * 0.7);
     }
 }
