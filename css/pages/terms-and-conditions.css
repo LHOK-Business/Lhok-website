@@ -125,7 +125,7 @@
 
 @media (max-width: 768px) {
     .policy-hero {
-        height: 200px;
+        height: 120px;
     }
 
     .policy-hero-overlay {
@@ -140,6 +140,7 @@
 
     .policy-heading h2 {
         position: static;
+        font-size: var(--font-size-body);
         margin-bottom: var(--spacing-xs);
     }
 }
