@@ -125,7 +125,7 @@
 
 @media (max-width: 768px) {
     .policy-hero {
-        height: 200px;
+        height: 120px;
     }
 
     /* Stack heading above text on smaller screens */
