@@ -219,11 +219,6 @@
      Row first then column for naming*/
 }   
 
-.Two-One.about-spacing { /* about us spacing */
-    padding-left: var(--spacing-xl);
-    padding-right: var(--spacing-xl);
-}
-
    .Two-Two {   
   justify-content: center;
   align-items: center;     
@@ -251,10 +246,11 @@
 } 
 
 
-.Two-three.about-spacing { /* about us spacing */
+.Two-One.about-spacing,
+.Two-Two,
+.Two-Three.about-spacing {
     padding-left: var(--spacing-xl);
     padding-right: var(--spacing-xl);
-}
 
    
    
