@@ -1,15 +1,12 @@
-
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { getFirestore, doc, getDoc, setDoc, updateDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
-
-import { showToast, toastSuccess, toastError, toastInfo, toastWarning } from './toast-notifications.js'; // ← ADD THIS
+import { showToast, toastSuccess, toastError, toastInfo, toastWarning } from './toast-notifications.js';
 
 // ============================================
 // FIREBASE CONFIGURATION
 // ============================================
-// Your Firebase configuration (replace with your actual config)
 const firebaseConfig = {
   apiKey: "AIzaSyB2DccAwpNnzfNPhhP6KQJ58xVOEFsLB8Y",
   authDomain: "lhok-e77ba.firebaseapp.com",
@@ -19,21 +16,25 @@ const firebaseConfig = {
   appId: "1:228980882242:web:6c5a9f0c36544aba03e6db"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
+
 // ============================================
 // GET DOM ELEMENTS
 // ============================================
-// These variables store references to HTML elements so we can interact with them
 const profileUpdateForm = document.getElementById('profileUpdateForm');
 const submitBtn = document.getElementById('submitBtn');
 const messageDiv = document.getElementById('message');
 const userEmailSpan = document.getElementById('userEmailmessage');
 
-// Profile Picture Elements
+// User type
+const typeProfessional = document.getElementById('typeProfessional');
+const typeClient = document.getElementById('typeClient');
+const userTypeLocked = document.getElementById('userTypeLocked');
+
+// Profile picture (shared)
 const profilePictureInput = document.getElementById('profilePicture');
 const profilePicturePreview = document.getElementById('profilePicturePreview');
 const uploadProgress = document.getElementById('uploadProgress');
@@ -41,139 +42,120 @@ const progressBar = document.getElementById('progressBar');
 const progressText = document.getElementById('progressText');
 const removePictureBtn = document.getElementById('removePictureBtn');
 
-// ============================================
-// FORM INPUT FIELDS
-// ============================================
+// Form fields
 const displayNameInput = document.getElementById('displayName');
 const bioInput = document.getElementById('bio');
 const locationInput = document.getElementById('location');
 const websiteInput = document.getElementById('website');
-const specialtiesInput = document.getElementById('specialties');           // Multi-select dropdown
-const yearsInIndustryInput = document.getElementById('yearsInIndustry');  // Single dropdown
-const preferredContactInput = document.getElementById('preferredContact'); // Single dropdown
-const instagramInput = document.getElementById('instagram');               // Text input (URL)
+const instagramInput = document.getElementById('instagram');
+const specialtiesInput = document.getElementById('specialties');
+const servicesLookingForInput = document.getElementById('servicesLookingFor');
+const yearsInIndustryInput = document.getElementById('yearsInIndustry');
+const preferredContactInput = document.getElementById('preferredContact');
 
-// Store current user globally
+// Field groups
+const professionalOnlyFields = document.querySelectorAll('.professional-only');
+const clientOnlyFields = document.querySelectorAll('.client-only');
+
 let currentUser = null;
 
 // ============================================
-// HELPER FUNCTIONS
+// USER TYPE TOGGLE
 // ============================================
+function applyUserTypeUI(userType) {
+    const isProfessional = userType === 'professional';
+    professionalOnlyFields.forEach(el => { el.style.display = isProfessional ? '' : 'none'; });
+    clientOnlyFields.forEach(el => { el.style.display = isProfessional ? 'none' : ''; });
+}
 
-/**
- * Display a message to the user
- * @param {string} text - Message text to display
- * @param {string} type - Message type ('success' or 'error')
- */
-function showMessage(text, type) {
-    messageDiv.textContent = text;
-    messageDiv.className = `message ${type}`;
-    messageDiv.style.display = 'block';
-    
-    // Auto-hide success messages after 5 seconds
-    if (type === 'success') {
-        setTimeout(() => {
-            messageDiv.style.display = 'none';
-        }, 5000);
+typeProfessional.addEventListener('change', () => applyUserTypeUI('professional'));
+typeClient.addEventListener('change', () => applyUserTypeUI('client'));
+
+function lockUserType(userType) {
+    typeProfessional.disabled = true;
+    typeClient.disabled = true;
+    userTypeLocked.style.display = 'block';
+    typeProfessional.checked = userType === 'professional';
+    typeClient.checked = userType === 'client';
+    applyUserTypeUI(userType);
+}
+
+// ============================================
+// HELPERS
+// ============================================
+function getSelectedValues(selectEl) {
+    return Array.from(selectEl.selectedOptions).map(opt => opt.value);
+}
+
+// Set preview image — empty src shows the SVG placeholder via CSS
+function setProfilePicturePreview(url) {
+    if (url) {
+        profilePicturePreview.src = url;
+        removePictureBtn.style.display = 'inline-block';
+    } else {
+        profilePicturePreview.src = '';
+        removePictureBtn.style.display = 'none';
     }
 }
 
-/**
- * EDUCATIONAL NOTE: Getting values from a multi-select dropdown
- * 
- * When you have a <select multiple> element, you can't just use .value
- * Instead, you need to loop through all options and check which are selected
- * This function returns an array of selected values like: ["Lashes", "Nails", "Haircuts"]
- */
-function getSelectedSpecialties() {
-    // Get all selected options from the multi-select dropdown
-    const selectedOptions = Array.from(specialtiesInput.selectedOptions);
-    
-    // Extract just the values from those options
-    const values = selectedOptions.map(option => option.value);
-    
-    console.log('Selected specialties:', values); // For debugging
-    return values;
-}
-
-
-/**
- * Preview selected image before upload
- */
+// ============================================
+// PROFILE PICTURE — preview on file select
+// ============================================
 profilePictureInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
-    if (file) {
-        // Check file size (5MB max)
-        if (file.size > 5 * 1024 * 1024) {
-            showMessage('Image must be smaller than 5MB', 'error');
-            profilePictureInput.value = '';
-            return;
-        }
+    if (!file) return;
 
-        // Check file type
-        if (!file.type.startsWith('image/')) {
-            showMessage('Please select an image file', 'error');
-            profilePictureInput.value = '';
-            return;
-        }
-        // Show preview
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            profilePicturePreview.src = e.target.result;
-            removePictureBtn.style.display = 'inline-block';
-        };
-        reader.readAsDataURL(file);
-        toastInfo('Image selected and ready to upload');
+    if (file.size > 5 * 1024 * 1024) {
+        toastError('Image must be smaller than 5MB');
+        profilePictureInput.value = '';
+        return;
     }
+    if (!file.type.startsWith('image/')) {
+        toastError('Please select an image file');
+        profilePictureInput.value = '';
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        profilePicturePreview.src = e.target.result;
+        removePictureBtn.style.display = 'inline-block';
+    };
+    reader.readAsDataURL(file);
+    toastInfo('Image selected and ready to upload');
 });
 
-/**
- * Remove/Clear selected picture
- */
 removePictureBtn.addEventListener('click', () => {
     profilePictureInput.value = '';
-    profilePicturePreview.src = 'https://via.placeholder.com/150/b54dbc/ffffff?text=No+Photo';
-    removePictureBtn.style.display = 'none';
+    setProfilePicturePreview(null);
     toastInfo('Profile picture cleared');
 });
 
-/**
- * Upload profile picture to Firebase Storage
- * @param {File} file - The image file to upload
- * @param {string} userId - The user's ID
- * @returns {Promise<string>} - The download URL of uploaded image
- */
+// ============================================
+// UPLOAD PROFILE PICTURE TO FIREBASE STORAGE
+// ============================================
 async function uploadProfilePicture(file, userId) {
     return new Promise((resolve, reject) => {
-        // Create a unique filename
         const timestamp = Date.now();
-        const fileName = `profile_${timestamp}.${file.name.split('.').pop()}`;
-        
-        // Create storage reference
+        const ext = file.name.split('.').pop();
+        const fileName = `profile_${timestamp}.${ext}`;
         const storageRef = ref(storage, `profile-pictures/${userId}/${fileName}`);
-        
-        // Start upload
         const uploadTask = uploadBytesResumable(storageRef, file);
-        
-        // Show progress bar
+
         uploadProgress.style.display = 'block';
-        
-        // Monitor upload progress
+
         uploadTask.on('state_changed',
             (snapshot) => {
-                // Calculate progress percentage
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 progressBar.style.width = progress + '%';
                 progressText.textContent = `Uploading: ${Math.round(progress)}%`;
             },
             (error) => {
-                // Handle upload error
                 console.error('Upload error:', error);
                 uploadProgress.style.display = 'none';
                 reject(error);
             },
             async () => {
-                // Upload completed successfully
                 try {
                     const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
                     uploadProgress.style.display = 'none';
@@ -187,99 +169,70 @@ async function uploadProfilePicture(file, userId) {
     });
 }
 
-/**
- * Delete old profile picture from Storage
- * @param {string} photoURL - The URL of the photo to delete
- */
+// ============================================
+// DELETE OLD PROFILE PICTURE FROM STORAGE
+// ============================================
 async function deleteOldProfilePicture(photoURL) {
-    if (!photoURL || photoURL.includes('placeholder')) {
-        return; // Nothing to delete
-    }
-    
+    if (!photoURL) return;
     try {
-        // Extract the file path from the URL
         const baseURL = 'https://firebasestorage.googleapis.com/v0/b/';
         if (photoURL.startsWith(baseURL)) {
-            const filePath = decodeURIComponent(
-                photoURL.split('/o/')[1].split('?')[0]
-            );
-            const fileRef = ref(storage, filePath);
-            await deleteObject(fileRef);
-            console.log('Old profile picture deleted');
+            const filePath = decodeURIComponent(photoURL.split('/o/')[1].split('?')[0]);
+            await deleteObject(ref(storage, filePath));
         }
     } catch (error) {
-        console.error('Error deleting old picture:', error);
-        // Don't throw error - not critical if old picture deletion fails
+        console.error('Error deleting old picture — non-critical:', error);
     }
 }
 
-
-/**
- * Load existing profile data from Firestore
- * @param {string} userId - The user's UID
- * 
- * EDUCATIONAL NOTE: This function retrieves existing data from Firestore
- * and populates the form fields. This lets users edit their existing profile.
- */
+// ============================================
+// LOAD EXISTING PROFILE DATA
+// ============================================
 async function loadProfileData(userId) {
     try {
-        // Reference to the user's document in the 'users' collection
-        // Path structure: users/{userId}
         const userDocRef = doc(db, 'users', userId);
-        
-        // Fetch the document from Firestore
         const userDoc = await getDoc(userDocRef);
-        
-        // Check if document exists
+
         if (userDoc.exists()) {
-            // Document exists - populate form with existing data
             const data = userDoc.data();
-            
-            console.log('Loading profile data:', data); // For debugging
-            
-            // Populate general fields (if they exist in Firestore)
+            console.log('Loading profile data:', data);
+
+            // Lock user type if already set
+            if (data.userType) lockUserType(data.userType);
+
+            // Shared fields
             displayNameInput.value = data.displayName || '';
             bioInput.value = data.bio || '';
             locationInput.value = data.location || '';
-            websiteInput.value = data.website || '';
-            
-            //Populate Profile Picture if exists
-            if (data.profilePhotoURL) {
-                profilePicturePreview.src = data.profilePhotoURL;
-                removePictureBtn.style.display = 'inline-block';
-            } 
-           
-            // For Instagram (simple text input)
             instagramInput.value = data.instagram || '';
-            
-            // For Years in Industry (dropdown)
-            if (data.yearsInIndustry) {
-                yearsInIndustryInput.value = data.yearsInIndustry;
+
+            // Profile picture — shared for all user types
+            setProfilePicturePreview(data.profilePhotoURL || null);
+
+            // Professional-only fields
+            if (data.userType === 'professional') {
+                if (websiteInput) websiteInput.value = data.website || '';
+                if (data.yearsInIndustry) yearsInIndustryInput.value = data.yearsInIndustry;
+                if (data.preferredContact) preferredContactInput.value = data.preferredContact;
+                if (data.specialties && Array.isArray(data.specialties)) {
+                    Array.from(specialtiesInput.options).forEach(opt => {
+                        opt.selected = data.specialties.includes(opt.value);
+                    });
+                }
             }
-            
-            // For Preferred Contact (dropdown)
-            if (data.preferredContact) {
-                preferredContactInput.value = data.preferredContact;
+
+            // Client-only fields
+            if (data.userType === 'client') {
+                if (data.servicesLookingFor && Array.isArray(data.servicesLookingFor)) {
+                    Array.from(servicesLookingForInput.options).forEach(opt => {
+                        opt.selected = data.servicesLookingFor.includes(opt.value);
+                    });
+                }
             }
-            
-            // For Specialties (multi-select dropdown)
-            // EDUCATIONAL NOTE: Setting multi-select values is tricky
-            // We need to loop through all options and mark the ones that match
-            if (data.specialties && Array.isArray(data.specialties)) {
-                // Loop through each option in the dropdown
-                Array.from(specialtiesInput.options).forEach(option => {
-                    // Check if this option's value is in the saved specialties array
-                    if (data.specialties.includes(option.value)) {
-                        option.selected = true; // Mark it as selected
-                    }
-                });
-            }
-            
-            console.log('Profile data loaded successfully');
+
             toastInfo('Profile data loaded');
         } else {
-            // Document doesn't exist yet - this is a new profile
-            console.log('No existing profile found. Ready to create new profile.');
+            console.log('No existing profile — ready to create.');
             toastInfo('Ready to create your profile');
         }
     } catch (error) {
@@ -288,165 +241,159 @@ async function loadProfileData(userId) {
     }
 }
 
-/**
- * Save or update profile data in Firestore
- * @param {Object} profileData - The profile data to save
- * 
- * EDUCATIONAL NOTE: This function handles both creating NEW profiles
- * and updating EXISTING profiles. It checks if the document exists first.
- */
+// ============================================
+// SAVE PROFILE DATA
+// On UPDATE: userType is only written if it was missing from the document
+// (handles accounts created before userType was added).
+// On CREATE: full data including approval fields for professionals.
+// ============================================
 async function saveProfileData(profileData) {
     try {
-        // Reference to the user's document
-        // Path: users/{currentUser.uid}
         const userDocRef = doc(db, 'users', currentUser.uid);
-        
-        // Check if document already exists
         const userDoc = await getDoc(userDocRef);
-        
+
         if (userDoc.exists()) {
-            // ============================================
-            // DOCUMENT EXISTS - UPDATE IT
-            // ============================================
-            // updateDoc only updates specified fields, leaving others unchanged
+            const existingData = userDoc.data();
+            const { userType, ...updateData } = profileData;
+
+            // If the document is missing userType (older account), write it now
+            if (!existingData.userType && userType) {
+                updateData.userType = userType;
+
+                // Also backfill approval fields for professionals if missing
+                if (userType === 'professional' && existingData.approved === undefined) {
+                    updateData.approved = false;
+                    updateData.approvedAt = null;
+                }
+            }
+
             await updateDoc(userDocRef, {
-                ...profileData,
-                updatedAt: serverTimestamp() // Add timestamp of last update
+                ...updateData,
+                updatedAt: serverTimestamp()
             });
-            
-            console.log('Profile updated successfully');
             toastSuccess('Profile updated successfully!');
+
         } else {
-            // ============================================
-            // DOCUMENT DOESN'T EXIST - CREATE IT
-            // ============================================
-            // setDoc creates a new document with all specified fields
-            await setDoc(userDocRef, {
+            // New document
+            const baseData = {
                 ...profileData,
-                email: currentUser.email,    // Store email for reference
-                approved: false,             // New users start as unapproved
-                approvedAt: null,           // Will be set when admin approves
-                createdAt: serverTimestamp(), // Add creation timestamp
-                updatedAt: serverTimestamp()  // Add update timestamp
-            });
-            console.log('Profile created successfully');
-            toastSuccess('Profile created successfully! Awaiting admin approval.');
+                email: currentUser.email,
+                createdAt: serverTimestamp(),
+                updatedAt: serverTimestamp()
+            };
+
+            if (profileData.userType === 'professional') {
+                baseData.approved = false;
+                baseData.approvedAt = null;
+            }
+
+            await setDoc(userDocRef, baseData);
+            toastSuccess(profileData.userType === 'professional'
+                ? 'Profile created! Awaiting admin approval.'
+                : 'Profile created successfully!');
         }
     } catch (error) {
         console.error('Error saving profile:', error);
         toastError('Error saving profile: ' + error.message);
-        throw error; // Re-throw to handle in form submit
+        throw error;
     }
 }
 
-/**
- * Handle form submission
- * 
- * EDUCATIONAL NOTE: This is the main function that runs when the user
- * clicks "Save Profile". It gathers all form data and sends it to Firestore.
- */
+// ============================================
+// FORM SUBMISSION
+// ============================================
 profileUpdateForm.addEventListener('submit', async (e) => {
-    // Prevent default form submission behavior (which would reload the page)
     e.preventDefault();
-    
-    // Check if user is authenticated
+
     if (!currentUser) {
         toastError('You must be logged in to update your profile');
         return;
     }
-    
-    // Disable submit button to prevent double-submission
+
+    const selectedType = document.querySelector('input[name="userType"]:checked');
+    if (!selectedType) {
+        toastError('Please select whether you are a professional or a client');
+        return;
+    }
+    const userType = selectedType.value;
+
     submitBtn.disabled = true;
     submitBtn.textContent = 'Saving...';
-    
+
     try {
+        // Handle profile picture upload
         let newPhotoURL = null;
-        const file = profilePictureInput.files[0];
-        
-        if (file) {
+        if (profilePictureInput.files[0]) {
             try {
                 toastInfo('Uploading profile picture...');
-                newPhotoURL = await uploadProfilePicture(file, currentUser.uid);
-                
-                // Delete old picture if exists
-                const userDocRef = doc(db, 'users', currentUser.uid);
-                const userDoc = await getDoc(userDocRef);
-                if (userDoc.exists() && userDoc.data().profilePhotoURL) {
-                    await deleteOldProfilePicture(userDoc.data().profilePhotoURL);
+                newPhotoURL = await uploadProfilePicture(profilePictureInput.files[0], currentUser.uid);
+
+                // Delete old picture from Storage
+                const snap = await getDoc(doc(db, 'users', currentUser.uid));
+                if (snap.exists() && snap.data().profilePhotoURL) {
+                    await deleteOldProfilePicture(snap.data().profilePhotoURL);
                 }
-                toastSuccess('Profile picture uploaded successfully!');
+                toastSuccess('Profile picture uploaded!');
             } catch (error) {
-                console.error('Error uploading picture:', error);
                 toastError('Error uploading picture: ' + error.message);
                 throw error;
             }
         }
 
-    // determine which Photo URL to use:
-    let existingPhotoURL = null;
-    if (!newPhotoURL) {
-        const userDocRef = doc(db, 'users', currentUser.uid);
-        const userDoc = await getDoc(userDocRef);
-        if (userDoc.exists() && userDoc.data().profilePhotoURL) {
-            existingPhotoURL = userDoc.data().profilePhotoURL;
+        // Keep existing photo URL if no new file was selected
+        let existingPhotoURL = null;
+        if (!newPhotoURL) {
+            const snap = await getDoc(doc(db, 'users', currentUser.uid));
+            if (snap.exists()) existingPhotoURL = snap.data().profilePhotoURL || null;
         }
-    }
-        // ============================================
-        // GATHER FORM DATA - UPDATED FOR NEW FIELDS
-        // ============================================
-        // Create an object with all the profile data
-        const profileData = {
+
+        // Build profile data object
+        let profileData = {
+            userType,
             displayName: displayNameInput.value.trim(),
             bio: bioInput.value.trim(),
             location: locationInput.value.trim(),
-            website: websiteInput.value.trim(),
-            specialties: getSelectedSpecialties(),             // Array: ["Lashes", "Nails"]
-            yearsInIndustry: yearsInIndustryInput.value,       // String: "3-5"
-            preferredContact: preferredContactInput.value,     // String: "Instagram"
-            instagram: instagramInput.value.trim(),            // String: "https://instagram.com/..."
-            profilePhotoURL: newPhotoURL || existingPhotoURL || null
-            // profilePhotoURL: (await getDoc(userDocRef)).data()?.profilePhotoURL || null
+            instagram: instagramInput.value.trim(),
+            profilePhotoURL: newPhotoURL || existingPhotoURL || null,
         };
 
-        console.log('Saving profile data:', profileData); // For debugging
-        
-        // Save to Firestore
+        if (userType === 'professional') {
+            profileData = {
+                ...profileData,
+                website: websiteInput ? websiteInput.value.trim() : '',
+                specialties: getSelectedValues(specialtiesInput),
+                yearsInIndustry: yearsInIndustryInput.value,
+                preferredContact: preferredContactInput.value,
+            };
+        } else {
+            profileData = {
+                ...profileData,
+                servicesLookingFor: getSelectedValues(servicesLookingForInput),
+            };
+        }
+
+        console.log('Saving profile data:', profileData);
         await saveProfileData(profileData);
-        
+
     } catch (error) {
-        // Error already handled in saveProfileData, but we catch here
-        // to ensure the button gets re-enabled
         console.error('Form submission error:', error);
     } finally {
-        // Re-enable submit button (happens whether save succeeded or failed)
         submitBtn.disabled = false;
         submitBtn.textContent = 'Save Profile';
     }
 });
 
-/**
- * Initialize the page - check authentication state
- * 
- * EDUCATIONAL NOTE: This runs automatically when the page loads.
- * It checks if a user is logged in, and if so, loads their profile data.
- */
+// ============================================
+// AUTH STATE
+// ============================================
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        // User is signed in
         currentUser = user;
-        userEmailSpan.textContent = user.email; // Fixed typo from original (was userEmailmessage)
-        
-        // Load existing profile data for this user
+        userEmailSpan.textContent = user.email;
         loadProfileData(user.uid);
-        
         console.log('User authenticated:', user.uid);
     } else {
-        // User is not signed in - redirect to login page
-        console.log('No user authenticated, redirecting to login');
         toastError('Please log in to access this page');
-        // Redirect to login page after 2 seconds
-        setTimeout(() => {
-            window.location.href = 'login.html'; // Adjust path as needed
-        }, 2000);
+        setTimeout(() => { window.location.href = 'login.html'; }, 2000);
     }
 });

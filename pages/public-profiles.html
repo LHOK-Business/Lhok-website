@@ -9,42 +9,149 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/layout/containers.css">
+    <link rel="stylesheet" href="../css/pages/profile-lite.css">
 
+    <style>
+        /* Override grid to center cards and cap their width */
+        .profiles-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .profile-card {
+            padding: 25px;
+            max-width: 320px;
+            width: 100%;
+        }
+
+        /* Profile photo (uploaded image) matches avatar size */
+        .profile-photo-container {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Social icons row */
+        .profile-social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #cf64d4 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Specialty tags */
+        .profile-specialties {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            margin: 10px 0;
+        }
+
+        .specialty-tag {
+            padding: 4px 10px;
+            background: linear-gradient(135deg, #cf64d4 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        /* Copy tooltip */
+        .copy-tooltip {
+            background: #333;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+            z-index: 9999;
+            white-space: nowrap;
+        }
+
+        .copy-tooltip.visible {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-        <!-- Header section starts -->
-<div id="header-placeholder"></div>
-<!-- Header section ends -->
-<div class="extra-space-sm"></div>
 
-<main>   <!-- Main content -->
-<div class="public-profiles">
-    <div class="container3by3">
-        <div class="One-Two">
-            <div>
-                <h1>Our Community</h1>
-                <p>Meet our amazing members</p>
+    <!-- Header section starts -->
+    <div id="header-placeholder"></div>
+    <!-- Header section ends -->
+    <div class="extra-space-sm"></div>
+
+    <main>
+        <div class="public-profiles">
+            <div class="container3by3">
+                <div class="One-Two">
+
+                    <div>
+                        <h1>Our Community</h1>
+                        <p>Meet our amazing members</p>
+                    </div>
+
+                    <div id="loadingDiv" class="loading">
+                        <div class="spinner"></div>
+                        Loading profiles...
+                    </div>
+
+                    <div id="profilesGrid" class="profiles-grid"></div>
+
+                </div>
             </div>
-            
-            <div id="loadingDiv" class="loading">
-                <div class="spinner"></div>
-                Loading profiles...
-            </div>
-            
-            <div id="profilesGrid" class="profiles-grid"></div>
         </div>
-    </div>
-</div>
+    </main>
 
-<script src="../js/components.js"></script>
-<script src="../js/main.js"></script>
-<script type="module" src="../js/public-profiles.js"></script>
-</main>
+    <!-- Footer section starts -->
+    <div id="footer-placeholder"></div>
+    <!-- Footer section ends -->
 
-<!-- Footer section starts -->
-<div id="footer-placeholder"></div>
-<!-- Footer section ends -->
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script type="module" src="../js/public-profiles.js"></script>
+
 </body>
 </html>

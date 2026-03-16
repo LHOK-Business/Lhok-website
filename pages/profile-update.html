@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,90 +11,204 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    
     <link rel="stylesheet" href="../css/layout/containers.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/pages/page-specifc.css">
 
+    <style>
+        /* User type toggle */
+        .user-type-section {
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-lg);
+            background: var(--color-background);
+            border-radius: var(--border-radius-md);
+            border: var(--border-width) solid rgb(138, 86, 185);
+        }
+
+        .user-type-section label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-small);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text-primary);
+        }
+
+        .user-type-options {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .user-type-options label {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-weight: var(--font-weight-normal);
+            cursor: pointer;
+        }
+
+        .user-type-locked {
+            font-size: var(--font-size-tiny);
+            color: var(--color-text-secondary);
+            font-style: italic;
+            margin-top: var(--spacing-xs);
+        }
+
+        /* Profile picture placeholder — shown when no photo exists */
+        .profile-picture-placeholder {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--color-gray-light);
+            border: 4px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        .profile-picture-placeholder svg {
+            width: 60px;
+            height: 60px;
+            color: var(--color-gray-medium);
+            fill: var(--color-gray-medium);
+        }
+
+        /* Hide the <img> when src is empty so placeholder shows */
+        #profilePicturePreview[src=""] {
+            display: none;
+        }
+
+        #profilePicturePreview:not([src=""]) {
+            display: block;
+        }
+
+        /* When photo is loaded, hide the placeholder */
+        #profilePicturePreview:not([src=""]) ~ .profile-picture-placeholder {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
-    
+
 <!-- Header section starts -->
 <div id="header-placeholder"></div>
 <!-- Header section ends -->
-                <div class="extra-space-sm"></div>
+    <div class="extra-space-sm"></div>
 
 <main>
     <div class="profile-update">
        <div class="container3by3">
         <div class="OneThree-Two">
-            <!-- Main content here -->
+
             <h1>Update Your Profile</h1>
-            
+
             <!-- Message display area -->
             <div id="message" class="message"></div>
-            
+
             <!-- User email display -->
             <div class="user-info">
                 <strong>Logged in as:</strong> <span id="userEmailmessage">Loading...</span>
             </div>
-            
+
             <!-- Profile form -->
             <form id="profileUpdateForm" class="basic-form-1">
 
-                <!-- Profile Picture Upload Section -->
-                <div class="profile-picture-section">
-                    <!-- Show current profile picture or placeholder -->
-                    <div class="profile-picture-preview">
-                        <img id="profilePicturePreview" 
-                            src="https://via.placeholder.com/150/b54dbc/ffffff?text=No+Photo" 
-                            alt="Profile picture preview">
+                <!-- ============================================
+                     USER TYPE SELECTION
+                     ============================================ -->
+                <div class="user-type-section">
+                    <label>I am a: *</label>
+                    <div class="user-type-options">
+                        <label>
+                            <input type="radio" name="userType" value="professional" id="typeProfessional" required>
+                            Beauty Professional
+                        </label>
+                        <label>
+                            <input type="radio" name="userType" value="client" id="typeClient">
+                            Client looking for services
+                        </label>
                     </div>
-                    
+                    <span class="user-type-locked" id="userTypeLocked" style="display:none;">
+                        Account type is locked and cannot be changed after saving.
+                    </span>
+                </div>
+
+                <!-- ============================================
+                     PROFILE PICTURE (shared — both user types)
+                     ============================================ -->
+                <div class="profile-picture-section">
+
+                    <div class="profile-picture-preview">
+                        <!-- Actual photo — hidden when src is empty -->
+                        <img id="profilePicturePreview"
+                            src=""
+                            alt="Profile picture">
+
+                        <!-- Fallback shown when no photo is set -->
+                        <div class="profile-picture-placeholder">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                            </svg>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="profilePicture">Profile Picture</label>
-                        <input 
-                            type="file" 
-                            id="profilePicture" 
-                            accept="image/*">
+                        <input type="file" id="profilePicture" accept="image/*">
                         <small class="form-hint">Max 5MB. JPG, PNG, or GIF. Recommended: Square image, at least 400x400px</small>
                     </div>
-                    
-                    <!-- Show upload progress -->
+
                     <div id="uploadProgress" class="upload-progress" style="display: none;">
                         <div class="progress-bar">
                             <div id="progressBar" class="progress-fill"></div>
                         </div>
                         <span id="progressText">Uploading...</span>
                     </div>
-                    
-                    <!-- Button to remove current picture -->
+
                     <button type="button" id="removePictureBtn" class="btn-secondary" style="display: none;">
                         Remove Picture
                     </button>
                 </div>
 
+                <!-- ============================================
+                     SHARED FIELDS (both user types)
+                     ============================================ -->
 
-                <!-- Display Name -->
                 <div class="form-group">
                     <label for="displayName">Display Name *</label>
-                    <input 
-                        type="text" 
-                        id="displayName" 
-                        placeholder="Enter your name" 
-                        required>
+                    <input type="text" id="displayName" placeholder="Enter your name" required>
                 </div>
 
-                <!--Specialties-->
-                <!-- This will store multiple services like "Lashes, Haircuts, Nails" -->
                 <div class="form-group">
+                    <label for="bio">Bio</label>
+                    <textarea id="bio" placeholder="Tell us about yourself" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="First 3 digits of Postal Code"
+                        maxlength="3"
+                        pattern="[A-Za-z0-9]{3}">
+                    <small class="form-hint">First 3 characters only (e.g., M5V)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="instagram">Instagram</label>
+                    <input type="url" id="instagram" placeholder="https://instagram.com/yourusername">
+                    <small class="form-hint">Full Instagram URL</small>
+                </div>
+
+                <!-- ============================================
+                     PROFESSIONAL-ONLY FIELDS
+                     ============================================ -->
+
+                <div class="form-group professional-only" style="display:none;">
                     <label for="specialties">Specialties *</label>
-                    <select 
-                        id="specialties" 
-                        multiple 
-                        size="8"
-                        required>
+                    <select id="specialties" multiple size="8">
                         <option value="Lashes">Lashes</option>
                         <option value="Haircuts">Haircuts</option>
                         <option value="Hair Coloring">Hair Coloring</option>
@@ -110,13 +223,27 @@
                     <small class="form-hint">Hold Ctrl (Windows) or Cmd (Mac) to select multiple</small>
                 </div>
 
-                <!--Years in Industry-->
-                <!-- Stores a number representing years of experience -->
-                <div class="form-group">
+                <!-- CLIENT-ONLY FIELDS -->
+                <div class="form-group client-only" style="display:none;">
+                    <label for="servicesLookingFor">What services are you looking for?</label>
+                    <select id="servicesLookingFor" multiple size="8">
+                        <option value="Lashes">Lashes</option>
+                        <option value="Haircuts">Haircuts</option>
+                        <option value="Hair Coloring">Hair Coloring</option>
+                        <option value="Nails">Nails</option>
+                        <option value="Facials">Facials</option>
+                        <option value="Massage">Massage</option>
+                        <option value="Makeup">Makeup</option>
+                        <option value="Waxing">Waxing</option>
+                        <option value="Skincare">Skincare</option>
+                        <option value="Brows">Brows</option>
+                    </select>
+                    <small class="form-hint">Hold Ctrl (Windows) or Cmd (Mac) to select multiple</small>
+                </div>
+
+                <div class="form-group professional-only" style="display:none;">
                     <label for="yearsInIndustry">Years in Industry *</label>
-                    <select 
-                        id="yearsInIndustry" 
-                        required>
+                    <select id="yearsInIndustry">
                         <option value="">Select years...</option>
                         <option value="0-1">Less than 1 year</option>
                         <option value="1-2">1-2 years</option>
@@ -128,13 +255,9 @@
                     </select>
                 </div>
 
-                <!--Preferred Contact Method -->
-                <!-- Tells visitors how they should reach out to this member -->
-                <div class="form-group">
+                <div class="form-group professional-only" style="display:none;">
                     <label for="preferredContact">Preferred Way to Connect *</label>
-                    <select 
-                        id="preferredContact" 
-                        required>
+                    <select id="preferredContact">
                         <option value="">Select method...</option>
                         <option value="Email">Email</option>
                         <option value="Phone">Phone</option>
@@ -143,50 +266,13 @@
                     </select>
                 </div>
 
-                <!-- Bio -->
-                <div class="form-group">
-                    <label for="bio">Bio</label>
-                    <textarea 
-                        id="bio" 
-                        placeholder="Tell us about yourself"
-                        rows="4">
-                    </textarea>
-                </div>
-
-                <!-- Location -->
-                <div class="form-group">
-                    <label for="location">Location</label>
-                    <input 
-                        type="text" 
-                        id="location" 
-                        placeholder="First 3 digits of Postal Code"
-                        maxlength="3"
-                        pattern="[A-Za-z0-9]{3}">
-                    <small class="form-hint">First 3 characters only (e.g., M5V)</small>
-                </div>
-
-                <!-- Instagram -->
-                <!-- Stores the full Instagram URL so users can click to visit -->
-                <div class="form-group">
-                    <label for="instagram">Instagram</label>
-                    <input 
-                        type="url" 
-                        id="instagram"
-                        placeholder="https://instagram.com/yourusername">
-                    <small class="form-hint">Full Instagram URL</small>
-                </div>
-
-                <!-- Website-->
-                <div class="form-group">
+                <div class="form-group professional-only" style="display:none;">
                     <label for="website">Website</label>
-                    <input 
-                        type="url" 
-                        id="website"
-                        placeholder="https://yourwebsite.com">
+                    <input type="url" id="website" placeholder="https://yourwebsite.com">
                 </div>
 
-                <!-- Submit button -->
                 <button type="submit" id="submitBtn" class="btn">Save Profile</button>
+
             </form>
         </div>
        </div>
@@ -199,7 +285,6 @@
 
     <script src="../js/components.js"></script>
     <script src="../js/main.js"></script>
-    <!-- Utilized to hook up profile -->
     <script type="module" src="../js/profile-update.js"></script>
 </body>
 

@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - User Approvals</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: Arial, sans-serif;
@@ -18,10 +14,7 @@
             padding: 20px;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1400px; margin: 0 auto; }
 
         header {
             background: white;
@@ -34,10 +27,7 @@
             align-items: center;
         }
 
-        h1 {
-            color: #333;
-            font-size: 28px;
-        }
+        h1 { color: #333; font-size: 28px; }
 
         .user-badge {
             background: #e3f2fd;
@@ -66,15 +56,12 @@
             transition: all 0.3s;
         }
 
-        .tab:hover {
-            border-color: #667eea;
-        }
+        .tab:hover { border-color: #667eea; }
 
         .tab.active {
-            background: white;
             color: #667eea;
             border-color: #667eea;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 2px 8px rgba(102,126,234,0.3);
         }
 
         .users-container {
@@ -119,10 +106,15 @@
             margin-bottom: 15px;
         }
 
-        .user-card h3 {
-            color: #333;
-            margin-bottom: 8px;
-            font-size: 20px;
+        .user-card h3 { color: #333; margin-bottom: 8px; font-size: 20px; }
+
+        /* Badge row */
+        .badge-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
         }
 
         .status-badge {
@@ -131,18 +123,22 @@
             border-radius: 12px;
             font-size: 12px;
             font-weight: bold;
-            margin-bottom: 12px;
         }
 
-        .status-pending {
-            background-color: #fff3cd;
-            color: #856404;
+        .status-pending { background-color: #fff3cd; color: #856404; }
+        .status-approved { background-color: #d4edda; color: #155724; }
+
+        .usertype-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
         }
 
-        .status-approved {
-            background-color: #d4edda;
-            color: #155724;
-        }
+        .usertype-professional { background-color: #e8d5f5; color: #6a1b9a; }
+        .usertype-client { background-color: #d1ecf1; color: #0c5460; }
+        .usertype-unknown { background-color: #e2e3e5; color: #383d41; }
 
         .user-tags {
             display: flex;
@@ -166,9 +162,7 @@
             line-height: 1.5;
         }
 
-        .user-info strong {
-            color: #333;
-        }
+        .user-info strong { color: #333; }
 
         .actions {
             margin-top: 15px;
@@ -187,32 +181,11 @@
             transition: all 0.2s;
         }
 
-        .approve-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
+        .approve-btn { background-color: #4CAF50; color: white; }
+        .approve-btn:hover { background-color: #45a049; }
 
-        .approve-btn:hover {
-            background-color: #45a049;
-        }
-
-        .unapprove-btn {
-            background-color: #ff9800;
-            color: white;
-        }
-
-        .unapprove-btn:hover {
-            background-color: #e68900;
-        }
-
-        .delete-btn {
-            background-color: #f44336;
-            color: white;
-        }
-
-        .delete-btn:hover {
-            background-color: #da190b;
-        }
+        .unapprove-btn { background-color: #ff9800; color: white; }
+        .unapprove-btn:hover { background-color: #e68900; }
 
         .loading {
             text-align: center;
@@ -222,7 +195,7 @@
         }
 
         .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
+            border: 4px solid rgba(255,255,255,0.3);
             border-top: 4px solid white;
             border-radius: 50%;
             width: 50px;
@@ -255,18 +228,9 @@
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 20px;
-            }
-
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .users-container {
-                grid-template-columns: 1fr;
-            }
+            h1 { font-size: 20px; }
+            header { flex-direction: column; gap: 15px; }
+            .users-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -275,7 +239,7 @@
         <header>
             <h1>👥 User Management</h1>
             <div class="user-badge" id="adminBadge">Loading...</div>
-                <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link">Home</a>
         </header>
 
         <div class="tabs">
@@ -288,17 +252,15 @@
             <div class="spinner"></div>
             Loading users...
         </div>
-        
+
         <div id="usersContainer" class="users-container"></div>
     </div>
 
     <script type="module">
-        // Import Firebase modules
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
         import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
-        import { getFirestore, collection, query, where, getDocs, doc, updateDoc, deleteDoc, serverTimestamp, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        import { getFirestore, collection, query, where, getDocs, doc, updateDoc, serverTimestamp, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-        // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyB2DccAwpNnzfNPhhP6KQJ58xVOEFsLB8Y",
             authDomain: "lhok-e77ba.firebaseapp.com",
@@ -308,85 +270,63 @@
             appId: "1:228980882242:web:17bdb6c26604b0ae03e6db"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // ============================================
-        // ADMIN CONFIGURATION - MULTIPLE ADMINS
-        // ============================================
-        // Add all admin emails to this array (must match Firestore rules)
-        // All emails will be converted to lowercase for comparison
         const ADMIN_EMAILS = [
             "hunain.jd@gmail.com",
             "jenngbari@gmail.com",
-            "angeleenmatti@gmail.com", 
+            "angeleenmatti@gmail.com",
             "lhok.business@gmail.com"
         ];
-        // Helper function to check if user is admin
-        function isAdmin(userEmail) {
-            if (!userEmail) return false;
-            const normalizedEmail = userEmail.toLowerCase();
-            return ADMIN_EMAILS.some(adminEmail => adminEmail.toLowerCase() === normalizedEmail);
+
+        function isAdmin(email) {
+            if (!email) return false;
+            return ADMIN_EMAILS.some(e => e.toLowerCase() === email.toLowerCase());
         }
 
-        // Get DOM elements
         const loadingDiv = document.getElementById('loadingDiv');
         const usersContainer = document.getElementById('usersContainer');
         const adminBadge = document.getElementById('adminBadge');
         const tabs = document.querySelectorAll('.tab');
 
-        // Current active tab
         let activeTab = 'pending';
         let unsubscribe = null;
 
-        /**
-         * Check if current user is admin
-         */
+        // ============================================
+        // ADMIN ACCESS CHECK
+        // ============================================
         async function checkAdminAccess(user) {
-            console.log('Checking admin access for:', user.email);
-            
             if (!user || !isAdmin(user.email)) {
-                console.error('Access denied. User email:', user?.email);
-                
                 usersContainer.innerHTML = `
                     <div class="error-message">
                         <h2>❌ Access Denied</h2>
                         <p>This page is for administrators only.</p>
                         <p><strong>Your email:</strong> ${user?.email || 'Not logged in'}</p>
-                        <p><strong>Authorized admins:</strong> ${ADMIN_EMAILS.length} admin(s) configured</p>
-                        <p>If you should have access, contact your system administrator.</p>
-                    </div>
-                `;
+                    </div>`;
                 loadingDiv.style.display = 'none';
                 return false;
             }
 
             try {
-                console.log('Testing Firestore admin permissions...');
-                const testQuery = await getDocs(collection(db, 'users'));
-                console.log('✅ Admin permissions confirmed. Can access', testQuery.size, 'users');
+                await getDocs(collection(db, 'users'));
                 return true;
             } catch (error) {
-                console.error('❌ Firestore permission test failed:', error);
-                
                 usersContainer.innerHTML = `
                     <div class="error-message">
                         <h2>❌ Firestore Permission Denied</h2>
-                        <p>Your email matches (${user.email}), but Firestore rules are blocking access.</p>
+                        <p>${user.email} matched but Firestore rules blocked access.</p>
                         <p><strong>Error:</strong> ${error.message}</p>
-                        <p><strong>Fix:</strong> Update your Firestore rules to include your email</p>
-                    </div>
-                `;
+                    </div>`;
                 loadingDiv.style.display = 'none';
                 return false;
             }
         }
 
-        /**
-         * Get initials from display name
-         */
+        // ============================================
+        // HELPERS
+        // ============================================
         function getInitials(name) {
             if (!name) return '?';
             const words = name.trim().split(' ');
@@ -394,190 +334,136 @@
             return (words[0].charAt(0) + words[words.length - 1].charAt(0)).toUpperCase();
         }
 
-        /**
-         * Create a user card element - UPDATED FOR NEW FIELDS
-         */
+        function getUserTypeBadge(userType) {
+            if (userType === 'professional') return `<span class="usertype-badge usertype-professional">💼 Professional</span>`;
+            if (userType === 'client') return `<span class="usertype-badge usertype-client">🙋 Client</span>`;
+            return `<span class="usertype-badge usertype-unknown">❓ Type Unknown</span>`;
+        }
+
+        // ============================================
+        // CREATE USER CARD
+        // ============================================
         function createUserCard(userId, userData) {
             const card = document.createElement('div');
             card.className = 'user-card';
-            
+
             const createdAt = userData.createdAt?.toDate().toLocaleDateString() || 'N/A';
             const approvedAt = userData.approvedAt?.toDate().toLocaleDateString() || 'N/A';
             const unapprovedAt = userData.unapprovedAt?.toDate().toLocaleDateString() || null;
 
+            const specialtiesLabel = userData.userType === 'client' ? 'Services Looking For' : 'Specialties';
+            const specialtiesData = userData.userType === 'client'
+                ? userData.servicesLookingFor
+                : userData.specialties;
+
             card.innerHTML = `
-                ${userData.profilePhotoURL ? 
-                    `<img src="${userData.profilePhotoURL}" alt="Profile photo" class="user-photo">` :
-                    `<div class="user-initials">${getInitials(userData.displayName)}</div>`
+                ${userData.profilePhotoURL
+                    ? `<img src="${userData.profilePhotoURL}" alt="Profile photo" class="user-photo">`
+                    : `<div class="user-initials">${getInitials(userData.displayName)}</div>`
                 }
+
                 <h3>${userData.displayName || 'No Name'}</h3>
-                <span class="status-badge ${userData.approved ? 'status-approved' : 'status-pending'}">
-                    ${userData.approved ? '✅ Approved' : '⏳ Pending'}
-                </span>
-                
-                <!-- UPDATED: Display specialties instead of tags -->
-                ${userData.specialties && userData.specialties.length > 0 ? `
+
+                <div class="badge-row">
+                    <span class="status-badge ${userData.approved ? 'status-approved' : 'status-pending'}">
+                        ${userData.approved ? '✅ Approved' : '⏳ Pending'}
+                    </span>
+                    ${getUserTypeBadge(userData.userType)}
+                </div>
+
+                ${specialtiesData && specialtiesData.length > 0 ? `
+                    <div class="user-info"><strong>${specialtiesLabel}:</strong></div>
                     <div class="user-tags">
-                        ${userData.specialties.map(specialty => `<span class="user-tag">${specialty}</span>`).join('')}
-                    </div>
-                ` : ''}
-                
-                <div class="user-info"><strong>Email:</strong> ${userData.email}</div>
-                
-                <!-- NEW: Years in Industry -->
+                        ${specialtiesData.map(s => `<span class="user-tag">${s}</span>`).join('')}
+                    </div>` : ''}
+
+                <div class="user-info"><strong>Email:</strong> ${userData.email || 'N/A'}</div>
                 ${userData.yearsInIndustry ? `<div class="user-info"><strong>Years in Industry:</strong> ${userData.yearsInIndustry}</div>` : ''}
-                
-                <!-- NEW: Preferred Contact Method -->
                 ${userData.preferredContact ? `<div class="user-info"><strong>Preferred Contact:</strong> ${userData.preferredContact}</div>` : ''}
-                
-                <!-- KEPT: Location -->
                 ${userData.location ? `<div class="user-info"><strong>Location:</strong> ${userData.location}</div>` : ''}
-                
-                <!-- KEPT: Bio -->
                 ${userData.bio ? `<div class="user-info"><strong>Bio:</strong> ${userData.bio}</div>` : ''}
-                
-                <!-- NEW: Instagram (separate from website) -->
                 ${userData.instagram ? `<div class="user-info"><strong>Instagram:</strong> <a href="${userData.instagram}" target="_blank">${userData.instagram}</a></div>` : ''}
-                
-                <!-- KEPT: Website -->
                 ${userData.website ? `<div class="user-info"><strong>Website:</strong> <a href="${userData.website}" target="_blank">${userData.website}</a></div>` : ''}
-                
+
                 <div class="user-info"><strong>Joined:</strong> ${createdAt}</div>
                 ${userData.approved ? `<div class="user-info"><strong>Approved:</strong> ${approvedAt}</div>` : ''}
-                ${unapprovedAt ? `<div class="user-info" style="color: #ff9800;"><strong>Unapproved:</strong> ${unapprovedAt}</div>` : ''}
-                
+                ${unapprovedAt ? `<div class="user-info" style="color:#ff9800;"><strong>Unapproved:</strong> ${unapprovedAt}</div>` : ''}
+
                 <div class="actions">
-                    ${!userData.approved ? 
-                        `<button class="approve-btn" onclick="approveUser('${userId}')">✓ Approve</button>` :
-                        `<button class="unapprove-btn" onclick="unapproveUser('${userId}')">↶ Unapprove</button>`
+                    ${!userData.approved
+                        ? `<button class="approve-btn" onclick="approveUser('${userId}')">✓ Approve</button>`
+                        : `<button class="unapprove-btn" onclick="unapproveUser('${userId}')">↶ Unapprove</button>`
                     }
-                   <button class="delete-btn" onclick="deleteUser('${userId}', '${(userData.displayName || userData.email).replace(/'/g, "\\'")}')">🗑 Delete</button>
                 </div>
             `;
 
             usersContainer.appendChild(card);
         }
 
-        /**
-         * Load users based on filter type
-         */
+        // ============================================
+        // LOAD USERS
+        // ============================================
         function loadUsers(filterType) {
-            if (unsubscribe) {
-                unsubscribe();
-            }
+            if (unsubscribe) unsubscribe();
 
             loadingDiv.style.display = 'block';
             usersContainer.innerHTML = '';
 
             const usersRef = collection(db, 'users');
-            let q;
-            
-            if (filterType === 'all') {
-                q = query(usersRef);
-            } else {
-                const approved = filterType === 'approved';
-                q = query(usersRef, where('approved', '==', approved));
-            }
+            const q = filterType === 'all'
+                ? query(usersRef)
+                : query(usersRef, where('approved', '==', filterType === 'approved'));
 
             unsubscribe = onSnapshot(q, (querySnapshot) => {
                 loadingDiv.style.display = 'none';
 
                 if (querySnapshot.empty) {
-                    const statusText = filterType === 'all' ? 'users' : 
-                                      (filterType === 'approved' ? 'approved users' : 'pending users');
-                    usersContainer.innerHTML = `
-                        <div class="no-users">
-                            No ${statusText} found.
-                        </div>
-                    `;
+                    const label = filterType === 'all' ? 'users'
+                                : filterType === 'approved' ? 'approved users' : 'pending users';
+                    usersContainer.innerHTML = `<div class="no-users">No ${label} found.</div>`;
                     return;
                 }
 
                 usersContainer.innerHTML = '';
-                querySnapshot.forEach((docSnap) => {
-                    const userData = docSnap.data();
-                    const userId = docSnap.id;
-                    createUserCard(userId, userData);
-                });
-
-                console.log(`Loaded ${querySnapshot.size} users for tab: ${filterType}`);
+                querySnapshot.forEach(docSnap => createUserCard(docSnap.id, docSnap.data()));
             }, (error) => {
                 console.error('Error loading users:', error);
                 loadingDiv.style.display = 'none';
-                usersContainer.innerHTML = `
-                    <div class="error-message">
-                        Error loading users: ${error.message}
-                    </div>
-                `;
+                usersContainer.innerHTML = `<div class="error-message">Error loading users: ${error.message}</div>`;
             });
         }
 
-        /**
-         * Approve a user
-         */
+        // ============================================
+        // APPROVE / UNAPPROVE
+        // ============================================
         window.approveUser = async function(userId) {
-            if (!confirm('Approve this user? They will be visible on the public profile page.')) {
-                return;
-            }
-
+            if (!confirm('Approve this user? They will be visible on the public profile page.')) return;
             try {
-                const userRef = doc(db, 'users', userId);
-                await updateDoc(userRef, {
+                await updateDoc(doc(db, 'users', userId), {
                     approved: true,
                     approvedAt: serverTimestamp()
                 });
-                console.log('User approved:', userId);
             } catch (error) {
-                console.error('Error approving user:', error);
                 alert('Error approving user: ' + error.message);
             }
         };
 
-        /**
-         * Unapprove a user
-         */
         window.unapproveUser = async function(userId) {
-            if (!confirm('Remove approval for this user?\n\n• User will be hidden from public page\n• Profile data will be retained\n• You can re-approve later')) {
-                return;
-            }
-
+            if (!confirm('Remove approval?\n\n• User hidden from public page\n• Profile data kept\n• Can re-approve later')) return;
             try {
-                const userRef = doc(db, 'users', userId);
-                await updateDoc(userRef, {
+                await updateDoc(doc(db, 'users', userId), {
                     approved: false,
                     approvedAt: null,
                     unapprovedAt: serverTimestamp()
                 });
-                console.log('User unapproved:', userId);
             } catch (error) {
-                console.error('Error unapproving user:', error);
                 alert('Error unapproving user: ' + error.message);
             }
         };
 
-        /**
-         * Delete a user (commented out for safety - uncomment if needed)
-         */
-        // window.deleteUser = async function(userId, userName) {
-        //     if (!confirm(`Delete ${userName}?\n\nThis action CANNOT be undone!`)) {
-        //         return;
-        //     }
-        //     if (!confirm('Are you ABSOLUTELY sure? This cannot be undone!')) {
-        //         return;
-        //     }
-        //     try {
-        //         const userRef = doc(db, 'users', userId);
-        //         await deleteDoc(userRef);
-        //         console.log('User deleted:', userId);
-        //     } catch (error) {
-        //         console.error('Error deleting user:', error);
-        //         alert('Error deleting user: ' + error.message);
-        //     }
-        // };
-
-        /**
-         * Handle tab clicks
-         */
+        // ============================================
+        // TABS
+        // ============================================
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 tabs.forEach(t => t.classList.remove('active'));
@@ -587,30 +473,24 @@
             });
         });
 
-        /**
-         * Initialize page
-         */
+        // ============================================
+        // INIT
+        // ============================================
         onAuthStateChanged(auth, async (user) => {
             if (!user) {
-                console.log('No user logged in');
                 adminBadge.textContent = '❌ Not logged in';
                 usersContainer.innerHTML = `
                     <div class="error-message">
                         <h2>Please Log In</h2>
                         <p>You must be logged in as an administrator to access this page.</p>
-                    </div>
-                `;
+                    </div>`;
                 loadingDiv.style.display = 'none';
                 return;
             }
 
             adminBadge.textContent = `👤 ${user.email}`;
-            
-            const isAdmin = await checkAdminAccess(user);
-            if (isAdmin) {
-                console.log('Admin access granted, loading users...');
-                loadUsers(activeTab);
-            }
+            const hasAccess = await checkAdminAccess(user);
+            if (hasAccess) loadUsers(activeTab);
         });
     </script>
 </body>
