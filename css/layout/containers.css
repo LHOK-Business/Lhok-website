@@ -40,7 +40,6 @@
    ============================================ */
 
 .OneTwo-OneThree {   
- 
   justify-items: center;
   grid-row: 1 / 1;
   grid-column: 2 / 3;
@@ -65,9 +64,7 @@
   }
 
 
-
 .ThreeOne-FourTwo {
- 
   grid-row: 3 / 4;
   grid-column: 1 / 2;
   /*   1 2 3 4
@@ -99,8 +96,8 @@
      4 -|-|x|x 
      Row first then column for naming*/
 }
-.OneOne-FourOne {
 
+.OneOne-FourOne {
   grid-row: 1 / 5;
   grid-column: 1 / 2;
     /* 1 2 3 4
@@ -112,7 +109,6 @@
 }
 
 .OneTwo-FourFour {
-
   grid-row: 1 / 5;
   grid-column: 2 / 5;
     /* 1 2 3 4
@@ -122,6 +118,7 @@
      4 -|x|x|x 
      Row first then column for naming*/
 }
+
 .TwoTwo-ThreeTwo {
   grid-row: 2 / 3;
   grid-column: 2 / 2;
@@ -144,12 +141,9 @@
      Row first then column for naming*/
 }
 
-
-
 .ThreeFour-TwoThree {
   grid-row: 2 / 3;
   grid-column: 3 / 4;
-
     /* 1 2 3 4
      1 -|-|-|-
      2 -|-|x|x
@@ -157,6 +151,7 @@
      4 -|-|-|- 
      Row first then column for naming*/
 }
+
 .ThreeFour-TwoThree {
   grid-row: 2 / 3;
   grid-column: 2 / 4;
@@ -180,6 +175,7 @@
      4 -|-|x|x 
      Row first then column for naming*/
 }
+
 .OneTwo-OneFour {
   grid-row: 1 / 2;
   grid-column: 2 / 5;
@@ -194,11 +190,11 @@
 /* ============================================
    Standard Children Containers for 3 by 3 Grid
    ============================================ */
-   .One-One {   
+.One-One {   
   justify-content: center;
   align-items: center;     
   grid-row: 1;
-  grid-column: 1 ;
+  grid-column: 1;
   /*   
        1 2 3 
      1 x|-|-
@@ -206,11 +202,12 @@
      3 -|-|-
      Row first then column for naming*/
 }
-   .Two-One {   
+
+.Two-One {   
   justify-content: center;
   align-items: center;     
   grid-row: 2;
-  grid-column: 1 ;
+  grid-column: 1;
   /*   
        1 2 3 
      1 -|-|-
@@ -219,11 +216,11 @@
      Row first then column for naming*/
 }   
 
-   .Two-Two {   
+.Two-Two {   
   justify-content: center;
   align-items: center;     
   grid-row: 2;
-  grid-column: 2 ;
+  grid-column: 2;
   /*   
        1 2 3 
      1 -|-|-
@@ -232,11 +229,11 @@
      Row first then column for naming*/
 } 
 
-   .Two-Three {   
+.Two-Three {   
   justify-content: center;
   align-items: center;     
   grid-row: 2;
-  grid-column: 3 ;
+  grid-column: 3;
   /*   
        1 2 3 
      1 -|-|-
@@ -245,20 +242,19 @@
      Row first then column for naming*/
 } 
 
-
+/* about-spacing: scoped modifier for About Us page padding */
 .Two-One.about-spacing,
-.Two-Two,
+.Two-Two.about-spacing,
 .Two-Three.about-spacing {
     padding-left: var(--spacing-xl);
     padding-right: var(--spacing-xl);
 }
-   
-   
-   .One-Two {   
+
+.One-Two {   
   justify-content: center;
   align-items: center;     
   grid-row: 1;
-  grid-column: 2 ;
+  grid-column: 2;
   /*   
        1 2 3 
      1 -|x|-
@@ -266,10 +262,8 @@
      3 -|-|-
      Row first then column for naming*/
 }
-   
 
 .Three-One {
-
   grid-row: 3;
   grid-column: 1;
   /* 
@@ -301,7 +295,8 @@
      3 -|-|x
      Row first then column for naming*/
 }
-   .OneThree-Two {   
+
+.OneThree-Two {   
   justify-content: center;
   align-items: center;     
   grid-row: 1 / 3;
@@ -313,7 +308,8 @@
      3 -|x|-
      Row first then column for naming*/
 }
-   .OneTwo-Two {   
+
+.OneTwo-Two {   
   justify-content: center;
   align-items: center;     
   grid-row: 1 / 3;
@@ -325,7 +321,8 @@
      3 -|-|-
      Row first then column for naming*/
 }
-   .Two-TwoThree {   
+
+.Two-TwoThree {   
   justify-content: center;
   align-items: center;     
   grid-row: 2 / 3;
@@ -338,7 +335,7 @@
      Row first then column for naming*/
 }
 
-   .OneTwo-One {   
+.OneTwo-One {   
   justify-content: center;
   align-items: center;     
   grid-row: 1 / 3;
@@ -351,11 +348,9 @@
      Row first then column for naming*/
 }
 
-
-/* Testing cell numbrs in grids */
+/* Testing cell numbers in grids */
 .single-4by4-cell { 
   align-self: center;
-
 }
 
 /* ============================================
@@ -397,7 +392,9 @@
   border-radius: 12px;
 }
 
-/* Responsive */
+/* ============================================
+   Responsive
+   ============================================ */
 @media (max-width: 768px) {
   .content-wrapper {
     grid-template-columns: 1fr;

@@ -19,13 +19,7 @@
                 grid-template-columns: 1fr;
                 grid-template-rows: repeat(4, auto);
             }
-            .Waves_Icon {
-                justify-self: center;
-                display: flex;
-                justify-content: center;
-            }
 
-            /* Reset all children to natural stacking order */
             .container3by3 .One-Two,
             .container3by3 .Two-One,
             .container3by3 .Two-Two,
@@ -34,6 +28,11 @@
                 grid-column: 1;
                 padding-left: var(--spacing-xl);
                 padding-right: var(--spacing-xl);
+            }
+
+            .Waves_Icon {
+                display: flex;
+                justify-content: center;
             }
         }
     </style>
@@ -61,7 +60,7 @@
             </div>
 
             <div class="Two-One about-spacing">
-                <div class="Waves_Icon text-center">
+                <div class="Waves_Icon">
                     <img src="../Media/Waves_Icon.svg" alt="Waves Icon">
                 </div>
                 <h2><em>Our Mission</em></h2>
@@ -75,7 +74,7 @@
                 </p>
             </div>
 
-            <div class="Two-Two">
+            <div class="Two-Two about-spacing">
                 <div class="Waves_Icon">
                     <img src="../Media/Waves_Icon.svg" alt="Waves Icon">
                 </div>
@@ -87,7 +86,7 @@
                 </p>
             </div>
 
-            <div class="Two-Three">
+            <div class="Two-Three about-spacing">
                 <div class="Waves_Icon">
                     <img src="../Media/Waves_Icon.svg" alt="Waves Icon">
                 </div>
